@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portail officiel de la Mairie de Grand-Popo — services, démarches, vie locale et patrimoine." />
+  <title>Mairie de Grand-Popo — Portail citoyen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+
+  <div class="ticker" aria-label="Annonces officielles">
+    <div class="ticker-track" id="ticker-track"></div>
+  </div>
+
+  <div class="flag-band" role="presentation" aria-hidden="true">
+    <span class="green"></span><span class="yellow"></span><span class="red"></span>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-shell">
+      <a class="brand" href="#home" data-route="home" aria-label="Accueil — Mairie de Grand-Popo">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" role="presentation">
+            <path d="M8 32c6-9 16-13 16-13s10 4 16 13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+            <path d="M12 38c5-5 12-7 12-7s7 2 12 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity=".55" />
+            <circle cx="34" cy="14" r="3.6" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <strong>Mairie de Grand-Popo</strong>
+          <small>République du Bénin · Commune balnéaire</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" data-menu-toggle>
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" aria-label="Navigation principale" id="nav-links"></nav>
+
+      <div class="header-actions">
+        <button type="button" class="ghost-action sm" data-route="contact">Contact</button>
+        <button type="button" class="primary-action sm" data-route="services-etat-civil">E-guichet</button>
+      </div>
+    </div>
+
+    <aside class="mega-menu" aria-label="Mégamenu" id="mega-menu" hidden></aside>
+  </header>
+
+  <div class="mobile-drawer" id="mobile-drawer" hidden>
+    <div class="mobile-drawer-inner" id="mobile-drawer-inner"></div>
+  </div>
+
+  <main id="main-content"></main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <div class="toast" hidden role="status" aria-live="polite"></div>
+</body>
+</html>
