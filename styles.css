@@ -2620,3 +2620,209 @@ body[data-route="contact"] .contact-grid > .request-form {
     min-height: clamp(24rem, 70vw, 38rem);
   }
 }
+
+/* Commune presentation: balanced columns + smart media distribution */
+body[data-route="commune-presentation"] .page-content-grid.is-two-columns {
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, .8fr);
+  gap: 1.35rem;
+}
+
+body[data-route="commune-presentation"] .page-content-grid.is-two-columns > .reveal {
+  min-width: 0;
+}
+
+body[data-route="commune-presentation"] .page-content-grid.is-two-columns .prose {
+  max-width: none;
+}
+
+body[data-route="commune-presentation"] .page-content-grid.is-two-columns .prose figure {
+  display: none;
+}
+
+.commune-media-rail {
+  position: sticky;
+  top: 6.8rem;
+  display: grid;
+  gap: .8rem;
+}
+
+.commune-media-head h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--brand);
+}
+
+.commune-media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .65rem;
+}
+
+.commune-media-grid .commune-media-item {
+  margin: 0;
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+  box-shadow: var(--shadow-xs);
+}
+
+.commune-media-grid .commune-media-item > figure {
+  margin: 0;
+}
+
+.commune-media-grid .commune-media-item.is-wide {
+  grid-column: 1 / -1;
+}
+
+.commune-media-grid .commune-media-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+.commune-media-grid .commune-media-item.is-wide img {
+  aspect-ratio: 16 / 10;
+}
+
+.commune-media-grid .commune-media-item.is-map,
+.commune-media-grid .commune-media-item.is-portrait {
+  padding: .35rem;
+  background: #fff;
+}
+
+.commune-media-grid .commune-media-item.is-map {
+  grid-column: 1 / -1;
+}
+
+.commune-media-grid .commune-media-item.is-map img,
+.commune-media-grid .commune-media-item.is-portrait img {
+  object-fit: contain;
+  aspect-ratio: auto;
+  height: auto;
+  max-height: min(68vh, 30rem);
+}
+
+@media (max-width: 980px) {
+  body[data-route="commune-presentation"] .page-content-grid.is-two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .commune-media-rail {
+    position: static;
+  }
+
+  .commune-media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .commune-media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Arrondissements: full-width card grid */
+body[data-route="commune-arrondissements"] .arrondissements-layout {
+  display: grid;
+  gap: 1.25rem;
+}
+
+body[data-route="commune-arrondissements"] .arrondissements-intro {
+  display: grid;
+  gap: .8rem;
+}
+
+body[data-route="commune-arrondissements"] .arrondissements-intro p {
+  margin: 0;
+}
+
+body[data-route="commune-arrondissements"] .arrondissements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+body[data-route="commune-arrondissements"] .arr-card {
+  display: grid;
+  gap: .8rem;
+  align-content: start;
+  height: 100%;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 1rem;
+  box-shadow: var(--shadow-xs);
+}
+
+body[data-route="commune-arrondissements"] .arr-card-head {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+}
+
+body[data-route="commune-arrondissements"] .arr-num {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  font-size: .78rem;
+}
+
+body[data-route="commune-arrondissements"] .arr-card h3 {
+  margin: 0;
+  color: var(--brand);
+  font-size: 1.05rem;
+}
+
+body[data-route="commune-arrondissements"] .arr-meta {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: .5rem;
+}
+
+body[data-route="commune-arrondissements"] .arr-meta li {
+  display: grid;
+  gap: .2rem;
+  padding-bottom: .45rem;
+  border-bottom: 1px dashed var(--line);
+}
+
+body[data-route="commune-arrondissements"] .arr-meta li:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+body[data-route="commune-arrondissements"] .arr-meta .meta-label {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: .88rem;
+}
+
+body[data-route="commune-arrondissements"] .arr-meta .meta-value {
+  color: var(--ink-soft);
+  font-size: .9rem;
+}
+
+@media (max-width: 1080px) {
+  body[data-route="commune-arrondissements"] .arrondissements-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  body[data-route="commune-arrondissements"] .arrondissements-grid {
+    grid-template-columns: 1fr;
+  }
+}

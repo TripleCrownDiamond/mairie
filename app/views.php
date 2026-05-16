@@ -251,7 +251,7 @@ function gp_render_layout(string $title, string $description, string $body, stri
     echo '<div class="ticker"><div class="ticker-track">' . gp_render_ticker(gp_data()['TICKER'] ?? []) . '</div></div>';
         echo '<header class="site-header"><div class="header-shell"><div class="header-top">';
     echo '<a class="brand brand-icon-only" href="/"><span class="brand-mark"><img src="' . $logo . '" alt="Logo"></span><span class="brand-copy"><strong>Mairie Grand-Popo</strong><small>Commune balneaire</small></span></a>';
-    echo '<div class="header-top-actions"><a class="ghost-action sm" href="/contact">Contacter le service</a><a class="primary-action sm" href="/mes-demarches-en-ligne">Voir l e-guichet</a><button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button></div></div>';
+    echo '<div class="header-top-actions"><a class="ghost-action sm" href="/contact">Contacter le service</a><a class="primary-action sm" href="/mes-demarches-en-ligne">Voir l&#039;e-guichet</a><button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button></div></div>';
     echo '<div class="header-nav-row"><nav class="nav-links">' . gp_nav_html($routeKey) . '</nav></div></div>';
     echo gp_render_mega_menu();
     echo '</header>';
@@ -286,6 +286,48 @@ function gp_extract_paragraph(string $html): string
         return gp_excerpt(trim(strip_tags($m[1])), 230);
     }
     return gp_excerpt(trim(strip_tags($html)), 230);
+}
+
+function gp_split_figures_from_html(string $html): array
+{
+    $figures = [];
+    if (preg_match_all('/<figure\b[^>]*>[\s\S]*?<\/figure>/i', $html, $m) > 0) {
+        foreach ((array) ($m[0] ?? []) as $fig) {
+            $fig = trim((string) $fig);
+            if ($fig !== '') {
+                $figures[] = $fig;
+            }
+        }
+        $html = preg_replace('/<figure\b[^>]*>[\s\S]*?<\/figure>/i', '', $html) ?? $html;
+    }
+
+    $html = preg_replace('/\n{3,}/', "\n\n", $html) ?? $html;
+    return [trim($html), $figures];
+}
+
+function gp_commune_media_item_class(string $figureHtml): string
+{
+    $classes = [];
+    $src = '';
+    if (preg_match('/<img\b[^>]*\bsrc=("|\')(.*?)\1/i', $figureHtml, $m) === 1) {
+        $src = (string) ($m[2] ?? '');
+    }
+
+    if ($src !== '') {
+        if (preg_match('/-(\d+)x(\d+)\.(png|jpe?g|webp|gif)$/i', $src, $dim) === 1) {
+            $w = (int) ($dim[1] ?? 0);
+            $h = (int) ($dim[2] ?? 0);
+            if ($w > 0 && $h > 0 && $h > $w) {
+                $classes[] = 'is-portrait';
+            }
+        }
+
+        if (preg_match('/position-geostrategique|carte|\bmap\b/i', $src) === 1) {
+            $classes[] = 'is-map';
+        }
+    }
+
+    return implode(' ', array_unique($classes));
 }
 
 function gp_render_home(array $data, array $slides, string $key, array $blogPosts = []): string
@@ -374,6 +416,59 @@ function gp_render_cards_block(array $items): string
     return '<div class="duo-grid has-media">' . implode('', $cards) . '</div>';
 }
 
+
+function gp_render_arrondissements_cards(string $html): string
+{
+    $clean = trim($html);
+    if ($clean === '') {
+        return '';
+    }
+
+    $intro = '';
+    if (preg_match('/^(.*?)(<h2\b[^>]*>\s*1\s*-\s*[^<]+<\/h2>)/is', $clean, $parts) === 1) {
+        $intro = trim((string) ($parts[1] ?? ''));
+    }
+
+    $cards = [];
+    if (preg_match_all('/<h2\b[^>]*>\s*(\d+)\s*-\s*([^<]+?)\s*<\/h2>\s*<ul[^>]*>([\s\S]*?)<\/ul>/i', $clean, $m, PREG_SET_ORDER) > 0) {
+        foreach ($m as $row) {
+            $num = str_pad((string) ((int) ($row[1] ?? 0)), 2, '0', STR_PAD_LEFT);
+            $name = gp_clean_menu_text(trim(strip_tags((string) ($row[2] ?? ''))));
+            $itemsHtml = [];
+            if (preg_match_all('/<li[^>]*>(.*?)<\/li>/is', (string) ($row[3] ?? ''), $li) > 0) {
+                foreach ((array) ($li[1] ?? []) as $meta) {
+                    $line = gp_clean_menu_text(trim(strip_tags((string) $meta)));
+                    if ($line === '') {
+                        continue;
+                    }
+
+                    $label = $line;
+                    $value = '';
+                    if (str_contains($line, ':')) {
+                        [$label, $value] = array_map('trim', explode(':', $line, 2));
+                    }
+
+                    $itemsHtml[] = '<li><span class="meta-label">' . gp_h($label) . '</span>'
+                        . ($value !== '' ? '<span class="meta-value">' . gp_h($value) . '</span>' : '')
+                        . '</li>';
+                }
+            }
+
+            $cards[] = '<article class="arr-card reveal">'
+                . '<header class="arr-card-head"><span class="arr-num">' . gp_h($num) . '</span><h3>' . gp_h($name) . '</h3></header>'
+                . '<ul class="arr-meta">' . implode('', $itemsHtml) . '</ul>'
+                . '</article>';
+        }
+    }
+
+    if ($cards === []) {
+        return $clean;
+    }
+
+    $introHtml = $intro !== '' ? '<div class="arrondissements-intro">' . $intro . '</div>' : '';
+    return '<section class="arrondissements-layout">' . $introHtml . '<div class="arrondissements-grid">' . implode('', $cards) . '</div></section>';
+}
+
 function gp_render_services_catalog_cards(): string
 {
     $catalog = gp_services_catalog();
@@ -441,6 +536,7 @@ function gp_render_page(string $key, array $page): string
 
     $prose = [];
     $cards = [];
+    $communeFigures = [];
     foreach ((array) ($page['blocks'] ?? []) as $block) {
         $type = (string) ($block['type'] ?? 'prose');
         if ($type === 'cards3') {
@@ -449,6 +545,19 @@ function gp_render_page(string $key, array $page): string
         }
         $html = gp_repair_mojibake_text((string) ($block['body'] ?? ''));
         $html = preg_replace_callback('/\b(src|href)=("|\')(?!https?:\/\/|\/|#|mailto:|tel:)([^"\']+)\2/i', static fn($m) => $m[1] . '=' . $m[2] . '/' . ltrim($m[3], '/') . $m[2], $html) ?? $html;
+
+        if ($key === 'commune-arrondissements') {
+            $prose[] = '<div class="prose">' . gp_render_arrondissements_cards($html) . '</div>';
+            continue;
+        }
+
+        if ($key === 'commune-presentation') {
+            [$html, $figures] = gp_split_figures_from_html($html);
+            if ($figures !== []) {
+                $communeFigures = array_merge($communeFigures, $figures);
+            }
+        }
+
         $prose[] = '<div class="prose">' . $html . '</div>';
     }
 
@@ -458,10 +567,36 @@ function gp_render_page(string $key, array $page): string
     }
 
     $two = $cards !== [] || $key === 'commune-presentation';
-    $aside = $two ? '<aside class="reveal">' . implode('', $cards) . gp_render_related_pages($key) . '</aside>' : '';
-    $below = $two ? '' : gp_render_related_pages($key);
+    $aside = '';
+    $below = '';
 
-    return '<section class="page-hero"><div class="page-hero-shell"><div>' . gp_breadcrumb($key, $title) . '<h1>' . gp_h($title) . '</h1><p class="lead">' . gp_h($lead) . '</p><div class="hero-actions"><a class="primary-action" href="/contact">Contacter le service</a><a class="ghost-action" href="/mes-demarches-en-ligne">Voir l e-guichet</a></div></div><figure class="page-hero-image"><img src="' . gp_h($image) . '" alt=""></figure></div></section><section class="section"><div class="container"><div class="page-content-grid' . ($two ? ' is-two-columns' : '') . '"><article class="reveal">' . implode('', $prose) . $form . '</article>' . $aside . '</div>' . $below . '</div></section>';
+    if ($key === 'commune-presentation') {
+        $media = [];
+        foreach ($communeFigures as $i => $fig) {
+            $classes = [];
+            if ($i % 3 === 0) {
+                $classes[] = 'is-wide';
+            }
+
+            $kind = gp_commune_media_item_class($fig);
+            if ($kind !== '') {
+                $classes[] = $kind;
+            }
+
+            $media[] = '<div class="commune-media-item ' . implode(' ', $classes) . '">' . $fig . '</div>';
+        }
+
+        if ($media !== []) {
+            $aside = '<aside class="commune-media-rail reveal"><div class="commune-media-head"><p class="eyebrow">Galerie</p><h3>Reperes visuels</h3></div><div class="commune-media-grid">' . implode('', $media) . '</div></aside>';
+        }
+        $below = gp_render_related_pages($key);
+    } elseif ($two) {
+        $aside = '<aside class="reveal">' . implode('', $cards) . gp_render_related_pages($key) . '</aside>';
+    } else {
+        $below = gp_render_related_pages($key);
+    }
+
+    return '<section class="page-hero"><div class="page-hero-shell"><div>' . gp_breadcrumb($key, $title) . '<h1>' . gp_h($title) . '</h1><p class="lead">' . gp_h($lead) . '</p><div class="hero-actions"><a class="primary-action" href="/contact">Contacter le service</a><a class="ghost-action" href="/mes-demarches-en-ligne">Voir l&#039;e-guichet</a></div></div><figure class="page-hero-image"><img src="' . gp_h($image) . '" alt=""></figure></div></section><section class="section"><div class="container"><div class="page-content-grid' . ($two ? ' is-two-columns' : '') . '"><article class="reveal">' . implode('', $prose) . $form . '</article>' . $aside . '</div>' . $below . '</div></section>';
 }
 
 function gp_render_contact(): string
@@ -616,7 +751,7 @@ function gp_render_forum_index(array $page, bool $showComposer = false): string
     $logout = $user ? '<form method="post" action="/forums-de-discussion" class="forum-inline-form"><input type="hidden" name="action" value="forum_logout"><input type="hidden" name="csrf" value="' . gp_h(gp_csrf_token()) . '"><button class="ghost-action" type="submit">Se deconnecter (' . gp_h((string) ($user['username'] ?? '')) . ')</button></form>' : '<a class="ghost-action" href="/connexion-aux-forums?next=/forums-de-discussion">Connexion</a>';
 
     return gp_render_forum_flash()
-        . '<section class="page-hero"><div class="page-hero-shell"><div><nav class="breadcrumb"><a href="/">Accueil</a><span class="sep">/</span><span class="current">Forums</span></nav><h1>' . gp_h(gp_clean_menu_text((string) ($page['title'] ?? 'Forums de discussion'))) . '</h1><p class="lead">' . gp_h(gp_clean_menu_text((string) ($page['lead'] ?? 'Espace d echanges citoyens'))) . '</p><p class="forum-counter">' . (int) ($counts['topics'] ?? 0) . ' sujet(s) - ' . (int) ($counts['messages'] ?? 0) . ' message(s)</p><div class="hero-actions"><a class="primary-action" href="/forums-de-discussion/nouveau">Nouveau sujet</a>' . $logout . '</div></div><figure class="page-hero-image"><img src="' . gp_h(gp_media_url('/assets/facade.jpg')) . '" alt=""></figure></div></section>'
+        . '<section class="page-hero"><div class="page-hero-shell"><div><nav class="breadcrumb"><a href="/">Accueil</a><span class="sep">/</span><span class="current">Forums</span></nav><h1>' . gp_h(gp_clean_menu_text((string) ($page['title'] ?? 'Forums de discussion'))) . '</h1><p class="lead">' . gp_h(gp_clean_menu_text((string) ($page['lead'] ?? 'Espace d\'echanges citoyens'))) . '</p><p class="forum-counter">' . (int) ($counts['topics'] ?? 0) . ' sujet(s) - ' . (int) ($counts['messages'] ?? 0) . ' message(s)</p><div class="hero-actions"><a class="primary-action" href="/forums-de-discussion/nouveau">Nouveau sujet</a>' . $logout . '</div></div><figure class="page-hero-image"><img src="' . gp_h(gp_media_url('/assets/facade.jpg')) . '" alt=""></figure></div></section>'
         . '<section class="section"><div class="container">' . $composer . '<div class="forum-topics">' . implode('', $cards) . '</div></div></section>';
 }
 
@@ -655,6 +790,9 @@ function gp_render_forum_register_page(array $page): string
     $min = gp_forum_min_password_length();
     return gp_render_forum_flash() . '<section class="page-hero"><div class="page-hero-shell"><div><nav class="breadcrumb"><a href="/">Accueil</a><span class="sep">/</span><a href="/forums-de-discussion">Forums</a><span class="sep">/</span><span class="current">Inscription</span></nav><h1>' . gp_h(gp_clean_menu_text((string) ($page['title'] ?? 'Inscription'))) . '</h1><p class="lead">' . gp_h(gp_clean_menu_text((string) ($page['lead'] ?? 'Creer un compte forum'))) . '</p></div><figure class="page-hero-image"><img src="' . gp_h(gp_media_url('/assets/facade.jpg')) . '" alt=""></figure></div></section><section class="section"><div class="container"><div class="forum-auth-wrap"><form class="bbp-login-form reveal" method="post" action="/inscription-aux-forums"><input type="hidden" name="action" value="forum_register"><input type="hidden" name="csrf" value="' . gp_h(gp_csrf_token()) . '"><input type="hidden" name="next" value="' . gp_h($next) . '"><label>Identifiant<input type="text" name="username" minlength="3" required></label><label>Email<input type="email" name="email" required></label><div class="row"><label>Mot de passe<input type="password" name="password" minlength="' . $min . '" required></label><label>Confirmer mot de passe<input type="password" name="password_confirm" minlength="' . $min . '" required></label></div><button type="submit">Creer mon compte</button></form></div></div></section>';
 }
+
+
+
 
 
 
