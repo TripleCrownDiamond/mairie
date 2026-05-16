@@ -391,20 +391,34 @@ function gp_render_related_pages(string $key): string
     if ($prefix === '') {
         return '';
     }
+
     $cards = [];
+    $idx = 1;
     foreach ($pages as $pkey => $page) {
         if ($pkey === $key || !str_starts_with((string) $pkey, $prefix . '-')) {
             continue;
         }
-        $cards[] = '<article class="info-card reveal"><div class="ico">' . gp_h(strtoupper(substr($prefix, 0, 2))) . '</div><h4>' . gp_h(gp_clean_menu_text((string) ($page['title'] ?? $pkey))) . '</h4><p>' . gp_h(gp_excerpt(gp_clean_menu_text((string) ($page['lead'] ?? '')), 120)) . '</p><a class="text-link" href="' . gp_h(gp_page_path((string) $pkey)) . '">Ouvrir la page</a></article>';
+
+        $title = gp_clean_menu_text((string) ($page['title'] ?? $pkey));
+        $lead = gp_excerpt(gp_clean_menu_text((string) ($page['lead'] ?? '')), 140);
+        $num = str_pad((string) $idx, 2, '0', STR_PAD_LEFT);
+
+        $cards[] = '<article class="flip-card reveal" tabindex="0"><div class="flip-inner">'
+            . '<div class="flip-face flip-front"><span class="num">' . gp_h($num) . '</span><div><h3>' . gp_h($title) . '</h3><p class="sub">' . gp_h($lead) . '</p></div></div>'
+            . '<div class="flip-face flip-back"><span class="tag">Pages connexes</span><div><h4>' . gp_h($title) . '</h4><p>' . gp_h($lead) . '</p></div><a class="card-button" href="' . gp_h(gp_page_path((string) $pkey)) . '">Ouvrir la page</a></div>'
+            . '</div></article>';
+
+        $idx++;
         if (count($cards) >= 6) {
             break;
         }
     }
+
     if ($cards === []) {
         return '';
     }
-    return '<section class="section-tight"><div class="section-head"><div><p class="eyebrow">Pages connexes</p><h2>Naviguer dans cette rubrique</h2></div></div><div class="duo-grid">' . implode('', $cards) . '</div></section>';
+
+    return '<section class="section-tight related-pages"><div class="section-head"><div><p class="eyebrow">Pages connexes</p><h2>Naviguer dans cette rubrique</h2></div></div><div class="flip-grid three-up tight related-flip-grid">' . implode('', $cards) . '</div></section>';
 }
 
 function gp_render_cards_block(array $items): string
@@ -469,6 +483,57 @@ function gp_render_arrondissements_cards(string $html): string
     return '<section class="arrondissements-layout">' . $introHtml . '<div class="arrondissements-grid">' . implode('', $cards) . '</div></section>';
 }
 
+
+
+function gp_render_villages_cards(string $html): string
+{
+    $clean = trim($html);
+    if ($clean === '') {
+        return '';
+    }
+
+    $intro = '';
+    if (preg_match('/^(.*?)(<h2\b[^>]*>\s*[A-Z0-9\- ]+\s*<\/h2>)/is', $clean, $parts) === 1) {
+        $intro = trim((string) ($parts[1] ?? ''));
+    }
+
+    $cards = [];
+    if (preg_match_all('/<h2\b[^>]*>\s*([^<]+?)\s*<\/h2>\s*<p[^>]*>([\s\S]*?)<\/p>/i', $clean, $m, PREG_SET_ORDER) > 0) {
+        foreach ($m as $row) {
+            $arr = gp_clean_menu_text(trim(strip_tags((string) ($row[1] ?? ''))));
+            $raw = gp_clean_menu_text(trim(strip_tags((string) ($row[2] ?? ''))));
+            if ($arr === '' || $raw === '') {
+                continue;
+            }
+
+            $normalized = str_replace(' et ', ', ', $raw);
+            $villages = [];
+            foreach (explode(',', $normalized) as $name) {
+                $name = trim((string) $name);
+                if ($name !== '') {
+                    $villages[] = $name;
+                }
+            }
+
+            $items = [];
+            foreach ($villages as $name) {
+                $items[] = '<li>' . gp_h($name) . '</li>';
+            }
+
+            $cards[] = '<article class="village-card reveal">'
+                . '<header><h3>' . gp_h($arr) . '</h3><p>' . count($villages) . ' villages et quartiers</p></header>'
+                . '<ul>' . implode('', $items) . '</ul>'
+                . '</article>';
+        }
+    }
+
+    if ($cards === []) {
+        return $clean;
+    }
+
+    $introHtml = $intro !== '' ? '<div class="villages-intro">' . $intro . '</div>' : '';
+    return '<section class="villages-layout">' . $introHtml . '<div class="villages-grid">' . implode('', $cards) . '</div></section>';
+}
 function gp_render_services_catalog_cards(): string
 {
     $catalog = gp_services_catalog();
@@ -551,6 +616,11 @@ function gp_render_page(string $key, array $page): string
             continue;
         }
 
+        if ($key === 'commune-villages') {
+            $prose[] = '<div class="prose">' . gp_render_villages_cards($html) . '</div>';
+            continue;
+        }
+
         if ($key === 'commune-presentation') {
             [$html, $figures] = gp_split_figures_from_html($html);
             if ($figures !== []) {
@@ -591,7 +661,8 @@ function gp_render_page(string $key, array $page): string
         }
         $below = gp_render_related_pages($key);
     } elseif ($two) {
-        $aside = '<aside class="reveal">' . implode('', $cards) . gp_render_related_pages($key) . '</aside>';
+        $aside = '<aside class="reveal">' . implode('', $cards) . '</aside>';
+        $below = gp_render_related_pages($key);
     } else {
         $below = gp_render_related_pages($key);
     }

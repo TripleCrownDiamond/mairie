@@ -623,12 +623,12 @@
             "section": "commune",
             "kicker": "Villages & quartiers",
             "image": "assets/gbekon.jpg",
-            "title": "Les villages et villes",
-            "lead": "DÃ©couvrez ici tous les villages et villes de la commune",
+            "title": "Les 60 villages et quartiers de ville",
+            "lead": "Decouvrez ici tous les villages et villes de la commune",
             "blocks": [
                 {
                     "type": "prose",
-                    "body": "<h1 class=\"font-600\"> Les villages et villes de Grand-Popo </h1><p>DÃ©couvrez ici tous les villages et villes de la commune</p><p>La loi nÂ° 2013-05 du 27 mai 2013 portant crÃ©ation, organisation, attributions et fonctionnement des unitÃ©s administratives locales en RÃ©publique du BÃ©nin passe donc Grand-Popo Ã  60 villages.</p><p style=\"text-align: center;\"><span style=\"color: #ffffff;\"><strong> ARRONDISSEMENTS</strong></span></p><p style=\"text-align: center;\"><span style=\"color: #ffffff;\"><strong>VILLAGES ET QUARTIERS DE VILLE</strong></span></p><p>Adjaha, Kpovidji, Conho, Cotocoli, Seho-Condji Todjonoukoin Tokpa-Aizo et Tokpa-Monoto</p><p>AgouÃ© I, AgouÃ©-Gbedjin, Ayiguinnou, Missihoun-Condji, Nikoue-Condji, Zogbedji, Louis-Condji et Hillacondji</p><p>Allongo, Avlo-Plage, Avlo-Village, KpÃ¨ko, KouÃ¨,ta Hounkounou, GninhountimÃ¨, HakouÃ¨ et Heyi-Gbadji</p><p>DÃ©vikanmey, GbÃ©dji, Djanglanmey, Hanmlangni, Gountoeto Kpatcha-Condji, TolÃ©bekpa, TomadjihouÃ© et Folly-Condji</p><p>Adimado, Sohon, Gbehoue-Pedah, KpablÃ¨, Tala, ZogbÃ©dji, GbÃ©awa et GbehouÃ©-Ouatchi</p><p>AgonnÃ¨kanmÃ¨, Apoutagbo, Saligato, HÃ¨vÃ¨, Houndjohoundji, Toklanhoun, OnkouihouÃ©, HounssoukouÃ¨, EwÃ©-Condji, Yodo-Condji et Akodessewa</p><p>AdankpÃ©, Gnito, VodomÃ¨, SazuÃ©, AwamÃ¨, Adjigo et Bathoto</p>"
+                    "body": "<h1>Les 60 villages et quartiers de ville de Grand-Popo</h1><p>Decouvrez ici tous les villages et villes de la commune.</p><p>La loi n 2013-05 du 27 mai 2013 portant creation, organisation, attributions et fonctionnement des unites administratives locales en Republique du Benin passe donc Grand-Popo a 60 villages.</p><h2>ADJAHA</h2><p>Adjaha, Kpovidji, Conho, Cotocoli, Seho-Condji, Todjonoukoin, Tokpa-Aizo et Tokpa-Monoto.</p><h2>AGOUE</h2><p>Agoue I, Agoue-Gbedjin, Ayiguinnou, Missihoun-Condji, Nikoue-Condji, Zogbedji, Louis-Condji et Hillacondji.</p><h2>AVLO</h2><p>Allongo, Avlo-Plage, Avlo-Village, Kpeko, Koueta, Hounkounou, Gninhountime, Hakoue et Heyi-Gbadji.</p><h2>DJANGLANMEY</h2><p>Devikanmey, Gbedji, Djanglanmey, Hanmlangni, Gountoeto, Kpatcha-Condji, Tolebekpa, Tomadjihoue et Folly-Condji.</p><h2>GBEHOUE</h2><p>Adimado, Sohon, Gbehoue-Pedah, Kpable, Tala, Zogbedji, Gbeawa et Gbehoue-Ouatchi.</p><h2>GRAND-POPO</h2><p>Agonnekanme, Apoutagbo, Saligato, Heve, Houndjohoundji, Toklanhoun, Onkouihoue, Hounssoukoue, Ewe-Condji, Yodo-Condji et Akodessewa.</p><h2>SAZUE</h2><p>Adankpe, Gnito, Vodome, Sazue, Awame, Adjigo et Bathoto.</p>"
                 }
             ]
         },
