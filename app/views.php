@@ -5,7 +5,7 @@ declare(strict_types=1);
 function gp_fix_text(mixed $value): string
 {
     $text = gp_repair_mojibake_text(trim((string) $value));
-    return str_replace(["\xEF\xBB\xBF", "\xC2\xA0"], ['', ' '], $text);
+    return str_replace(["\xEF\xBB\xBF", "\xC2\xA0", "\u{FEFF}"], ['', ' ', ''], $text);
 }
 
 function gp_ui_label(string $label): string
