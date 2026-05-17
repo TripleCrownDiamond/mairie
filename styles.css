@@ -3201,3 +3201,228 @@ body[data-route="services-demande"] .request-form-dynamic [data-service-select]:
   color: #5f6b7a;
   cursor: not-allowed;
 }
+
+/* Espace citoyen pages (documents + formulaires) */
+.citizen-source {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.1rem, 2vw, 1.6rem);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--card);
+  box-shadow: var(--shadow-xs);
+}
+
+.citizen-source h2 {
+  margin: 0;
+  font-size: clamp(1.12rem, 1.8vw, 1.35rem);
+}
+
+.citizen-source > p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* Ecrire au Maire: visual refresh */
+body[data-route="citoyen-ecrire-maire"] .page-hero {
+  background:
+    linear-gradient(120deg, rgba(10, 37, 64, 0.06) 0%, rgba(14, 110, 93, 0.1) 55%, rgba(252, 209, 22, 0.14) 100%),
+    var(--paper);
+}
+
+body[data-route="citoyen-ecrire-maire"] .page-hero::before {
+  background:
+    radial-gradient(780px 430px at 94% 12%, rgba(10, 37, 64, 0.15), transparent 66%),
+    radial-gradient(460px 260px at 5% 88%, rgba(252, 209, 22, 0.2), transparent 62%);
+}
+
+body[data-route="citoyen-ecrire-maire"] .page-hero-shell {
+  align-items: stretch;
+}
+
+body[data-route="citoyen-ecrire-maire"] .page-hero-image {
+  border: 0;
+  box-shadow: 0 24px 48px -24px rgba(10, 37, 64, 0.58);
+}
+
+body[data-route="citoyen-ecrire-maire"] .page-content-grid {
+  grid-template-columns: 1fr;
+}
+
+body[data-route="citoyen-ecrire-maire"] .page-content-grid > .reveal {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-source.citizen-form-page {
+  position: relative;
+  gap: 1.25rem;
+  padding: clamp(1.3rem, 2vw, 2rem);
+  border: 1px solid rgba(10, 37, 64, 0.16);
+  border-radius: calc(var(--r-lg) + 2px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(250, 247, 238, 0.97) 100%);
+  box-shadow: 0 24px 46px -34px rgba(10, 37, 64, 0.42);
+  overflow: hidden;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-source.citizen-form-page::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--bn-blue) 0%, var(--bn-green) 52%, var(--bn-yellow) 100%);
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-source.citizen-form-page h2 {
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  margin: .2rem 0 0;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-source.citizen-form-page > p {
+  margin-top: -.2rem;
+  margin-bottom: .2rem;
+  max-width: 64ch;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: clamp(1.1rem, 2vw, 1.6rem);
+  border-radius: var(--r-md);
+  border: 1px solid rgba(10, 37, 64, 0.1);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form > p {
+  margin: 0;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form > p:nth-of-type(5),
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form > p:nth-of-type(6),
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-response-output {
+  grid-column: 1 / -1;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form label {
+  font-size: .68rem;
+  letter-spacing: .12em;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form input:not([type='submit']):not([type='checkbox']),
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form textarea {
+  background: #fff;
+  border-color: rgba(10, 37, 64, 0.18);
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form textarea {
+  min-height: 10rem;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form .wpcf7-submit {
+  width: 100%;
+  justify-content: center;
+  min-height: 3rem;
+  letter-spacing: .1em;
+  background: linear-gradient(120deg, var(--brand) 0%, #134273 100%);
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form .wpcf7-submit:hover {
+  background: linear-gradient(120deg, #0f345b 0%, var(--brand-2) 100%);
+}
+
+@media (max-width: 900px) {
+  body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-route="citoyen-ecrire-maire"] .citizen-source.citizen-form-page {
+    padding: 1.05rem;
+  }
+}
+
+.doc-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-sm);
+  background: #fff;
+}
+
+.document-library-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.document-library-table th,
+.document-library-table td {
+  padding: .72rem .78rem;
+  border-bottom: 1px solid var(--line-soft);
+  text-align: left;
+  vertical-align: top;
+  font-size: .9rem;
+  line-height: 1.45;
+}
+
+.document-library-table thead th {
+  font-size: .76rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  background: rgba(10, 37, 64, 0.04);
+}
+
+.document-library-table tbody tr:hover {
+  background: rgba(10, 37, 64, 0.03);
+}
+
+.document-library-table a {
+  color: var(--brand-2);
+  text-decoration: none;
+}
+
+.document-library-table a:hover {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+.document-library-table .document-library-button,
+.document-library-table .dll-download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: var(--brand);
+  color: #fff;
+  padding: .5rem .85rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.document-library-table .document-library-button:hover,
+.document-library-table .dll-download-button:hover {
+  background: var(--brand-2);
+  text-decoration: none;
+}
+
+.forum-topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.forum-topic-card {
+  height: 100%;
+}
+
+@media (max-width: 960px) {
+  .forum-topics {
+    grid-template-columns: 1fr;
+  }
+}

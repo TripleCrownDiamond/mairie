@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 function gp_mojibake_score(string $value): int
 {
-    $markers = [chr(194), chr(195), chr(197), chr(226)];
+    $markers = ["\u{00C3}", "\u{00C2}", "\u{00E2}\u{20AC}", "\u{FFFD}"];
     $score = 0;
     foreach ($markers as $marker) {
         $score += substr_count($value, $marker);
@@ -14,27 +14,14 @@ function gp_mojibake_score(string $value): int
 
 function gp_fix_text(mixed $value): string
 {
-    $text = gp_repair_mojibake_text(trim((string) $value));
-    $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-
-    if ($text !== '' && function_exists('iconv')) {
-        $currentScore = gp_mojibake_score($text);
-        if ($currentScore > 0) {
-            foreach (['Windows-1252', 'ISO-8859-1'] as $encoding) {
-                $candidate = @iconv($encoding, 'UTF-8//IGNORE', $text);
-                if (!is_string($candidate) || $candidate === '') {
-                    continue;
-                }
-                if (gp_mojibake_score($candidate) < $currentScore) {
-                    $text = $candidate;
-                    $currentScore = gp_mojibake_score($text);
-                }
-                if ($currentScore === 0) {
-                    break;
-                }
-            }
-        }
+    $text = trim((string) $value);
+    if ($text === '') {
+        return '';
     }
+
+    $text = gp_repair_mojibake_text($text);
+    $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    $text = preg_replace('/\s{2,}/u', ' ', $text) ?? $text;
 
     return str_replace(["\xEF\xBB\xBF", "\xC2\xA0", "\u{FEFF}"], ['', ' ', ''], $text);
 }
@@ -109,27 +96,52 @@ function gp_group_home(string $group): string
     };
 }
 
+function gp_runtime_pages(): array
+{
+    static $pages = null;
+    if ($pages !== null) {
+        return $pages;
+    }
+
+    $file = GP_ROOT . '/data/espace-citoyen-pages.php';
+    if (is_file($file)) {
+        $loaded = require $file;
+        $pages = is_array($loaded) ? $loaded : [];
+    } else {
+        $pages = [];
+    }
+
+    return $pages;
+}
+
+function gp_runtime_page(string $key): ?array
+{
+    $pages = gp_runtime_pages();
+    $page = $pages[$key] ?? null;
+    return is_array($page) ? $page : null;
+}
+
 function gp_citoyen_menu_override(): array
 {
     return [
         'kicker' => 'Espace citoyen',
         'title' => 'Mon espace citoyen',
-        'intro' => 'Sous-menus synchronises depuis la source officielle de la mairie.',
+        'intro' => 'Sous-menus synchronisés depuis la source officielle de la mairie.',
         'panels' => [
             [
                 'title' => 'Echanges institutionnels',
                 'links' => [
-                    ['label' => 'Ecrire au Maire', 'href' => 'https://mairiegrandpopo.bj/ecrire-au-maire/'],
-                    ['label' => 'Ecrire a la Secretaire Executive', 'href' => 'https://mairiegrandpopo.bj/ecrire-a-la-secretaire-executive/'],
-                    ['label' => 'Les Arretes et Decisions', 'href' => 'https://mairiegrandpopo.bj/les-arretes/']
+                    ['label' => 'Ecrire au Maire', 'route' => 'citoyen-ecrire-maire'],
+                    ['label' => 'Ecrire à la Secrétaire Exécutive', 'route' => 'citoyen-ecrire-se'],
+                    ['label' => 'Les Arrêtés et Décisions', 'route' => 'citoyen-arretes']
                 ]
             ],
             [
                 'title' => 'Documents et transparence',
                 'links' => [
-                    ['label' => 'Les compte-rendus et deliberations', 'href' => 'https://mairiegrandpopo.bj/les-comptes-rendus/'],
-                    ['label' => 'Les notes de services et courriers de la tutelle', 'href' => 'https://mairiegrandpopo.bj/les-notes-de-services/'],
-                    ['label' => 'Les Appels d\'offres', 'href' => 'https://mairiegrandpopo.bj/les-appels-doffres/']
+                    ['label' => 'Les compte-rendus et délibérations', 'route' => 'citoyen-comptes-rendus'],
+                    ['label' => 'Les notes de services et courriers de la tutelle', 'route' => 'citoyen-notes-services'],
+                    ['label' => 'Les Appels d\'offres', 'route' => 'citoyen-appels-offres']
                 ]
             ],
             [
@@ -137,18 +149,19 @@ function gp_citoyen_menu_override(): array
                 'links' => [
                     ['label' => 'Recrutement', 'route' => 'citoyen-recrutement'],
                     ['label' => 'Forums de discussion', 'route' => 'citoyen-forums'],
-                    ['label' => 'Denoncer ou alerter', 'route' => 'citoyen-signaler']
+                    ['label' => 'Dénoncer ou alerter', 'route' => 'citoyen-signaler']
                 ]
             ]
         ],
         'feature' => [
             'title' => 'Participation citoyenne',
-            'text' => 'Accedez rapidement aux echanges, publications et formulaires citoyens.',
+            'text' => 'Accédez rapidement aux échanges, publications et formulaires citoyens.',
             'route' => 'citoyen-forums',
-            'cta' => 'Acceder a l\'espace citoyen'
+            'cta' => 'Accéder à l\'espace citoyen'
         ]
     ];
 }
+
 function gp_menu_link_href(array $link): string
 {
     if (!empty($link['href'])) {
@@ -206,7 +219,7 @@ function gp_render_mega_menu(): string
     $groups = [];
     foreach ($menus as $menuKey => $menu) {
         if ((string) $menuKey === 'citoyen') {
-            $menu = array_replace_recursive((array) $menu, gp_citoyen_menu_override());
+            $menu = gp_citoyen_menu_override();
         }
         $panels = [];
         foreach ((array) ($menu['panels'] ?? []) as $panel) {
@@ -250,8 +263,11 @@ function gp_render_mobile_drawer(): string
             continue;
         }
 
-        $menuKey = (string) $item['menu'];
+                $menuKey = (string) $item['menu'];
         $menu = (array) ($menus[$menuKey] ?? []);
+        if ($menuKey === 'citoyen') {
+            $menu = gp_citoyen_menu_override();
+        }
         $panelLinks = [];
         foreach ((array) ($menu['panels'] ?? []) as $panel) {
             $panelLinks[] = '<p>' . gp_h(gp_clean_menu_text((string) ($panel['title'] ?? 'Section'))) . '</p>';
@@ -481,8 +497,11 @@ function gp_clean_flip_text(string $value, string $fallback): string
 }
 function gp_render_related_pages(string $key): string
 {
-    $pages = gp_data()['PAGES'] ?? [];
+    $pages = (array) (gp_data()['PAGES'] ?? []);
     $prefix = explode('-', $key, 2)[0] ?? '';
+    if ($prefix === 'citoyen') {
+        $pages = array_replace($pages, gp_runtime_pages());
+    }
     if ($prefix === '') {
         return '';
     }
@@ -687,6 +706,35 @@ function gp_render_services_catalog_cards(?string $forcedSlug = null): string
     return $chunks === [] ? '<article class="prose"><p>Aucun service disponible.</p></article>' : implode('', $chunks);
 }
 
+function gp_adapt_wp_form_markup(string $html, string $key): string
+{
+    if (stripos($html, 'wpcf7-form') === false) {
+        return $html;
+    }
+
+    $action = gp_page_path($key);
+    $html = preg_replace('#<form\b([^>]*?)action=("|\')[^"\']*\2([^>]*)>#i', '<form$1action="' . $action . '"$3>', $html) ?? $html;
+    $html = preg_replace('#<fieldset class=("|\')hidden-fields-container\1>.*?</fieldset>#is', '', $html) ?? $html;
+
+    if ($key === 'citoyen-ecrire-maire') {
+        $html = preg_replace_callback(
+            '#<form\b([^>]*?)class=("|\')([^"\']*)\2([^>]*)>#i',
+            static function (array $m): string {
+                $classes = preg_split('/\s+/', trim($m[3])) ?: [];
+                foreach (['request-form', 'request-form-dynamic'] as $className) {
+                    if (!in_array($className, $classes, true)) {
+                        $classes[] = $className;
+                    }
+                }
+
+                return '<form' . $m[1] . 'class=' . $m[2] . trim(implode(' ', $classes)) . $m[2] . $m[4] . '>';
+            },
+            $html
+        ) ?? $html;
+    }
+
+    return $html;
+}
 function gp_render_page(string $key, array $page): string
 {
     $title = gp_clean_menu_text((string) ($page['title'] ?? 'Page'));
@@ -745,6 +793,7 @@ function gp_render_page(string $key, array $page): string
     $prose = [];
     $cards = [];
     $communeFigures = [];
+    $hasEmbeddedForm = false;
     foreach ((array) ($page['blocks'] ?? []) as $block) {
         $type = (string) ($block['type'] ?? 'prose');
         if ($type === 'cards3') {
@@ -753,6 +802,10 @@ function gp_render_page(string $key, array $page): string
         }
         $html = gp_repair_mojibake_text((string) ($block['body'] ?? ''));
         $html = preg_replace_callback('/\b(src|href)=("|\')(?!https?:\/\/|\/|#|mailto:|tel:)([^"\']+)\2/i', static fn($m) => $m[1] . '=' . $m[2] . '/' . ltrim($m[3], '/') . $m[2], $html) ?? $html;
+        $html = gp_adapt_wp_form_markup($html, $key);
+        if (stripos($html, '<form') !== false) {
+            $hasEmbeddedForm = true;
+        }
 
         if ($key === 'commune-arrondissements') {
             $prose[] = '<div class="prose">' . gp_render_arrondissements_cards($html) . '</div>';
@@ -775,7 +828,7 @@ function gp_render_page(string $key, array $page): string
     }
 
     $form = '';
-    if ($key === 'citoyen-signaler') {
+    if ($key === 'citoyen-signaler' && !$hasEmbeddedForm) {
         $form = '<form class="request-form reveal" method="post" action="' . gp_h(gp_page_path($key)) . '"><div class="row"><label>Nom complet<input type="text" name="nom" required></label><label>Telephone<input type="tel" name="telephone" required></label></div><label>Email<input type="email" name="email"></label><label>Objet<input type="text" name="objet" required></label><label>Details<textarea name="message" rows="6" required></textarea></label><button class="primary-action" type="submit">Envoyer le signalement</button></form>';
     }
 
@@ -1097,6 +1150,12 @@ function gp_render_forum_register_page(array $page): string
     $min = gp_forum_min_password_length();
     return gp_render_forum_flash() . '<section class="page-hero"><div class="page-hero-shell"><div><nav class="breadcrumb"><a href="/">Accueil</a><span class="sep">/</span><a href="/forums-de-discussion">Forums</a><span class="sep">/</span><span class="current">Inscription</span></nav><h1>' . gp_h(gp_clean_menu_text((string) ($page['title'] ?? 'Inscription'))) . '</h1><p class="lead">' . gp_h(gp_clean_menu_text((string) ($page['lead'] ?? 'Creer un compte forum'))) . '</p></div><figure class="page-hero-image"><img src="' . gp_h(gp_media_url('/assets/facade.jpg')) . '" alt=""></figure></div></section><section class="section"><div class="container"><div class="forum-auth-wrap"><form class="bbp-login-form reveal" method="post" action="/inscription-aux-forums"><input type="hidden" name="action" value="forum_register"><input type="hidden" name="csrf" value="' . gp_h(gp_csrf_token()) . '"><input type="hidden" name="next" value="' . gp_h($next) . '"><label>Identifiant<input type="text" name="username" minlength="3" required></label><label>Email<input type="email" name="email" required></label><div class="row"><label>Mot de passe<input type="password" name="password" minlength="' . $min . '" required></label><label>Confirmer mot de passe<input type="password" name="password_confirm" minlength="' . $min . '" required></label></div><button type="submit">Creer mon compte</button></form></div></div></section>';
 }
+
+
+
+
+
+
 
 
 
