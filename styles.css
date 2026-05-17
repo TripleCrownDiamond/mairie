@@ -2959,3 +2959,160 @@ body[data-route="mairie-conseil"] .mairie-council-section .info-card.has-image .
     grid-template-columns: 1fr;
   }
 }
+
+body[data-route="mairie-supervision"] .mairie-supervision-section .duo-grid.has-media {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+body[data-route="mairie-supervision"] .mairie-supervision-section .info-card.has-image:first-child {
+  grid-column: 1 / -1;
+  max-width: 440px;
+  justify-self: center;
+}
+
+body[data-route="mairie-supervision"] .mairie-supervision-section .info-card.has-image {
+  min-height: 100%;
+}
+
+body[data-route="mairie-supervision"] .mairie-supervision-section .info-card.has-image .info-card-media {
+  width: clamp(112px, 14vw, 136px);
+  height: clamp(112px, 14vw, 136px);
+}
+
+body[data-route="mairie-supervision"] .mairie-supervision-section .info-card.has-image .info-card-media img {
+  object-position: center 10%;
+}
+
+@media (max-width: 1080px) {
+  body[data-route="mairie-supervision"] .mairie-supervision-section .duo-grid.has-media {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-route="mairie-supervision"] .mairie-supervision-section .info-card.has-image:first-child {
+    grid-column: 1 / -1;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  body[data-route="mairie-supervision"] .mairie-supervision-section .duo-grid.has-media {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-route="mairie-supervision"] .mairie-supervision-section .info-card.has-image:first-child {
+    grid-column: auto;
+    max-width: none;
+  }
+}
+
+body[data-route="mairie-commissions"] .mairie-commissions-section .duo-grid.has-media {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+body[data-route="mairie-commissions"] .mairie-commissions-section .info-card.has-image {
+  min-height: 100%;
+}
+
+body[data-route="mairie-commissions"] .mairie-commissions-section .info-card.has-image .info-card-media {
+  width: clamp(108px, 13vw, 132px);
+  height: clamp(108px, 13vw, 132px);
+}
+
+body[data-route="mairie-commissions"] .mairie-commissions-section .info-card.has-image .info-card-media img {
+  object-position: center 10%;
+}
+
+@media (max-width: 1200px) {
+  body[data-route="mairie-commissions"] .mairie-commissions-section .duo-grid.has-media {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  body[data-route="mairie-commissions"] .mairie-commissions-section .duo-grid.has-media {
+    grid-template-columns: 1fr;
+  }
+}
+
+body[data-route="mairie-infra"] .mairie-infra-section .duo-grid.has-media {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+body[data-route="mairie-infra"] .mairie-infra-section .info-card.has-image {
+  min-height: 100%;
+}
+
+body[data-route="mairie-infra"] .mairie-infra-section .info-card.has-image .info-card-media {
+  width: clamp(108px, 13vw, 132px);
+  height: clamp(108px, 13vw, 132px);
+}
+
+body[data-route="mairie-infra"] .mairie-infra-section .info-card.has-image .info-card-media img {
+  object-position: center 10%;
+}
+
+@media (max-width: 1200px) {
+  body[data-route="mairie-infra"] .mairie-infra-section .duo-grid.has-media {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  body[data-route="mairie-infra"] .mairie-infra-section .duo-grid.has-media {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  body[data-route="mairie-infra"] .mairie-infra-section .duo-grid.has-media {
+    grid-template-columns: 1fr;
+  }
+}
+body[data-route="mairie-technique"] .mairie-technique-section .duo-grid.has-media {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+body[data-route="mairie-technique"] .mairie-technique-section .info-card.has-image:first-child {
+  grid-column: 1 / -1;
+  max-width: 440px;
+  justify-self: center;
+}
+
+body[data-route="mairie-technique"] .mairie-technique-section .info-card.has-image {
+  min-height: 100%;
+}
+
+body[data-route="mairie-technique"] .mairie-technique-section .info-card.has-image .info-card-media {
+  width: clamp(108px, 13vw, 132px);
+  height: clamp(108px, 13vw, 132px);
+}
+
+body[data-route="mairie-technique"] .mairie-technique-section .info-card.has-image .info-card-media img {
+  object-position: center 10%;
+}
+
+@media (max-width: 1080px) {
+  body[data-route="mairie-technique"] .mairie-technique-section .duo-grid.has-media {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body[data-route="mairie-technique"] .mairie-technique-section .info-card.has-image:first-child {
+    grid-column: 1 / -1;
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  body[data-route="mairie-technique"] .mairie-technique-section .duo-grid.has-media {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-route="mairie-technique"] .mairie-technique-section .info-card.has-image:first-child {
+    grid-column: auto;
+    max-width: none;
+  }
+}

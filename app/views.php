@@ -679,6 +679,30 @@ function gp_render_page(string $key, array $page): string
         $cards = [];
     }
 
+    $mairieSupervisionProfiles = '';
+    if ($key === 'mairie-supervision' && $cards !== []) {
+        $mairieSupervisionProfiles = '<section class="section-tight mairie-supervision-section"><div class="section-head"><div><p class="eyebrow">Conseil de supervision</p><h2>Le Maire, ses adjoints et les prÃ©sidents de commissions</h2></div></div>' . implode('', $cards) . '</section>';
+        $cards = [];
+    }
+
+    $mairieCommissionsProfiles = '';
+    if ($key === 'mairie-commissions' && $cards !== []) {
+        $mairieCommissionsProfiles = '<section class="section-tight mairie-commissions-section"><div class="section-head"><div><p class="eyebrow">Commissions permanentes</p><h2>Les presidents des commissions permanentes</h2></div></div>' . implode('', $cards) . '</section>';
+        $cards = [];
+    }
+
+    $mairieInfraProfiles = '';
+    if ($key === 'mairie-infra' && $cards !== []) {
+        $mairieInfraProfiles = '<section class="section-tight mairie-infra-section"><div class="section-head"><div><p class="eyebrow">Organes infra-communaux</p><h2>Les chefs d\'arrondissement</h2></div></div>' . implode('', $cards) . '</section>';
+        $cards = [];
+    }
+
+    $mairieTechniqueProfiles = '';
+    if ($key === 'mairie-technique' && $cards !== []) {
+        $mairieTechniqueProfiles = '<section class="section-tight mairie-technique-section"><div class="section-head"><div><p class="eyebrow">Organes techniques et administratifs</p><h2>Le Secrétariat exécutif et les directions</h2></div></div>' . implode('', $cards) . '</section>';
+        $cards = [];
+    }
+
     $two = $cards !== [] || $key === 'commune-presentation';
     $aside = '';
     $below = '';
@@ -707,6 +731,14 @@ function gp_render_page(string $key, array $page): string
         $below = $maireProfiles . gp_render_related_pages($key);
     } elseif ($key === 'mairie-conseil') {
         $below = $mairieCouncilProfiles . gp_render_related_pages($key);
+    } elseif ($key === 'mairie-supervision') {
+        $below = $mairieSupervisionProfiles . gp_render_related_pages($key);
+    } elseif ($key === 'mairie-commissions') {
+        $below = $mairieCommissionsProfiles . gp_render_related_pages($key);
+    } elseif ($key === 'mairie-infra') {
+        $below = $mairieInfraProfiles . gp_render_related_pages($key);
+    } elseif ($key === 'mairie-technique') {
+        $below = $mairieTechniqueProfiles . gp_render_related_pages($key);
     } elseif ($two) {
         $aside = '<aside class="reveal">' . implode('', $cards) . '</aside>';
         $below = gp_render_related_pages($key);

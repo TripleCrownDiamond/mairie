@@ -826,11 +826,11 @@
             "kicker": "Conseil de supervision",
             "image": "/assets/mairie/supervision/carlos-ayikpe.jpg",
             "title": "Le Conseil de Supervision",
-            "lead": "Compose du Maire, de ses deux (02) adjoints et des quatre (04) presidents des commissions permanentes, le Conseil de Supervision assure le pilotage et le controle strategique.",
+            "lead": "Composé du Maire, de ses deux (02) adjoints et des quatre (04) présidents des commissions permanentes, le Conseil de Supervision assure le pilotage et le contrôle stratégique.",
             "blocks": [
                 {
                     "type": "prose",
-                    "body": "<p><strong>Compose du Maire</strong>, de ses deux (02) adjoints et des quatre (04) presidents des commissions permanentes, le Conseil de Supervision :</p><ul><li>adopte le budget, l'organigramme, les manuels de procedures et le plan de travail annuel ;</li><li>assure le controle de la gestion du Secretaire Executif ;</li><li>examine les rapports d'activite de la SE ainsi que les rapports annuels de performance ;</li><li>autorise les conventions d'importance significative (hors marches publics) ;</li><li>delibere sur les projets d'actes de gestion des proprietes foncieres et des domaines de la commune ;</li><li>approuve le reglement interieur et la grille de remuneration du personnel de la mairie.</li></ul><p>Le Conseil de Supervision est consulte par le Maire et le Conseil communal pour toute question liee a l'exercice des pouvoirs propres conferes a la SE.</p><p>Il se reunit au moins une fois par mois et soumet au Conseil communal un rapport trimestriel, annexe des rapports mensuels du Secretaire Executif.</p>"
+                    "body": "<p>Composé du Maire, de ses deux (02) adjoints et des quatre (04) présidents des commissions permanentes, le Conseil de Supervision :</p><ul><li>adopte le budget, l'organigramme, les manuels de procédures et le plan de travail annuel ;</li><li>assure le contrôle de la gestion du Secrétaire Exécutif ;</li><li>examine les rapports d'activité de la SE ainsi que les rapports annuels de performance ;</li><li>autorise les conventions d'importance significative, autres que les marchés publics ;</li><li>délibère sur les projets d'actes de gestion des propriétés foncières et des domaines de la commune ;</li><li>approuve le règlement intérieur et la grille de rémunération du personnel de la mairie.</li></ul><p>Le Conseil de supervision est consulté par le Maire et le Conseil communal pour toute question liée à l'exercice des pouvoirs propres conférés à la SE.</p><p>Il se réunit au moins une fois par mois. Il soumet au Conseil communal un rapport trimestriel auquel sont annexés les rapports mensuels du Secrétaire Exécutif de la commune. La référence dans le code est relative aux articles 93 à 100.</p>"
                 },
                 {
                     "type": "cards3",
@@ -838,50 +838,50 @@
                     "items": [
                         {
                             "ico": "S1",
-                            "title": "AYIKPE YAO CARLOS",
+                            "title": "Carlos Yao AYIKPE",
                             "text": "Maire de la commune de Grand-Popo",
                             "image": "/assets/mairie/supervision/carlos-ayikpe.jpg",
-                            "alt": "AYIKPE YAO CARLOS"
+                            "alt": "Carlos Yao AYIKPE"
                         },
                         {
                             "ico": "S2",
                             "title": "HOUNKPATIN K. RAYMOND",
-                            "text": "1er adjoint au Maire",
+                            "text": "1er Adjoint au maire",
                             "image": "/assets/mairie/supervision/hounkpatin-raymond.png",
                             "alt": "HOUNKPATIN K. RAYMOND"
                         },
                         {
                             "ico": "S3",
-                            "title": "DJOSSOU ALEXANDRE",
-                            "text": "2eme adjoint au Maire",
+                            "title": "DJOSSOU Alexandre",
+                            "text": "2ème Adjoint au Maire",
                             "image": "/assets/mairie/supervision/djossou-alexandre.jpg",
-                            "alt": "DJOSSOU ALEXANDRE"
+                            "alt": "DJOSSOU Alexandre"
                         },
                         {
                             "ico": "S4",
                             "title": "HOUENOU KOFFI ABEL",
-                            "text": "President de la Commission des Affaires economiques et financieres",
+                            "text": "Président de la Commission des Affaires économiques et financières",
                             "image": "/assets/mairie/supervision/houenou-koffi-abel.jpg",
                             "alt": "HOUENOU KOFFI ABEL"
                         },
                         {
                             "ico": "S5",
                             "title": "AHYI AYICOUE M. JOCELYN",
-                            "text": "President de la commission de la cooperation et des relations avec les institutions",
+                            "text": "Président de la commission de la coopération et relations avec les institutions",
                             "image": "/assets/mairie/supervision/ahyi-jocelyn.jpg",
                             "alt": "AHYI AYICOUE M. JOCELYN"
                         },
                         {
                             "ico": "S6",
                             "title": "TOKINLO SOSSA BRICE",
-                            "text": "President de la Commission des Affaires domaniales et environnementales",
+                            "text": "Président de la Commission des Affaires domaniales et environnementales",
                             "image": "/assets/mairie/supervision/tokinlo-brice.jpg",
                             "alt": "TOKINLO SOSSA BRICE"
                         },
                         {
                             "ico": "S7",
                             "title": "MESSAN AMAH",
-                            "text": "President de la commission des Affaires sociales, sportives et culturelles",
+                            "text": "Président de la commission des Affaires sociales, sportives et culturelles",
                             "image": "/assets/mairie/supervision/messan-amah.jpg",
                             "alt": "MESSAN AMAH"
                         }
@@ -892,13 +892,13 @@
         "mairie-commissions": {
             "section": "mairie",
             "kicker": "Commissions permanentes",
-            "image": "/assets/mairie/commissions/houenou-koffi-abel.jpg",
+            "image": "/assets/mairie/commissions/ahyi-jocelyn.jpg",
             "title": "Les Commissions permanentes",
-            "lead": "Conformement a la loi ndeg 2021-14 du 20 decembre 2021, le Conseil communal de Grand-Popo a mis en place quatre (04) commissions permanentes.",
+            "lead": "Conformément à la loi n°2021-14 du 20 décembre 2021, le Conseil communal de Grand-Popo a mis en place quatre (04) commissions permanentes.",
             "blocks": [
                 {
                     "type": "prose",
-                    "body": "<p>Le Conseil communal s'appuie sur quatre commissions permanentes pour preparer ses deliberations et approfondir les dossiers techniques.</p><ul><li><strong>CCRI</strong> : Commission de la Cooperation et des Relations avec les Institutions.</li><li><strong>CAEF</strong> : Commission des Affaires Economiques et Financieres.</li><li><strong>CADE</strong> : Commission des Affaires Domaniales et Environnementales.</li><li><strong>CASSC</strong> : Commission des Affaires Sociales, Sportives et Culturelles.</li></ul><p>Ces commissions analysent les dossiers, formulent des avis et proposent des recommandations soumises ensuite au Conseil communal.</p>"
+                    "body": "<p>Conformément à la loi n°2021-14 du 20 décembre 2021 portant code de l’administration territoriale en République du Bénin, le Conseil communal de Grand-Popo a mis en place quatre (04) commissions permanentes :</p><ul><li><strong>Commission de la Coopération et des Relations avec les Institutions</strong> (CCRI) : elle étudie les questions relatives aux relations de la mairie avec les institutions internes et externes, facilite les interactions, développe les coopérations décentralisées et contribue au rayonnement de la commune.</li><li><strong>Commission des Affaires Économiques et Financières</strong> (CAEF) : elle intervient sur les sujets liés à l’économie locale, aux finances communales et à la mobilisation des ressources, et formule des propositions au Conseil communal.</li><li><strong>Commission des Affaires Domaniales et Environnementales</strong> (CADE) : elle traite les questions foncières, domaniales et environnementales, notamment la gestion des réserves administratives, du patrimoine communal et de l’espace communal.</li><li><strong>Commission des Affaires Sociales, Sportives et Culturelles</strong> (CASSC) : elle mène des réflexions et recommandations sur les affaires sociales, sportives et culturelles et veille à leur prise en compte dans l’action communale.</li></ul><p>Les présidents de ces commissions forment avec le Maire et ses adjoints <a href=\"/mairie/conseil-supervision\">le Conseil de Supervision</a>. Chaque commission peut être saisie par le Maire ou s’auto-saisir afin de proposer des améliorations concrètes sur les dossiers en cours dans la commune.</p>"
                 },
                 {
                     "type": "cards3",
@@ -906,29 +906,29 @@
                     "items": [
                         {
                             "ico": "CP1",
-                            "title": "AHYI AYICOUE M. JOCELYN",
-                            "text": "President de la CCRI (Cooperation et relations avec les institutions)",
+                            "title": "AHYI AYICOUÉ M. JOCELYN",
+                            "text": "Président de la CCRI (Coopération et relations avec les institutions)",
                             "image": "/assets/mairie/commissions/ahyi-jocelyn.jpg",
-                            "alt": "AHYI AYICOUE M. JOCELYN"
+                            "alt": "AHYI AYICOUÉ M. JOCELYN"
                         },
                         {
                             "ico": "CP2",
                             "title": "HOUENOU KOFFI ABEL",
-                            "text": "President de la CAEF (Affaires economiques et financieres)",
+                            "text": "Président de la CAEF (Affaires Économiques et Financières)",
                             "image": "/assets/mairie/commissions/houenou-koffi-abel.jpg",
                             "alt": "HOUENOU KOFFI ABEL"
                         },
                         {
                             "ico": "CP3",
                             "title": "TOKINLO BRICE",
-                            "text": "President de la CADE (Affaires domaniales et environnementales)",
+                            "text": "Président de la CADE (Affaires Domaniales et Environnementales)",
                             "image": "/assets/mairie/commissions/tokinlo-brice.jpg",
                             "alt": "TOKINLO BRICE"
                         },
                         {
                             "ico": "CP4",
                             "title": "MESSAN AMAH",
-                            "text": "President de la CASSC (Affaires sociales, sportives et culturelles)",
+                            "text": "Président de la CASSC (Affaires Sociales, Sportives et Culturelles)",
                             "image": "/assets/mairie/commissions/messan-amah.jpg",
                             "alt": "MESSAN AMAH"
                         }
@@ -941,11 +941,11 @@
             "kicker": "Organes techniques et administratifs",
             "image": "/assets/mairie/technique/se-cyrillia-yebe.jpeg",
             "title": "Les organes technique et administratif",
-            "lead": "Les organes technique et administratif sont composes du Secretariat Executif et des directions communales.",
+            "lead": "Les organes technique et administratif sont composés du Secrétariat Exécutif et des directions.",
             "blocks": [
                 {
                     "type": "prose",
-                    "body": "<p>Le Secretariat Executif assure l'organisation des services communaux, la gestion des ressources humaines, financieres et materielles, ainsi que la communication de la commune.</p><p>Le Secretaire executif veille notamment a la planification et a l'execution des marches publics, a la gestion du patrimoine communal, a la publication des deliberations, a l'elaboration des documents de planification et a la coordination technique avec les services deconcentres de l'Etat. Il est l'ordonnateur du budget communal.</p><h3>Directions techniques et administratives</h3><ul><li><strong>DAAF</strong> : Direction des Affaires administratives et financieres.</li><li><strong>DDLP</strong> : Direction du Developpement local et de la Planification.</li><li><strong>DST</strong> : Direction des Services techniques.</li><li><strong>DADE</strong> : Direction des Affaires domaniales et environnementales.</li><li><strong>DSI</strong> : Direction du Systeme d'informations.</li></ul><p>Services rattaches au Secretariat Executif : Cellule juridique, Cellule de communication, PRMP et Cellule de controle des marches publics. Services independants en collaboration : ANIP et services deconcentres de l'Etat.</p>"
+                    "body": "<p><strong>Les organes technique et administratif sont composés du Secrétariat Exécutif et des directions.</strong></p><h3>La secrétaire Exécutive : Cyrillia Bérénice YEBE</h3><p>Le secrétaire exécutif a pour attributions l'organisation des services communaux et l'exécution du service ; la gestion des ressources humaines, financières et matérielles de la commune ; la gestion de l'information et de la communication de la commune ; ainsi que la délivrance des permis, attestations, certificats et autres autorisations prévues par les lois et règlements.</p><p>Dans ce cadre, il représente la commune pour les attributions qui lui sont propres, veille à la bonne planification et à l'exécution des marchés publics communaux, conserve et administre les propriétés de la commune, suit la gestion des établissements communaux, organise la voirie, l'assainissement, l'hygiène et les archives, publie les délibérations du conseil communal, organise le processus d'élaboration des documents de planification et gère les relations techniques avec les services déconcentrés de l'État. Le secrétaire exécutif est l'ordonnateur du budget communal.</p><h3>Directions techniques et administratives</h3><ul><li><strong>DAAF</strong> : Direction des Affaires administratives et financières.</li><li><strong>DDLP</strong> : Direction au Développement Local et à la Planification.</li><li><strong>DST</strong> : Direction des Services Techniques.</li><li><strong>DADE</strong> : Direction des Affaires Domaniales et Environnementales.</li><li><strong>DSI</strong> : Direction du Système d'Informations.</li></ul><p><strong>Services rattachés au Secrétariat Exécutif</strong> : Cellule juridique, Cellule de communication, Personne Responsable des Marchés Publics (PRMP), Cellule de Contrôle des Marchés Publics.</p><p><strong>Services indépendants en collaboration avec la SE</strong> : ANIP et services déconcentrés de l'État (Trésorier communal, Contrôleur financier).</p>"
                 },
                 {
                     "type": "cards3",
@@ -953,43 +953,43 @@
                     "items": [
                         {
                             "ico": "T1",
-                            "title": "CYRILLIA BERENICE YEBE",
-                            "text": "Secretaire Executive",
+                            "title": "CYRILLIA BÉRÉNICE YEBE",
+                            "text": "Secrétaire Exécutive",
                             "image": "/assets/mairie/technique/se-cyrillia-yebe.jpeg",
-                            "alt": "CYRILLIA BERENICE YEBE"
+                            "alt": "CYRILLIA BÉRÉNICE YEBE"
                         },
                         {
                             "ico": "T2",
-                            "title": "Direction DAAF",
-                            "text": "Direction des Affaires administratives et financieres",
+                            "title": "xxxxxxxxxxxxx",
+                            "text": "DAAF",
                             "image": "/assets/mairie/technique/profil-generique.png",
-                            "alt": "Direction DAAF"
+                            "alt": "DAAF"
                         },
                         {
                             "ico": "T3",
-                            "title": "Direction DDLP",
-                            "text": "Direction du Developpement local et de la Planification",
+                            "title": "xxxxxxxxxxxxx",
+                            "text": "DDLP",
                             "image": "/assets/mairie/technique/profil-generique.png",
-                            "alt": "Direction DDLP"
+                            "alt": "DDLP"
                         },
                         {
                             "ico": "T4",
-                            "title": "OUSSOU H. ELISE",
-                            "text": "Directeur des Services techniques (DST)",
+                            "title": "OUSSOU H. ELISÉ",
+                            "text": "DST",
                             "image": "/assets/mairie/technique/profil-generique.png",
-                            "alt": "OUSSOU H. ELISE"
+                            "alt": "OUSSOU H. ELISÉ"
                         },
                         {
                             "ico": "T5",
-                            "title": "Direction DADE",
-                            "text": "Direction des Affaires domaniales et environnementales",
+                            "title": "xxxxxxxxxx",
+                            "text": "DADE",
                             "image": "/assets/mairie/technique/profil-generique.png",
-                            "alt": "Direction DADE"
+                            "alt": "DADE"
                         },
                         {
                             "ico": "T6",
                             "title": "SERGES VIGBE",
-                            "text": "Direction du Systeme d'informations (DSI)",
+                            "text": "DSI",
                             "image": "/assets/mairie/technique/profil-generique.png",
                             "alt": "SERGES VIGBE"
                         }
@@ -1000,13 +1000,13 @@
         "mairie-infra": {
             "section": "mairie",
             "kicker": "Organes infra-communaux",
-            "image": "/assets/mairie/infra/kouletio-benjamin.jpeg",
+            "image": "/assets/mairie/infra/avoce-yaovi-barnabe.png",
             "title": "Les organes infra-communaux",
-            "lead": "Organe regroupant les sept (07) chefs d'arrondissement et les chefs de village de la commune.",
+            "lead": "Organe regroupant les sept (07) chefs d'Arrondissements et les chefs de village de la commune.",
             "blocks": [
                 {
                     "type": "prose",
-                    "body": "<p>Les organes infra-communaux assurent le relais de proximite entre l'administration communale et les populations a l'echelle locale.</p><p>Ils contribuent a la bonne administration des arrondissements, villages et quartiers de ville, ainsi qu'a la mise en oeuvre des decisions et programmes communaux.</p><h3>Les chefs d'arrondissement</h3>"
+                    "body": "<p>Organe regroupant les sept (07) chefs d'Arrondissements et les chefs de village de la commune.</p><h3>Les Chefs d'Arrondissement</h3>"
                 },
                 {
                     "type": "cards3",
@@ -1014,15 +1014,15 @@
                     "items": [
                         {
                             "ico": "I1",
-                            "title": "AVOCE YAOVI BARNABE",
+                            "title": "AVOCE YAOVI BARNABÉ",
                             "text": "CA Adjaha",
                             "image": "/assets/mairie/infra/avoce-yaovi-barnabe.png",
-                            "alt": "AVOCE YAOVI BARNABE"
+                            "alt": "AVOCE YAOVI BARNABÉ"
                         },
                         {
                             "ico": "I2",
                             "title": "AMEDOME ZEPHIRIN",
-                            "text": "CA Agoue",
+                            "text": "CA Agoué",
                             "image": "/assets/mairie/infra/amedome-zephirin.png",
                             "alt": "AMEDOME ZEPHIRIN"
                         },
@@ -1043,7 +1043,7 @@
                         {
                             "ico": "I5",
                             "title": "EBOUE KOFFI BRUNO",
-                            "text": "CA Gbehoue",
+                            "text": "CA Gbehoué",
                             "image": "/assets/mairie/infra/eboue-koffi-bruno.png",
                             "alt": "EBOUE KOFFI BRUNO"
                         },
@@ -1057,7 +1057,7 @@
                         {
                             "ico": "I7",
                             "title": "SOKOU YAOVI ULRICH",
-                            "text": "CA Sazue",
+                            "text": "CA Sazué",
                             "image": "/assets/mairie/infra/sokou-yaovi-ulrich.png",
                             "alt": "SOKOU YAOVI ULRICH"
                         }
@@ -1295,11 +1295,11 @@
             "kicker": "Conseil d'Arrondissement",
             "image": "/assets/facade.jpg",
             "title": "Le Conseil d'Arrondissement",
-            "lead": "Le Conseil d'Arrondissement est un organe infra-communal de proximite qui assiste le chef d'arrondissement dans la gestion locale.",
+            "lead": "La commune est démembrée en unités administratives locales dotées d’organes infra-communaux, dont le Conseil d’Arrondissement.",
             "blocks": [
                 {
                     "type": "prose",
-                    "body": "<p>La commune est demembree en unites administratives locales (arrondissements, villages et quartiers de ville), sans personnalite juridique ni autonomie financiere, mais dotees d'organes infra-communaux.</p><h3>Composition</h3><p>Outre le chef d'arrondissement, le Conseil d'Arrondissement est compose des autres conseillers communaux de l'arrondissement et des chefs de village ou de quartier de ville concernes.</p><h3>Attributions et fonctionnement</h3><p>Le Conseil d'Arrondissement assiste le chef d'arrondissement, se prononce sur les affaires locales et donne des avis au Conseil communal. Les seances sont publiques sauf huis clos decide par le conseil. Les decisions sont prises par consensus, ou a defaut a la majorite simple.</p><p>Les deliberations sont inscrites sur un registre cote et paraphe, puis signees par le president et le secretaire de seance. Le conseil siege au chef-lieu de l'arrondissement.</p>"
+                    "body": "<p>La commune est démembrée en unités administratives locales sans personnalité juridique ni autonomie financière. Ces unités administratives locales, qui prennent les dénominations d'arrondissement, de village ou de quartier de ville, sont dotées d'organes infra-communaux.</p><p>Les séances des conseils d'arrondissement sont publiques, sauf si le huis clos est décidé par lesdits conseils. Les décisions du conseil d'arrondissement sont prises par consensus, et à défaut à la majorité simple des votants, soit à la main levée, soit au scrutin secret. Les délibérations des conseils sont inscrites par ordre de date sur un registre coté et paraphé par le Maire ou son représentant. Elles sont datées et signées par le président et le secrétaire de séance.</p><h3>Composition</h3><p>Outre le chef d'arrondissement, le conseil d'arrondissement est composé des autres conseillers communaux de l'arrondissement et des chefs de quartier de ville ou de village de l'arrondissement. Le conseil d'arrondissement assiste le chef d'arrondissement, se prononce sur toutes les affaires concernant l'arrondissement et donne son avis sur les affaires pour lesquelles il est requis par le conseil communal. Il fait des propositions relatives au développement et à la bonne administration de l'arrondissement au chef d'arrondissement et au Maire.</p><h3>Fonctionnement</h3><p>Le conseil d'arrondissement a son siège au chef-lieu de l'arrondissement. Si le conseil d'arrondissement ne se réunit pas ou clôture ses travaux avant d'avoir pris une décision sur des questions qui lui sont obligatoirement soumises, la mairie statue sur ces questions, après avis du conseil communal. Lorsqu'un membre du conseil d'arrondissement, sans motif valable, est absent à trois (03) sessions ordinaires successives, il peut, sous réserve d'avoir été admis à fournir des explications, être démis de ses fonctions par le Maire, après avis du conseil communal. L'autorité de tutelle en est saisie et le conseil d'arrondissement concerné est informé.</p>"
                 }
             ]
         },
@@ -1308,11 +1308,11 @@
             "kicker": "Conseil de village ou de quartier",
             "image": "/assets/facade.jpg",
             "title": "Le Conseil de village ou de quartier de ville",
-            "lead": "Le village ou le quartier de ville constitue l'unite administrative de base, ou s'organise la vie communautaire locale.",
+            "lead": "Le village ou le quartier de ville constitue l’unité administrative de base au sein de laquelle s’organise la vie communautaire locale.",
             "blocks": [
                 {
                     "type": "prose",
-                    "body": "<p>Les arrondissements sont divises en villages en milieu rural et en quartiers de ville en milieu urbain. Le village ou le quartier de ville constitue l'unite administrative de base au sein de laquelle s'organise la vie locale.</p><p>Les seances des conseils de village ou de quartier de ville sont publiques, sauf si le huis clos est decide. Les decisions sont prises par consensus, ou a defaut a la majorite simple des votants.</p><p><strong>60 villages et quartiers de ville</strong> composent les 07 arrondissements de la commune.</p><h3>Composition et missions</h3><p>Dans chaque village ou quartier de ville, un conseil est institue. Il est compose de membres dont le nombre, la duree du mandat et les modalites de designation sont fixes par le code electoral. Le conseil est administre par un chef de village ou de quartier de ville.</p><p>Sous l'impulsion du chef, le conseil encourage les initiatives locales, favorise la mise en oeuvre des programmes de developpement communal et peut formuler des recommandations utiles pour l'elaboration et l'execution des programmes communaux.</p>"
+                    "body": "<p>Les arrondissements sont divisés en villages en milieu rural et en quartiers de ville en milieu urbain. Le village ou le quartier de ville constitue l'unité administrative de base au sein de laquelle s'organise la vie. Tous les habitants du village ou du quartier de ville ont les mêmes droits et les mêmes devoirs au regard de la communauté.</p><p>Les séances des conseils de villages ou de quartiers de ville sont publiques, sauf si le huis clos est décidé par lesdits conseils. Leurs décisions sont prises par consensus. À défaut, les décisions sont prises à la majorité simple des votants, soit au scrutin secret.</p><p><strong>60 villages et quartiers de ville</strong> composent les 07 arrondissements de la commune.</p><p>Dans chaque village ou quartier de ville est institué un conseil de village ou de quartier de ville, composé de membres dont le nombre, la durée du mandat et les modalités de désignation sont fixés par le code électoral. Il est administré par un chef de village ou de quartier de ville désigné dans les conditions prévues par le code électoral.</p><p>Sous l'impulsion du chef de village ou de quartier de ville, le conseil met tout en œuvre pour éveiller, encourager et soutenir les initiatives des populations et favoriser la mise en œuvre des programmes de développement communal au profit du village ou du quartier de ville. Le conseil de village ou de quartier de ville peut formuler des recommandations sur toutes les mesures qu'il juge utiles dans le cadre de l'élaboration et de l'exécution des programmes communaux. Il donne son avis toutes les fois qu'il est requis par les lois et règlements ou qu'il est sollicité par le conseil communal.</p>"
                 }
             ]
         },
