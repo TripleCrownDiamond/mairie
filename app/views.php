@@ -2,9 +2,40 @@
 declare(strict_types=1);
 
 
+function gp_mojibake_score(string $value): int
+{
+    $markers = [chr(194), chr(195), chr(197), chr(226)];
+    $score = 0;
+    foreach ($markers as $marker) {
+        $score += substr_count($value, $marker);
+    }
+    return $score;
+}
+
 function gp_fix_text(mixed $value): string
 {
     $text = gp_repair_mojibake_text(trim((string) $value));
+    $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+    if ($text !== '' && function_exists('iconv')) {
+        $currentScore = gp_mojibake_score($text);
+        if ($currentScore > 0) {
+            foreach (['Windows-1252', 'ISO-8859-1'] as $encoding) {
+                $candidate = @iconv($encoding, 'UTF-8//IGNORE', $text);
+                if (!is_string($candidate) || $candidate === '') {
+                    continue;
+                }
+                if (gp_mojibake_score($candidate) < $currentScore) {
+                    $text = $candidate;
+                    $currentScore = gp_mojibake_score($text);
+                }
+                if ($currentScore === 0) {
+                    break;
+                }
+            }
+        }
+    }
+
     return str_replace(["\xEF\xBB\xBF", "\xC2\xA0", "\u{FEFF}"], ['', ' ', ''], $text);
 }
 
@@ -636,6 +667,12 @@ function gp_render_page(string $key, array $page): string
         $form = '<form class="request-form reveal" method="post" action="' . gp_h(gp_page_path($key)) . '"><div class="row"><label>Nom complet<input type="text" name="nom" required></label><label>Telephone<input type="tel" name="telephone" required></label></div><label>Email<input type="email" name="email"></label><label>Objet<input type="text" name="objet" required></label><label>Details<textarea name="message" rows="6" required></textarea></label><button class="primary-action" type="submit">Envoyer le signalement</button></form>';
     }
 
+    $maireProfiles = '';
+    if ($key === 'mairie-maire' && $cards !== []) {
+        $maireProfiles = '<section class="section-tight mairie-team-section"><div class="section-head"><div><p class="eyebrow">Equipe municipale</p><h2>Le Maire et ses adjoints</h2></div></div>' . implode('', $cards) . '</section>';
+        $cards = [];
+    }
+
     $two = $cards !== [] || $key === 'commune-presentation';
     $aside = '';
     $below = '';
@@ -660,6 +697,8 @@ function gp_render_page(string $key, array $page): string
             $aside = '<aside class="commune-media-rail reveal"><div class="commune-media-head"><p class="eyebrow">Galerie</p><h3>Reperes visuels</h3></div><div class="commune-media-grid">' . implode('', $media) . '</div></aside>';
         }
         $below = gp_render_related_pages($key);
+    } elseif ($key === 'mairie-maire') {
+        $below = $maireProfiles . gp_render_related_pages($key);
     } elseif ($two) {
         $aside = '<aside class="reveal">' . implode('', $cards) . '</aside>';
         $below = gp_render_related_pages($key);

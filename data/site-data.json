@@ -35,14 +35,14 @@
     "MENU": {
         "commune": {
             "kicker": "Ma commune",
-            "title": "Grand-Popo, citÃ© balnÃ©aire",
-            "intro": "PrÃ©sentation, territoire, patrimoine et vie locale de la commune.",
+            "title": "Grand-Popo, ma commune",
+            "intro": "Présentation, arrondissements et villages de la commune.",
             "panels": [
                 {
-                    "title": "PrÃ©sentation",
+                    "title": "Présentation",
                     "links": [
                         {
-                            "label": "PrÃ©sentation de la commune",
+                            "label": "Présentation de la commune",
                             "route": "commune-presentation"
                         },
                         {
@@ -50,59 +50,17 @@
                             "route": "commune-arrondissements"
                         },
                         {
-                            "label": "Villages et villages traditionnels",
+                            "label": "Villages et quartiers",
                             "route": "commune-villages"
-                        }
-                    ]
-                },
-                {
-                    "title": "Patrimoine",
-                    "links": [
-                        {
-                            "label": "Histoire et culture",
-                            "route": "commune-histoire"
-                        },
-                        {
-                            "label": "Patrimoine naturel",
-                            "route": "commune-patrimoine"
-                        },
-                        {
-                            "label": "Vie balnÃ©aire",
-                            "route": "commune-balneaire"
-                        },
-                        {
-                            "label": "Patrimoine culturel",
-                            "route": "commune-patrimoine-culturel"
-                        },
-                        {
-                            "label": "Patrimoine historique",
-                            "route": "commune-patrimoine-historique"
-                        },
-                        {
-                            "label": "Patrimoine sportif",
-                            "route": "commune-patrimoine-sportif"
-                        }
-                    ]
-                },
-                {
-                    "title": "Vivre ici",
-                    "links": [
-                        {
-                            "label": "Cadre de vie",
-                            "route": "commune-presentation"
-                        },
-                        {
-                            "label": "Projets phares",
-                            "route": "citoyen-projets"
                         }
                     ]
                 }
             ],
             "feature": {
                 "title": "Une commune ouverte sur le monde",
-                "text": "Du fleuve Mono Ã  lâ€™ocÃ©an Atlantique, Grand-Popo conjugue nature, culture et services de proximitÃ©.",
+                "text": "Du fleuve Mono à l’océan Atlantique, Grand-Popo conjugue nature, culture et services de proximité.",
                 "route": "commune-presentation",
-                "cta": "DÃ©couvrir le territoire"
+                "cta": "Découvrir le territoire"
             }
         },
         "mairie": {
@@ -175,19 +133,19 @@
             }
         },
         "services": {
-            "kicker": "Mes dÃ©marches",
-            "title": "Lâ€™e-guichet citoyen",
-            "intro": "Effectuez vos dÃ©marches en ligne, suivez vos demandes et payez vos taxes sans dÃ©placement.",
+            "kicker": "Mes démarches",
+            "title": "L’e-guichet citoyen",
+            "intro": "Effectuez vos démarches en ligne, suivez vos demandes et payez vos taxes sans déplacement.",
             "panels": [
                 {
-                    "title": "Civil & identitÃ©",
+                    "title": "Civil & identité",
                     "links": [
                         {
-                            "label": "Ã‰tat civil",
+                            "label": "État civil",
                             "route": "services-etat-civil"
                         },
                         {
-                            "label": "Certificat dâ€™hÃ©bergement",
+                            "label": "Certificat d’hébergement",
                             "route": "services-hebergement"
                         }
                     ]
@@ -206,14 +164,14 @@
                     ]
                 },
                 {
-                    "title": "Ã‰conomie",
+                    "title": "Économie",
                     "links": [
                         {
                             "label": "Diverses taxes",
                             "route": "services-taxes"
                         },
                         {
-                            "label": "Ã‰quipements marchands",
+                            "label": "Équipements marchands",
                             "route": "services-marches"
                         },
                         {
@@ -230,7 +188,7 @@
                     "title": "Pratique",
                     "links": [
                         {
-                            "label": "Mes dÃ©marches en ligne",
+                            "label": "Mes démarches en ligne",
                             "route": "services-demarches"
                         },
                         {
@@ -241,14 +199,14 @@
                 }
             ],
             "feature": {
-                "title": "Un guichet sans file dâ€™attente",
-                "text": "PrÃ©parez vos piÃ¨ces, dÃ©posez votre demande, suivez son avancement en ligne.",
+                "title": "Un guichet sans file d’attente",
+                "text": "Préparez vos pièces, déposez votre demande, suivez son avancement en ligne.",
                 "route": "services-etat-civil",
-                "cta": "DÃ©marrer une demande"
+                "cta": "Démarrer une demande"
             }
         },
         "decouvertes": {
-            "kicker": "Mes dÃ©couvertes",
+            "kicker": "Mes découvertes",
             "title": "Vivez Grand-Popo",
             "intro": "Plages, fleuve Mono, mangroves et grands rendez-vous de la commune.",
             "panels": [
@@ -266,6 +224,14 @@
                         {
                             "label": "Mangroves",
                             "route": "decouvertes-mangroves"
+                        },
+                        {
+                            "label": "Patrimoine naturel",
+                            "route": "commune-patrimoine"
+                        },
+                        {
+                            "label": "Vie balnéaire",
+                            "route": "commune-balneaire"
                         }
                     ]
                 },
@@ -273,12 +239,24 @@
                     "title": "Culture",
                     "links": [
                         {
-                            "label": "FÃªte de Nonvitcha",
+                            "label": "Fête de Nonvitcha",
                             "route": "decouvertes-nonvitcha"
                         },
                         {
                             "label": "Histoire et culture",
                             "route": "commune-histoire"
+                        },
+                        {
+                            "label": "Patrimoine culturel",
+                            "route": "commune-patrimoine-culturel"
+                        },
+                        {
+                            "label": "Patrimoine historique",
+                            "route": "commune-patrimoine-historique"
+                        },
+                        {
+                            "label": "Patrimoine sportif",
+                            "route": "commune-patrimoine-sportif"
                         }
                     ]
                 },
@@ -286,15 +264,23 @@
                     "title": "Pratique",
                     "links": [
                         {
-                            "label": "HÃ©bergement et certificat",
+                            "label": "Hébergement et certificat",
                             "route": "services-hebergement"
+                        },
+                        {
+                            "label": "Cadre de vie",
+                            "route": "commune-presentation"
+                        },
+                        {
+                            "label": "Projets phares",
+                            "route": "citoyen-projets"
                         }
                     ]
                 }
             ],
             "feature": {
-                "title": "Une citÃ© Ã  vivre",
-                "text": "Le sable fin, le rythme du fleuve, les couleurs des fÃªtes communales.",
+                "title": "Une cité à vivre",
+                "text": "Le sable fin, le rythme du fleuve, les couleurs des fêtes communales.",
                 "route": "decouvertes-plages",
                 "cta": "Explorer la commune"
             }
@@ -308,11 +294,11 @@
                     "title": "Participation",
                     "links": [
                         {
-                            "label": "ActualitÃ©s & forums",
+                            "label": "Actualités & forums",
                             "route": "citoyen-actualites"
                         },
                         {
-                            "label": "Signaler â€” alertes citoyennes",
+                            "label": "Signaler — alertes citoyennes",
                             "route": "citoyen-signaler"
                         },
                         {
@@ -330,7 +316,7 @@
                     ]
                 },
                 {
-                    "title": "OpportunitÃ©s",
+                    "title": "Opportunités",
                     "links": [
                         {
                             "label": "Recrutement",
@@ -341,7 +327,7 @@
                             "route": "citoyen-projets"
                         },
                         {
-                            "label": "Les rÃ©alisations de la mairie",
+                            "label": "Les réalisations de la mairie",
                             "route": "citoyen-realisations"
                         }
                     ]
@@ -350,11 +336,11 @@
                     "title": "Pratique",
                     "links": [
                         {
-                            "label": "Ã‰crire Ã  la mairie",
+                            "label": "Écrire à la mairie",
                             "route": "contact"
                         },
                         {
-                            "label": "Mentions lÃ©gales",
+                            "label": "Mentions légales",
                             "route": "mentions"
                         }
                     ]
@@ -364,13 +350,13 @@
                 "title": "Un dialogue continu",
                 "text": "Vos remarques nourrissent le travail des commissions et des services techniques.",
                 "route": "citoyen-actualites",
-                "cta": "Voir les actualitÃ©s"
+                "cta": "Voir les actualités"
             }
         },
         "plus": {
             "kicker": "Navigation",
-            "title": "AccÃ¨s rapides et secondaires",
-            "intro": "Tout ce qui encombrait la barre principale est regroupÃ© ici.",
+            "title": "Accès rapides et secondaires",
+            "intro": "Tout ce qui encombrait la barre principale est regroupé ici.",
             "panels": [
                 {
                     "title": "Institution",
@@ -390,18 +376,18 @@
                     ]
                 },
                 {
-                    "title": "DÃ©marches",
+                    "title": "Démarches",
                     "links": [
                         {
                             "label": "E-guichet",
                             "route": "services-etat-civil"
                         },
                         {
-                            "label": "Ã‰tat civil",
+                            "label": "État civil",
                             "route": "services-etat-civil"
                         },
                         {
-                            "label": "HÃ©bergement",
+                            "label": "Hébergement",
                             "route": "services-hebergement"
                         },
                         {
@@ -411,7 +397,7 @@
                     ]
                 },
                 {
-                    "title": "DÃ©couvertes",
+                    "title": "Découvertes",
                     "links": [
                         {
                             "label": "Plages",
@@ -435,15 +421,15 @@
                     "title": "Pratique",
                     "links": [
                         {
-                            "label": "ActualitÃ©s",
+                            "label": "Actualités",
                             "route": "citoyen-actualites"
                         },
                         {
-                            "label": "Mentions lÃ©gales",
+                            "label": "Mentions légales",
                             "route": "mentions"
                         },
                         {
-                            "label": "Ã‰crire Ã  la mairie",
+                            "label": "Écrire à la mairie",
                             "route": "contact"
                         }
                     ]
@@ -451,9 +437,9 @@
             ],
             "feature": {
                 "title": "Une barre plus respirante",
-                "text": "Les accÃ¨s utiles restent Ã  portÃ©e, mais hors du bandeau principal.",
+                "text": "Les accès utiles restent à portée, mais hors du bandeau principal.",
                 "route": "contact",
-                "cta": "Nous Ã©crire"
+                "cta": "Nous écrire"
             }
         }
     },
@@ -674,13 +660,13 @@
         "mairie-maire": {
             "section": "mairie",
             "kicker": "Le Maire et ses adjoints",
-            "image": "/assets/mairie/maire-ayikpe.jpg",
+            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/02/Ayikpe-Yao-maire-de-grand-popo.jpeg",
             "title": "Le Maire et ses 2 adjoints",
-            "lead": "L'equipe executif municipal conduite par le Maire Carlos Yao AYIKPE.",
+            "lead": "Bienvenue sur la page de présentation du Maire et de ses deux (02) adjoints.",
             "blocks": [
                 {
                     "type": "prose",
-                    "body": "<p>Le Maire conduit l'action municipale avec ses deux adjoints, dans un esprit de proximite, de transparence et d'efficacite pour les habitants de Grand-Popo.</p>"
+                    "body": "<h2>Le Maire</h2><h3>Carlos Yao AYIKPE</h3><p>Le maire est la première autorité politico-administrative de la commune. Dans le cadre de l'administration communale, il exerce, à l'égard du secrétariat exécutif, des pouvoirs hiérarchiques au titre de ses attributions propres.</p><p>Le maire est chargé de la police administrative dans la commune. À ce titre, il assure le maintien de l'ordre public et veille à la tranquillité publique et à la salubrité publique ; il est, à ces fins, titulaire du pouvoir réglementaire.</p><h3>Attributions principales</h3><ul><li>La sûreté et la commodité du passage sur les voies publiques (nettoiement, éclairage, enlèvement des encombrements, réhabilitation des édifices menaçant ruine).</li><li>Le maintien de l'ordre lors des rassemblements publics (foires, marchés, cérémonies, spectacles, lieux de culte et autres lieux publics).</li><li>La police des funérailles et des cimetières, ainsi que l'inhumation d'urgence des personnes non identifiées ou atteintes de maladie contagieuse.</li><li>La prévention et la répression des atteintes à la tranquillité publique (rixes, attroupements, bruits nocturnes et troubles au repos des habitants).</li><li>La prévention des fléaux calamiteux (incendies, inondations, épidémies), l'organisation des secours et les mesures de protection des personnes et des biens.</li></ul><h2>Les adjoints au maire</h2><p>Dans l'ordre de leur rang, les adjoints au maire suppléent le maire en cas d'absence. En vertu de la délégation de pouvoirs du maire, ils exercent ses prérogatives en matière d'état civil, de représentation de la commune devant les autorités centrales et départementales, ainsi que dans le cadre de la coopération décentralisée.</p><p>La délégation par le maire de ses pouvoirs ne fait pas obstacle à leur exercice par son autorité, en cas de nécessité ou de dysfonctionnement préjudiciable à la commune ou aux citoyens. Les adjoints au maire rendent compte de leurs activités au maire.</p>"
                 },
                 {
                     "type": "cards3",
@@ -688,24 +674,24 @@
                     "items": [
                         {
                             "ico": "M",
-                            "title": "AYIKPE YAO CARLOS",
+                            "title": "Carlos Yao AYIKPE",
                             "text": "Maire de la commune de Grand-Popo",
-                            "image": "/assets/mairie/maire-ayikpe.jpg",
-                            "alt": "AYIKPE YAO CARLOS"
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/02/Ayikpe-Yao-maire-de-grand-popo.jpeg",
+                            "alt": "Carlos Yao AYIKPE, Maire de Grand-Popo"
                         },
                         {
                             "ico": "A1",
                             "title": "HOUNKPATIN Raymond",
-                            "text": "Premier adjoint au Maire",
-                            "image": "/assets/mairie/adjoint-raymond.png",
-                            "alt": "HOUNKPATIN Raymond, Premier adjoint au Maire"
+                            "text": "1er Adjoint au Maire",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/03/GRAND-POPO-HOUNKPATION-K-RAYMOND-1.png",
+                            "alt": "HOUNKPATIN Raymond, 1er Adjoint au Maire"
                         },
                         {
                             "ico": "A2",
                             "title": "DJOSSOU Alexandre",
-                            "text": "Deuxieme adjoint au Maire",
-                            "image": "/assets/mairie/adjoint-alexandre.png",
-                            "alt": "DJOSSOU Alexandre, Deuxieme adjoint au Maire"
+                            "text": "2ème Adjoint au Maire",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/03/AGOUE-DJOSSOU-KOKOU-ALEXANDRE-1.png",
+                            "alt": "DJOSSOU Alexandre, 2ème Adjoint au Maire"
                         }
                     ]
                 }
