@@ -1140,3 +1140,175 @@ body[data-route="home"] .news-card p {
     min-height: calc(1.55em * 4);
   }
 }
+/* Brand tricolor frame: demande + formulaires citoyens/contact */
+body[data-route="services-demande"] .request-form-dynamic,
+body[data-route="contact"] .request-form,
+body[data-route="citoyen-ecrire-maire"] .citizen-source.citizen-form-page,
+body[data-route="citoyen-ecrire-se"] .citizen-source.citizen-form-page,
+body[data-route="citoyen-signaler"] .citizen-source.citizen-form-page,
+body[data-route="services-demande"] .form-intro .info-card,
+body[data-route="contact"] .contact-card {
+  border: 1px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  background-image:
+    linear-gradient(var(--card), var(--card)),
+    linear-gradient(118deg,
+      rgba(30, 99, 214, 0.62) 0%,
+      rgba(0, 135, 81, 0.56) 54%,
+      rgba(252, 209, 22, 0.72) 100%);
+}
+
+body[data-route="services-demande"] .request-form-dynamic,
+body[data-route="contact"] .request-form,
+body[data-route="citoyen-ecrire-maire"] .citizen-source.citizen-form-page,
+body[data-route="citoyen-ecrire-se"] .citizen-source.citizen-form-page,
+body[data-route="citoyen-signaler"] .citizen-source.citizen-form-page,
+body[data-route="services-demande"] .form-intro .info-card,
+body[data-route="contact"] .contact-card {
+  box-shadow: 0 18px 34px -28px rgba(10, 37, 64, 0.42);
+}
+
+body[data-route="services-demande"] .request-form-dynamic input:not([type='submit']):not([type='checkbox']):not([type='radio']):not([type='hidden']),
+body[data-route="services-demande"] .request-form-dynamic select,
+body[data-route="services-demande"] .request-form-dynamic textarea,
+body[data-route="contact"] .request-form input:not([type='submit']):not([type='checkbox']):not([type='radio']):not([type='hidden']),
+body[data-route="contact"] .request-form select,
+body[data-route="contact"] .request-form textarea,
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form input:not([type='submit']):not([type='checkbox']):not([type='radio']):not([type='hidden']),
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form select,
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form textarea,
+body[data-route="citoyen-ecrire-se"] .citizen-form-page .wpcf7-form input:not([type='submit']):not([type='checkbox']):not([type='radio']):not([type='hidden']),
+body[data-route="citoyen-ecrire-se"] .citizen-form-page .wpcf7-form select,
+body[data-route="citoyen-ecrire-se"] .citizen-form-page .wpcf7-form textarea,
+body[data-route="citoyen-signaler"] .citizen-form-page .wpcf7-form input:not([type='submit']):not([type='checkbox']):not([type='radio']):not([type='hidden']),
+body[data-route="citoyen-signaler"] .citizen-form-page .wpcf7-form select,
+body[data-route="citoyen-signaler"] .citizen-form-page .wpcf7-form textarea {
+  border: 1px solid transparent;
+  background-clip: padding-box, border-box;
+  background-origin: border-box;
+  background-image:
+    linear-gradient(#fff, #fff),
+    linear-gradient(118deg,
+      rgba(30, 99, 214, 0.5) 0%,
+      rgba(0, 135, 81, 0.44) 54%,
+      rgba(252, 209, 22, 0.6) 100%);
+}
+
+body[data-route="services-demande"] .request-form-dynamic textarea[readonly],
+body[data-route="services-demande"] .request-form-dynamic input[readonly] {
+  background-image:
+    linear-gradient(var(--paper-2), var(--paper-2)),
+    linear-gradient(118deg,
+      rgba(30, 99, 214, 0.4) 0%,
+      rgba(0, 135, 81, 0.35) 54%,
+      rgba(252, 209, 22, 0.5) 100%);
+}
+
+body[data-route="services-demande"] .request-form-dynamic input:focus,
+body[data-route="services-demande"] .request-form-dynamic select:focus,
+body[data-route="services-demande"] .request-form-dynamic textarea:focus,
+body[data-route="contact"] .request-form input:focus,
+body[data-route="contact"] .request-form select:focus,
+body[data-route="contact"] .request-form textarea:focus,
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form input:focus,
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form select:focus,
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .wpcf7-form textarea:focus,
+body[data-route="citoyen-ecrire-se"] .citizen-form-page .wpcf7-form input:focus,
+body[data-route="citoyen-ecrire-se"] .citizen-form-page .wpcf7-form select:focus,
+body[data-route="citoyen-ecrire-se"] .citizen-form-page .wpcf7-form textarea:focus,
+body[data-route="citoyen-signaler"] .citizen-form-page .wpcf7-form input:focus,
+body[data-route="citoyen-signaler"] .citizen-form-page .wpcf7-form select:focus,
+body[data-route="citoyen-signaler"] .citizen-form-page .wpcf7-form textarea:focus {
+  outline: none;
+  background-image:
+    linear-gradient(#fff, #fff),
+    linear-gradient(118deg,
+      var(--bn-blue) 0%,
+      var(--bn-green) 52%,
+      var(--bn-yellow) 100%);
+  box-shadow: 0 0 0 3px rgba(0, 135, 81, 0.14);
+}
+/* Ecrire au Maire: reuse demande de service form styling */
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic > p {
+  margin: 0;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic > p:nth-of-type(5),
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic > p:nth-of-type(6),
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic .wpcf7-response-output {
+  grid-column: 1 / -1;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic label {
+  display: grid;
+  gap: .35rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic input:not([type='submit']):not([type='checkbox']):not([type='radio']):not([type='hidden']),
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic select,
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic textarea {
+  width: 100%;
+  padding: .85rem 1rem;
+  border-radius: var(--r-sm);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: .92rem;
+  font-weight: 500;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic input:focus,
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic select:focus,
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic textarea:focus {
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(14, 110, 93, 0.12);
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic .wpcf7-submit {
+  width: fit-content;
+  min-width: 170px;
+  padding: .75rem 1.15rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic .wpcf7-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  background: var(--brand-2);
+}
+
+@media (max-width: 760px) {
+  body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-route="citoyen-ecrire-maire"] .citizen-form-page .request-form.request-form-dynamic .wpcf7-submit {
+    width: 100%;
+  }
+}
