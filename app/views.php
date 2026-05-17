@@ -109,6 +109,46 @@ function gp_group_home(string $group): string
     };
 }
 
+function gp_citoyen_menu_override(): array
+{
+    return [
+        'kicker' => 'Espace citoyen',
+        'title' => 'Mon espace citoyen',
+        'intro' => 'Sous-menus synchronises depuis la source officielle de la mairie.',
+        'panels' => [
+            [
+                'title' => 'Echanges institutionnels',
+                'links' => [
+                    ['label' => 'Ecrire au Maire', 'href' => 'https://mairiegrandpopo.bj/ecrire-au-maire/'],
+                    ['label' => 'Ecrire a la Secretaire Executive', 'href' => 'https://mairiegrandpopo.bj/ecrire-a-la-secretaire-executive/'],
+                    ['label' => 'Les Arretes et Decisions', 'href' => 'https://mairiegrandpopo.bj/les-arretes/']
+                ]
+            ],
+            [
+                'title' => 'Documents et transparence',
+                'links' => [
+                    ['label' => 'Les compte-rendus et deliberations', 'href' => 'https://mairiegrandpopo.bj/les-comptes-rendus/'],
+                    ['label' => 'Les notes de services et courriers de la tutelle', 'href' => 'https://mairiegrandpopo.bj/les-notes-de-services/'],
+                    ['label' => 'Les Appels d\'offres', 'href' => 'https://mairiegrandpopo.bj/les-appels-doffres/']
+                ]
+            ],
+            [
+                'title' => 'Participation citoyenne',
+                'links' => [
+                    ['label' => 'Recrutement', 'route' => 'citoyen-recrutement'],
+                    ['label' => 'Forums de discussion', 'route' => 'citoyen-forums'],
+                    ['label' => 'Denoncer ou alerter', 'route' => 'citoyen-signaler']
+                ]
+            ]
+        ],
+        'feature' => [
+            'title' => 'Participation citoyenne',
+            'text' => 'Accedez rapidement aux echanges, publications et formulaires citoyens.',
+            'route' => 'citoyen-forums',
+            'cta' => 'Acceder a l\'espace citoyen'
+        ]
+    ];
+}
 function gp_menu_link_href(array $link): string
 {
     if (!empty($link['href'])) {
@@ -165,6 +205,9 @@ function gp_render_mega_menu(): string
 
     $groups = [];
     foreach ($menus as $menuKey => $menu) {
+        if ((string) $menuKey === 'citoyen') {
+            $menu = array_replace_recursive((array) $menu, gp_citoyen_menu_override());
+        }
         $panels = [];
         foreach ((array) ($menu['panels'] ?? []) as $panel) {
             $links = [];
