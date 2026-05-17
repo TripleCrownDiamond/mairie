@@ -405,7 +405,14 @@ function gp_render_home(array $data, array $slides, string $key, array $blogPost
     $flip = [];
     foreach ((array) ($data['HOME_FLIP'] ?? []) as $card) {
         $back = (array) ($card['back'] ?? []);
-        $flip[] = '<article class="flip-card reveal" tabindex="0"><div class="flip-inner"><div class="flip-face flip-front"><span class="num">' . gp_h((string) ($card['num'] ?? '00')) . '</span><div><h3>' . gp_h(gp_clean_menu_text((string) ($card['title'] ?? ''))) . '</h3><p class="sub">' . gp_h(gp_clean_menu_text((string) ($card['sub'] ?? ''))) . '</p></div></div><div class="flip-face flip-back"><span class="tag">' . gp_h(gp_clean_menu_text((string) ($back['tag'] ?? 'Ma commune'))) . '</span><div><h4>' . gp_h(gp_clean_menu_text((string) ($back['title'] ?? ''))) . '</h4><p>' . gp_h(gp_clean_menu_text((string) ($back['text'] ?? ''))) . '</p></div><a class="card-button" href="' . gp_h(gp_route_url((string) ($back['route'] ?? 'commune-presentation'))) . '">' . gp_h(gp_clean_menu_text((string) ($back['cta'] ?? 'Ouvrir'))) . '</a></div></div></article>';
+        $frontTitle = gp_clean_flip_text((string) ($card['title'] ?? ''), 'Grand-Popo');
+        $frontSub = gp_clean_flip_text((string) ($card['sub'] ?? ''), 'Informations utiles de la commune.');
+        $backTag = gp_clean_flip_text((string) ($back['tag'] ?? 'Ma commune'), 'Ma commune');
+        $backTitle = gp_clean_flip_text((string) ($back['title'] ?? ''), $frontTitle);
+        $backText = gp_clean_flip_text((string) ($back['text'] ?? ''), $frontSub);
+        $backCta = gp_clean_flip_text((string) ($back['cta'] ?? 'Ouvrir'), 'Ouvrir la page');
+
+        $flip[] = '<article class="flip-card reveal" tabindex="0"><div class="flip-inner"><div class="flip-face flip-front"><span class="num">' . gp_h((string) ($card['num'] ?? '00')) . '</span><div><h3>' . gp_h($frontTitle) . '</h3><p class="sub">' . gp_h($frontSub) . '</p></div></div><div class="flip-face flip-back"><span class="tag">' . gp_h($backTag) . '</span><div><h4>' . gp_h($backTitle) . '</h4><p>' . gp_h($backText) . '</p></div><a class="card-button" href="' . gp_h(gp_route_url((string) ($back['route'] ?? 'commune-presentation'))) . '">' . gp_h($backCta) . '</a></div></div></article>';
     }
 
     return '<section class="hero hero-home" data-hero data-hero-images="' . gp_h(json_encode($images, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) . '"><div class="hero-bg" data-hero-bg style="background-image:url(' . gp_h($images[0]) . ')"></div><div class="hero-shell"><div class="hero-head"><span class="hero-pill"><span class="dot"></span>Bienvenue</span></div><div class="hero-stage">' . implode('', $slideHtml) . '</div><div class="hero-controls"><button class="hero-control" data-hero-prev>&larr;</button><span class="hero-counter"><span data-hero-current>01</span><span class="sep">/</span><span data-hero-total>' . str_pad((string) count($slides), 2, '0', STR_PAD_LEFT) . '</span></span><button class="hero-control" data-hero-next>&rarr;</button></div><div class="hero-quick">' . implode('', $quick) . '</div></div></section>'
@@ -415,6 +422,20 @@ function gp_render_home(array $data, array $slides, string $key, array $blogPost
         . '<section class="section"><div class="container"><div class="section-head"><div><p class="eyebrow">Ma commune</p><h2>Pages connexes</h2></div></div><div class="flip-grid">' . implode('', $flip) . '</div></div></section>';
 }
 
+function gp_has_encoding_artifacts(string $value): bool
+{
+    return preg_match('/[\x{00C2}\x{00C3}\x{FFFD}]|\x{00E2}\x{20AC}/u', $value) === 1;
+}
+
+function gp_clean_flip_text(string $value, string $fallback): string
+{
+    $text = gp_clean_menu_text($value);
+    if ($text === '' || gp_has_encoding_artifacts($text)) {
+        return $fallback;
+    }
+
+    return $text;
+}
 function gp_render_related_pages(string $key): string
 {
     $pages = gp_data()['PAGES'] ?? [];
@@ -430,8 +451,9 @@ function gp_render_related_pages(string $key): string
             continue;
         }
 
-        $title = gp_clean_menu_text((string) ($page['title'] ?? $pkey));
-        $lead = gp_excerpt(gp_clean_menu_text((string) ($page['lead'] ?? '')), 140);
+        $fallbackTitle = ucwords(str_replace('-', ' ', (string) $pkey));
+        $title = gp_clean_flip_text((string) ($page['title'] ?? $pkey), $fallbackTitle);
+        $lead = gp_excerpt(gp_clean_flip_text((string) ($page['lead'] ?? ''), 'Consultez cette page pour plus d informations.'), 140);
         $num = str_pad((string) $idx, 2, '0', STR_PAD_LEFT);
 
         $cards[] = '<article class="flip-card reveal" tabindex="0"><div class="flip-inner">'
@@ -565,29 +587,60 @@ function gp_render_villages_cards(string $html): string
     $introHtml = $intro !== '' ? '<div class="villages-intro">' . $intro . '</div>' : '';
     return '<section class="villages-layout">' . $introHtml . '<div class="villages-grid">' . implode('', $cards) . '</div></section>';
 }
-function gp_render_services_catalog_cards(): string
+function gp_services_page_category_slug(string $key): ?string
+{
+    return match ($key) {
+        'services-etat-civil', 'services-hebergement' => 'etat-civil',
+        'services-domanial' => 'affaires-domaniales',
+        'services-odp' => 'occupation-domaine-public',
+        'services-taxes' => 'diverses-taxes',
+        'services-marches' => 'equipements-marchands',
+        'services-publicite' => 'espace-publicitaire',
+        'services-stationnement' => 'stationnement',
+        default => null,
+    };
+}
+
+function gp_render_services_catalog_cards(?string $forcedSlug = null): string
 {
     $catalog = gp_services_catalog();
     $categories = is_array($catalog['categories'] ?? null) ? $catalog['categories'] : [];
-    $wanted = gp_fix_text((string) ($_GET['categorie'] ?? ''));
+    $wanted = $forcedSlug !== null ? gp_fix_text($forcedSlug) : gp_fix_text((string) ($_GET['categorie'] ?? ''));
     $chunks = [];
+
     foreach ($categories as $cat) {
-        $slug = (string) ($cat['slug'] ?? '');
+        $slug = gp_fix_text((string) ($cat['slug'] ?? ''));
         if ($wanted !== '' && $wanted !== $slug) {
             continue;
         }
+
         $cards = [];
         foreach ((array) ($cat['services'] ?? []) as $service) {
             $name = gp_clean_menu_text((string) ($service['name'] ?? $service['title'] ?? 'Service'));
             $desc = gp_clean_menu_text((string) ($service['description'] ?? ''));
             $price = gp_clean_menu_text((string) ($service['price'] ?? 'Tarif a confirmer'));
-            $cta = '/demande?' . http_build_query(['categorie' => $slug, 'service' => (string) ($service['name'] ?? $service['title'] ?? '')]);
-            $cards[] = '<article class="info-card reveal"><div class="ico">' . gp_h(strtoupper(substr($slug !== '' ? $slug : 'SV', 0, 2))) . '</div><h4>' . gp_h($name) . '</h4><p>' . gp_h($desc) . '</p><p><strong>Prix:</strong> ' . gp_h($price) . '</p><a class="card-button" href="' . gp_h($cta) . '">Demarrer la demande</a></article>';
+            $cta = '/demande?' . http_build_query([
+                'categorie' => $slug,
+                'service' => (string) ($service['name'] ?? $service['title'] ?? ''),
+            ]);
+
+            $iconSeed = preg_replace('/[^A-Za-z0-9]/', '', $name) ?: ($slug !== '' ? $slug : 'SV');
+            $icon = strtoupper(substr($iconSeed, 0, 2));
+            $cards[] = '<article class="info-card service-catalog-card reveal">'
+                . '<div class="service-card-head"><div class="ico">' . gp_h($icon) . '</div><h4>' . gp_h($name) . '</h4></div>'
+                . '<p class="service-card-desc">' . gp_h($desc !== '' ? $desc : 'Service administratif de la commune.') . '</p>'
+                . '<p class="service-card-price"><span>Prix</span><strong>' . gp_h($price) . '</strong></p>'
+                . '<a class="card-button" href="' . gp_h($cta) . '">Demander ce service</a>'
+                . '</article>';
         }
+
         if ($cards !== []) {
-            $chunks[] = '<section class="section-tight"><div class="section-head"><div><p class="eyebrow">Services</p><h2>' . gp_h(gp_clean_menu_text((string) ($cat['label'] ?? $slug))) . '</h2></div></div><div class="duo-grid has-media">' . implode('', $cards) . '</div></section>';
+            $chunks[] = '<section class="section-tight"><div class="section-head"><div><p class="eyebrow">Services</p><h2>'
+                . gp_h(gp_clean_menu_text((string) ($cat['label'] ?? $slug)))
+                . '</h2></div></div><div class="service-catalog-grid">' . implode('', $cards) . '</div></section>';
         }
     }
+
     return $chunks === [] ? '<article class="prose"><p>Aucun service disponible.</p></article>' : implode('', $chunks);
 }
 
@@ -599,6 +652,22 @@ function gp_render_page(string $key, array $page): string
 
     if ($key === 'services-demarches') {
         return '<section class="page-hero"><div class="page-hero-shell"><div>' . gp_breadcrumb($key, $title) . '<h1>' . gp_h($title) . '</h1><p class="lead">' . gp_h($lead) . '</p><div class="hero-actions"><a class="primary-action" href="/demande">Faire une demande</a><a class="ghost-action" href="/suivi-des-demandes">Suivre ma demande</a></div></div><figure class="page-hero-image"><img src="' . gp_h($image) . '" alt=""></figure></div></section><section class="section"><div class="container">' . gp_render_services_catalog_cards() . gp_render_related_pages($key) . '</div></section>';
+    }
+
+    $serviceCategorySlug = gp_services_page_category_slug($key);
+    if ($serviceCategorySlug !== null) {
+        $serviceCategoryLabel = 'Services communaux';
+        foreach ((array) (gp_services_catalog()['categories'] ?? []) as $category) {
+            if ((string) ($category['slug'] ?? '') === $serviceCategorySlug) {
+                $serviceCategoryLabel = gp_clean_menu_text((string) ($category['label'] ?? $serviceCategorySlug));
+                break;
+            }
+        }
+
+        $serviceTitle = $serviceCategoryLabel;
+        $serviceLead = 'Consultez la liste des services, les tarifs et lancez votre demande en ligne.';
+
+        return '<section class="page-hero"><div class="page-hero-shell"><div>' . gp_breadcrumb($key, $serviceTitle) . '<h1>' . gp_h($serviceTitle) . '</h1><p class="lead">' . gp_h($serviceLead) . '</p><div class="hero-actions"><a class="primary-action" href="/demande?categorie=' . gp_h($serviceCategorySlug) . '">Faire une demande</a><a class="ghost-action" href="/suivi-des-demandes">Suivre ma demande</a></div></div><figure class="page-hero-image"><img src="' . gp_h($image) . '" alt=""></figure></div></section><section class="section"><div class="container">' . gp_render_services_catalog_cards($serviceCategorySlug) . gp_render_related_pages($key) . '</div></section>';
     }
 
     if ($key === 'citoyen-actualites') {
@@ -681,7 +750,7 @@ function gp_render_page(string $key, array $page): string
 
     $mairieSupervisionProfiles = '';
     if ($key === 'mairie-supervision' && $cards !== []) {
-        $mairieSupervisionProfiles = '<section class="section-tight mairie-supervision-section"><div class="section-head"><div><p class="eyebrow">Conseil de supervision</p><h2>Le Maire, ses adjoints et les prÃ©sidents de commissions</h2></div></div>' . implode('', $cards) . '</section>';
+        $mairieSupervisionProfiles = '<section class="section-tight mairie-supervision-section"><div class="section-head"><div><p class="eyebrow">Conseil de supervision</p><h2>Le Maire, ses adjoints et les presidents de commissions</h2></div></div>' . implode('', $cards) . '</section>';
         $cards = [];
     }
 
@@ -699,7 +768,7 @@ function gp_render_page(string $key, array $page): string
 
     $mairieTechniqueProfiles = '';
     if ($key === 'mairie-technique' && $cards !== []) {
-        $mairieTechniqueProfiles = '<section class="section-tight mairie-technique-section"><div class="section-head"><div><p class="eyebrow">Organes techniques et administratifs</p><h2>Le Secrétariat exécutif et les directions</h2></div></div>' . implode('', $cards) . '</section>';
+        $mairieTechniqueProfiles = '<section class="section-tight mairie-technique-section"><div class="section-head"><div><p class="eyebrow">Organes techniques et administratifs</p><h2>Le Secretariat executif et les directions</h2></div></div>' . implode('', $cards) . '</section>';
         $cards = [];
     }
 
@@ -791,22 +860,66 @@ function gp_render_demande_page(): string
     $catalog = gp_services_catalog();
     $categories = array_values((array) ($catalog['categories'] ?? []));
     $wantedService = gp_fix_text((string) ($_GET['service'] ?? ''));
+    $wantedCategory = gp_fix_text((string) ($_GET['categorie'] ?? ''));
+    $lockedService = $wantedService !== '';
 
     $options = [];
+    $hasSelected = false;
+    $selectedServiceName = '';
+
     foreach ($categories as $cat) {
         $slug = (string) ($cat['slug'] ?? '');
         $label = gp_clean_menu_text((string) ($cat['label'] ?? $slug));
+
         foreach ((array) ($cat['services'] ?? []) as $svc) {
             $name = gp_clean_menu_text((string) ($svc['name'] ?? $svc['title'] ?? 'Service'));
-            $selected = $wantedService !== '' && mb_strtolower($wantedService) === mb_strtolower($name);
-            $options[] = '<option value="' . gp_h($name) . '" data-category="' . gp_h($slug) . '"' . ($selected ? ' selected' : '') . '>' . gp_h($name . ' - ' . $label) . '</option>';
+            $isSelected = false;
+
+            if (!$hasSelected) {
+                if ($wantedService !== '' && mb_strtolower($wantedService) === mb_strtolower($name)) {
+                    $isSelected = true;
+                } elseif ($wantedService === '' && $wantedCategory !== '' && $wantedCategory === $slug) {
+                    $isSelected = true;
+                } elseif ($wantedService === '' && $wantedCategory === '' && $selectedServiceName === '') {
+                    $isSelected = true;
+                }
+            }
+
+            if ($isSelected) {
+                $hasSelected = true;
+                $selectedServiceName = $name;
+            }
+
+            $options[] = '<option value="' . gp_h($name) . '" data-category="' . gp_h($slug) . '"' . ($isSelected ? ' selected' : '') . '>' . gp_h($name . ' - ' . $label) . '</option>';
         }
     }
+
     if ($options === []) {
         $options[] = '<option value="">Aucun service disponible</option>';
+        $lockedService = false;
     }
 
-    $json = gp_h(json_encode(['categories' => $categories], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+    if (!$hasSelected && $options !== []) {
+        $options[0] = preg_replace('/<option\b/', '<option selected', $options[0], 1) ?? $options[0];
+    }
+
+    if ($lockedService && $selectedServiceName === '') {
+        $lockedService = false;
+    }
+
+    $selectedServiceForSubmit = $selectedServiceName !== '' ? $selectedServiceName : $wantedService;
+
+    $jsonRaw = json_encode(['categories' => $categories], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    $json = is_string($jsonRaw) ? str_replace('</', '<\/', $jsonRaw) : '{"categories":[]}';
+
+    $selectDisabledAttr = $lockedService ? ' disabled aria-disabled="true"' : '';
+    $lockHint = $lockedService
+        ? '<p class="meta">Service verrouille pour cette demande. Revenez a la liste des services pour en choisir un autre.</p>'
+        : '';
+    $hiddenService = $lockedService
+        ? '<input type="hidden" name="service" value="' . gp_h($selectedServiceForSubmit) . '">'
+        : '';
+    $formLockAttr = $lockedService ? ' data-lock-service="1"' : '';
 
     return '<section class="page-hero"><div class="page-hero-shell"><div>'
         . gp_breadcrumb('services-demande', 'Demande de service')
@@ -815,13 +928,15 @@ function gp_render_demande_page(): string
         . '<section class="section"><div class="container"><div class="form-grid">'
         . '<div class="form-intro reveal"><p class="eyebrow">E-guichet</p><h2 data-service-title>Selectionnez un service</h2><p data-service-summary>Choisissez un service pour afficher les details et pieces a joindre.</p>'
         . '<div class="info-card"><h4>Tarif indicatif</h4><p data-service-price-preview>A definir selon le service</p><h4>Documents requis</h4><p data-service-docs-preview>au moins un justificatif</p></div></div>'
-        . '<form class="request-form reveal" method="post" action="/demande" data-service-request-form>'
+        . '<form class="request-form request-form-dynamic reveal" method="post" action="/demande" enctype="multipart/form-data" data-service-request-form' . $formLockAttr . '>'
         . '<input type="hidden" name="category" value="" data-service-category>'
+        . $hiddenService
         . '<div class="row"><label>Nom complet<input type="text" name="nom" required></label><label>Email<input type="email" name="email" required></label></div>'
-        . '<div class="row"><label>Telephone<input type="tel" name="telephone" required></label><label>Service<select name="service" required data-service-select>' . implode('', $options) . '</select></label></div>'
+        . '<div class="row"><label>Telephone<input type="tel" name="telephone" required></label><label>Service<select name="service" required data-service-select' . $selectDisabledAttr . '>' . implode('', $options) . '</select></label></div>'
         . '<label>Description du service<textarea name="service_description" rows="4" readonly data-service-description></textarea></label>'
         . '<div class="row"><label>Pieces a joindre<textarea name="service_documents" rows="4" readonly data-service-documents></textarea></label><label>Prix<input type="text" name="service_price" readonly data-service-price></label></div>'
         . '<p class="meta" data-docs-note>Ajoutez au minimum un justificatif.</p>'
+        . $lockHint
         . '<label>Piece 1<input type="file" name="piece_1" data-service-file required></label>'
         . '<label>Piece 2<input type="file" name="piece_2" data-service-file></label>'
         . '<label>Piece 3<input type="file" name="piece_3" data-service-file></label>'
@@ -829,7 +944,6 @@ function gp_render_demande_page(): string
         . '<button class="primary-action" type="submit">Envoyer la demande</button>'
         . '</form></div></div><script id="services-catalog-data" type="application/json">' . $json . '</script></section>';
 }
-
 function gp_render_blog_index(array $posts): string
 {
     $cards = [];
@@ -940,6 +1054,7 @@ function gp_render_forum_register_page(array $page): string
     $min = gp_forum_min_password_length();
     return gp_render_forum_flash() . '<section class="page-hero"><div class="page-hero-shell"><div><nav class="breadcrumb"><a href="/">Accueil</a><span class="sep">/</span><a href="/forums-de-discussion">Forums</a><span class="sep">/</span><span class="current">Inscription</span></nav><h1>' . gp_h(gp_clean_menu_text((string) ($page['title'] ?? 'Inscription'))) . '</h1><p class="lead">' . gp_h(gp_clean_menu_text((string) ($page['lead'] ?? 'Creer un compte forum'))) . '</p></div><figure class="page-hero-image"><img src="' . gp_h(gp_media_url('/assets/facade.jpg')) . '" alt=""></figure></div></section><section class="section"><div class="container"><div class="forum-auth-wrap"><form class="bbp-login-form reveal" method="post" action="/inscription-aux-forums"><input type="hidden" name="action" value="forum_register"><input type="hidden" name="csrf" value="' . gp_h(gp_csrf_token()) . '"><input type="hidden" name="next" value="' . gp_h($next) . '"><label>Identifiant<input type="text" name="username" minlength="3" required></label><label>Email<input type="email" name="email" required></label><div class="row"><label>Mot de passe<input type="password" name="password" minlength="' . $min . '" required></label><label>Confirmer mot de passe<input type="password" name="password_confirm" minlength="' . $min . '" required></label></div><button type="submit">Creer mon compte</button></form></div></div></section>';
 }
+
 
 
 
