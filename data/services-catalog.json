@@ -1,0 +1,671 @@
+{
+    "categories":  [
+                       {
+                           "slug":  "etat-civil",
+                           "label":  "Etat Civil",
+                           "services":  [
+                                            {
+                                                "name":  "Frais de mariage pour jour non ouvrable",
+                                                "description":  "Obtenir l\u0027accord de la mairie à célébrer un mariage un jour non ouvrable",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "40 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Frais de mariage pour jour ouvrable",
+                                                "description":  "Obtenir l\u0027accord de la mairie pour célébrer un mariage un jour ouvrable",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "30 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Imprimé de demande d’autorisation parentale",
+                                                "description":  "Document permettant de faire une demande d\u0027autorisation parentale",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "1 000 F CFA"
+                                            },
+                                            {
+                                                "name":  "Taxe sur tourisme/personne",
+                                                "description":  "Taxe à payer par guide ou agence touristique pour chaque touriste",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "1 000 F CFA"
+                                            },
+                                            {
+                                                "name":  "Enregistrement des guides touristiques",
+                                                "description":  "Document autorisant un guide touristique à exercer son activité dans la commune",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "25 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Certificat de position militaire",
+                                                "description":  "Document officiel qui atteste de la situation d\u0027un citoyen vis-à-vis des obligations du service militaire",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "1 000 F CFA"
+                                            },
+                                            {
+                                                "name":  "Certificat d’origine",
+                                                "description":  "Document qui prouve son lien avec une localité d\u0027origine.",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "20 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Demande de mariage",
+                                                "description":  "Document initial à remplir pour ouvrir un dossier de mariage civil",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "5 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Autorisation de sortie ou déplacement d’un mineur",
+                                                "description":  "Document par lequel le titulaire de l\u0027autorité parentale autorise un enfant mineur à voyager seul ou avec un tiers",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "50 000 F CFA"
+                                            },
+                                            {
+                                                "name":  "Certificat d’individualité",
+                                                "description":  "Document officiel qui atteste qu\u0027une seule et même personne est désignée par des noms ou prénoms écrits différemment sur plusieurs documents administratifs.",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "1 000 F CFA"
+                                            },
+                                            {
+                                                "name":  "Certificat de coutume",
+                                                "description":  "Le certificat de coutume est un document officiel qui atteste de la teneur de la législation étrangère (lois, coutumes) relative à l\u0027état civil.",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "3 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Certificat de vie et de charges",
+                                                "description":  "Le certificat de vie et de charges (ou certificat de vie collective et de charge de famille) est un document officiel qui atteste qu\u0027une personne est en vie et précise le nombre d\u0027enfants ou de personnes à sa charge.",
+                                                "documents":  "- Pièce d\u0027identité\n- Autorisation parentale",
+                                                "price":  "1 000 F CFA"
+                                            },
+                                            {
+                                                "name":  "Droit de timbre de légalisation matérielle de signature",
+                                                "description":  "La légalisation matérielle de signature (ou certification) authentifie votre signature sur des documents privés. Cette démarche atteste l\u0027identité du signataire.",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "1 000 F CFA"
+                                            },
+                                            {
+                                                "name":  "Droit de timbre de légalisation de signature simple",
+                                                "description":  "Authentification de votre signature sur un document privé (attestation, procuration) en votre présence.",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "500 F CFA"
+                                            },
+                                            {
+                                                "name":  "Certificat d’hébergement",
+                                                "description":  "Document prouvant qu\u0027une personne est logé chez quelqu\u0027un d\u0027autre",
+                                                "documents":  "- Pièce d\u0027identité\n- Lettre signée",
+                                                "price":  "30 000 FCFA"
+                                            }
+                                        ]
+                       },
+                       {
+                           "slug":  "affaires-domaniales",
+                           "label":  "Affaires domaniales",
+                           "services":  [
+                                            {
+                                                "name":  "Demande d’autorisation de recasement",
+                                                "description":  "Demande d’autorisation de recasement",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "500 FCFA"
+                                            },
+                                            {
+                                                "name":  "Bail/Location Littoral",
+                                                "description":  "Bail/Location Littoral",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "35 FCFA/m2"
+                                            },
+                                            {
+                                                "name":  "Cession Littoral",
+                                                "description":  "Cession Littoral",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "1 670 FCFA/m2"
+                                            },
+                                            {
+                                                "name":  "Bail/Location suburbaine",
+                                                "description":  "Bail/Location suburbaine",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "20 FCFA/m2"
+                                            },
+                                            {
+                                                "name":  "Cession suburbaine",
+                                                "description":  "Cession suburbaine",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "895 FCFA/m2"
+                                            },
+                                            {
+                                                "name":  "Bail/Location habitation",
+                                                "description":  "Bail/Location habitation",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "80 FCFA"
+                                            },
+                                            {
+                                                "name":  "Cession habitation",
+                                                "description":  "Cession habitation",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "3 900 FCFA"
+                                            },
+                                            {
+                                                "name":  "Bail/Location centre ville",
+                                                "description":  "Bail ou Location centre ville",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "110 FCA/m2"
+                                            },
+                                            {
+                                                "name":  "Cession centre ville",
+                                                "description":  "Cession centre ville",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "5 570 FCFA/m2"
+                                            },
+                                            {
+                                                "name":  "Taxe foncière unique pour propriétés bâties (TFU/FNB)",
+                                                "description":  "Taxe foncière unique pour propriétés bâties (TFU/FNB)",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "6%"
+                                            },
+                                            {
+                                                "name":  "Taxe foncière unique pour propriétés non bâties (TFU/FNB)",
+                                                "description":  "Taxe foncière unique pour propriétés non bâties (TFU/FNB)",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "5%"
+                                            },
+                                            {
+                                                "name":  "Droit de mutation de nom, compulsion",
+                                                "description":  "Changement de nom sur une parcelle",
+                                                "documents":  "- Pièce d\u0027identité\n- plan\n- Photo",
+                                                "price":  "25 000 FCFA"
+                                            }
+                                        ]
+                       },
+                       {
+                           "slug":  "affaires-funeraires",
+                           "label":  "Affaires funéraires",
+                           "services":  [
+                                            {
+                                                "name":  "Autorisation d’exhumation et réinhumation de dépouille mortelle",
+                                                "description":  "Document autorisant l’exhumation et la réinhumation de dépouille mortelle",
+                                                "documents":  "- plan",
+                                                "price":  "500 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Autorisation d’inhumation à domicile à Agoué",
+                                                "description":  "Document autorisant l\u0027inhumation à domicile à Agoué",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "100 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Autorisation d’inhumation au domicile à Grand-Popo",
+                                                "description":  "Document autorisant l\u0027inhumation au domicile à Grand-Popo",
+                                                "documents":  "- plan",
+                                                "price":  "400 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Autorisation d’inhumation dans les cinq autres arrondissements",
+                                                "description":  "Document autorisant l\u0027inhumation dans les cinq autres arrondissements",
+                                                "documents":  "- plan",
+                                                "price":  "80 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Autorisation d’inhumation dans les arrondissements d’Agoué et de Grand-Popo (nouveau cimetière)",
+                                                "description":  "Document autorisant l\u0027inhumation dans les arrondissements d’Agoué et de Grand-Popo (nouveau cimetière)",
+                                                "documents":  "- plan",
+                                                "price":  "300 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Autorisation d’inhumation dans l’ancien cimetière de Grand-Popo",
+                                                "description":  "Document autorisant à inhumer à l\u0027ancien cimetière de Grand-Popo",
+                                                "documents":  "- plan\n- Photo",
+                                                "price":  "5 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Autorisation d’inhumation au cimetière",
+                                                "description":  "Document autorisant à inhumer au cimetière",
+                                                "documents":  "- plan\n- Photo",
+                                                "price":  "5 000 FCFA"
+                                            }
+                                        ]
+                       },
+                       {
+                           "slug":  "espace-publicitaire",
+                           "label":  "Espace publicitaire",
+                           "services":  [
+                                            {
+                                                "name":  "Appareils sonores pour les ménages",
+                                                "description":  "Appareils sonores pour les ménages",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "5 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Appareils sonores pour les organisations privées",
+                                                "description":  "Appareils sonores pour les organisations privées",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "30 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Appareils sonores pour structures commerciales",
+                                                "description":  "Appareils sonores pour structures commerciales",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "50 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Panneau lumineux",
+                                                "description":  "Panneau lumineux",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "350 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Panneau réclame",
+                                                "description":  "Panneau réclame",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "200 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Affiche peinte",
+                                                "description":  "Affiche peinte",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "15 000 FCFA/m2"
+                                            },
+                                            {
+                                                "name":  "Affiche sur papier ordinaire",
+                                                "description":  "Affiche sur papier ordinaire",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "2 500 FCFA/m2"
+                                            }
+                                        ]
+                       },
+                       {
+                           "slug":  "equipements-marchands",
+                           "label":  "Equipement marchands",
+                           "services":  [
+                                            {
+                                                "name":  "Location de boutique à Hilla-Condji",
+                                                "description":  "Location de boutique à Hilla-Condji",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "40 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Location de boutiques à Agoué CASE",
+                                                "description":  "Location de boutiques à Agoué CASE",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "13 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Location de boutique à Grand-Popo",
+                                                "description":  "Location de boutique à Grand-Popo",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "12 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Location de boutique à Agoué",
+                                                "description":  "Location de boutique à Agoué",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "15 000 FCFA/mois"
+                                            },
+                                            {
+                                                "name":  "Taxe sur exploitation de pousse-pousse",
+                                                "description":  "Taxe sur exploitation de pousse-pousse dans les marchés et sur la gare routière",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "150 FCFA/jour"
+                                            },
+                                            {
+                                                "name":  "Gros ruminant (bœuf, chameau, etc.)",
+                                                "description":  "Gros ruminant (bœuf, chameau, etc.)",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "1 000 F CFA/tête"
+                                            },
+                                            {
+                                                "name":  "Petit ruminant (cabri, chèvre, etc.)",
+                                                "description":  "Petit ruminant (cabri, chèvre, etc.)",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "500 FCFA/tête"
+                                            },
+                                            {
+                                                "name":  "Taxe sur le Porc",
+                                                "description":  "Taxe sur le Porc",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "500 FCFA/tête"
+                                            },
+                                            {
+                                                "name":  "Espèce non conventionnelle (lapin, aulacode, etc.)",
+                                                "description":  "Espèce non conventionnelle (lapin, aulacode, etc.)",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "500 F CFA/tête"
+                                            },
+                                            {
+                                                "name":  "Taxe Volaille par tête",
+                                                "description":  "Tarif Volaille par tête",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "100 FCFA/tête"
+                                            },
+                                            {
+                                                "name":  "Location de hangars dans les marchés",
+                                                "description":  "Location de hangars dans les marchés (par jour)",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "1 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Droit de place sur les marchés",
+                                                "description":  "Droit de place sur les marchés (par jour)",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "100 FCFA"
+                                            }
+                                        ]
+                       },
+                       {
+                           "slug":  "occupation-domaine-public",
+                           "label":  "Occupation domaine public",
+                           "services":  [
+                                            {
+                                                "name":  "Frais d’installation de bâche hors manifestation (Grande bâche)",
+                                                "description":  "Frais d’installation de bâche hors manifestation (Grande bâche)",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "5 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Location des domaines publics à l’intérieur de la mairie au cours de la fête de Nonvitcha pour l’installation des matériels",
+                                                "description":  "Location des domaines publics à l’intérieur de la mairie au cours de la fête de Nonvitcha pour l’installation des matériels",
+                                                "documents":  "- Pièce d\u0027identité\n- Lettre signée",
+                                                "price":  "2 000 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Location des domaines publics hors de la mairie au cours de la fête de Nonvitcha pour l’installation des matériel (antenne)",
+                                                "description":  "Location des domaines publics hors de la mairie au cours de la fête de Nonvitcha pour l’installation des matériel (antenne)",
+                                                "documents":  "- Pièce d\u0027identité\n- Lettre signée",
+                                                "price":  "1 000 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Location de la cour des arrondissements et autres places publiques dans la commune",
+                                                "description":  "Location de la cour des arrondissements et autres places publiques dans la commune",
+                                                "documents":  "- Pièce d\u0027identité\n- Lettre signée",
+                                                "price":  "25 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Location des salles de réunions d’Adjaha, d’Avlo, de Djanglanmey, Gbéhoué et de Sazué",
+                                                "description":  "Location des salles de réunions d’Adjaha, d’Avlo, de Djanglanmey, Gbéhoué et de Sazué",
+                                                "documents":  "- Pièce d\u0027identité\n- Lettre signée",
+                                                "price":  "5 000 FCFA/jour"
+                                            },
+                                            {
+                                                "name":  "Location des salles de réunions d’Agoué et de Grand-Popo",
+                                                "description":  "Location des salles de réunions d’Agoué et de Grand-Popo",
+                                                "documents":  "- Pièce d\u0027identité\n- Lettre signée",
+                                                "price":  "20 000 FCFA/jour"
+                                            },
+                                            {
+                                                "name":  "Location de la cour de la mairie",
+                                                "description":  "Autorisation pour occuper la cour de la mairie par jour pour vos événements",
+                                                "documents":  "- Pièce d\u0027identité\n- Lettre signée\n- Photo",
+                                                "price":  "150 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Location de grande salle de conférence de la mairie avec climatiseur",
+                                                "description":  "Location de la grande salle de conférence de la mairie avec climatiseur",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "50 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Location de la grande salle de conférence de la mairie sans climatiseur",
+                                                "description":  "Location de la grande salle de conférence de la mairie sans climatiseur",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "25 000 FCFA/jour"
+                                            },
+                                            {
+                                                "name":  "Location de la petite salle de conférence de la mairie avec climatiseur",
+                                                "description":  "Location de la petite salle de conférence de la mairie avec climatiseur",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "40 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Location de la petite salle de conférence de la mairie sans climatiseur",
+                                                "description":  "Location de la petite salle de conférence de la mairie sans climatiseur",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "20 000 FCFA/jour"
+                                            },
+                                            {
+                                                "name":  "Autorisation d’installation de petites bâches",
+                                                "description":  "Frais d\u0027installation de petites bâches lors des manifestation",
+                                                "documents":  "- Pièce d\u0027identité\n- Lettre signée\n- Autorisation parentale",
+                                                "price":  "3 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Occupation des domaines publics à l’intérieur de la mairie au cours de la fête de Nonvitcha pour exposition des produits",
+                                                "description":  "Occupation des domaines publics à l’intérieur de la mairie au cours de la fête de Nonvitcha pour exposition des produits",
+                                                "documents":  "- Pièce d\u0027identité\n- Lettre signée",
+                                                "price":  "5 000 FCFA/m2"
+                                            },
+                                            {
+                                                "name":  "Autorisation de manifestation publique",
+                                                "description":  "Demander une autorisation de manifestation dans la commune",
+                                                "documents":  "- Pièce d\u0027identité\n- Lettre signée",
+                                                "price":  "15 000 FCFA"
+                                            }
+                                        ]
+                       },
+                       {
+                           "slug":  "stationnement",
+                           "label":  "Stationnement",
+                           "services":  [
+                                            {
+                                                "name":  "Taxe sur les pirogues et barques motorisées par nouvelle compagnie pêche à scène de plage à grand filet",
+                                                "description":  "Taxe sur les pirogues et barques motorisées par nouvelle",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "180 000 FCFA/an"
+                                            },
+                                            {
+                                                "name":  "Taxe sur les pirogues et barques motorisées par ancienne compagnie pêche à scène de plage à petit filet",
+                                                "description":  "Taxe sur les pirogues et barques motorisées par ancienne compagnie pêche à scène de plage à petit filet",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "80 000 FCFA/an"
+                                            },
+                                            {
+                                                "name":  "Taxe sur les pirogues et barques motorisées par ancienne compagnie pêche à scène de plage à grand filet",
+                                                "description":  "Taxe sur les pirogues et barques motorisées par ancienne compagnie pêche à scène de plage à grand filet",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "150 000 FCFA/an"
+                                            },
+                                            {
+                                                "name":  "Droit d’autorisation de pêche sur la mer par an",
+                                                "description":  "Droit d’autorisation de pêche sur la mer par an",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "200 000 FCFA/an"
+                                            },
+                                            {
+                                                "name":  "Taxe d’occupation du domaine public par des matériaux de construction (sable, gravier, agglo, etc.)",
+                                                "description":  "Taxe d’occupation du domaine public par des matériaux de construction (sable, gravier, agglo, etc.)",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "5 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe de stationnement de gros porteur",
+                                                "description":  "Taxe de stationnement de gros porteur",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "2 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe de stationnement à la gare routière de véhicules allant au Niger, au Nigeria, et les bus STC, STIF",
+                                                "description":  "Taxe de stationnement à la gare routière de véhicules allant au Niger, au Nigeria, et les bus STC, STIF",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "2 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe de stationnement à la gare routière de véhicules allant dans les autres départements",
+                                                "description":  "Taxe de stationnement à la gare routière de véhicules allant dans les autres départements",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "1 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe de stationnement à la gare routière de véhicules allant dans les départements de l’Alibori, de l’Atacora, du Borgou et de la Donga",
+                                                "description":  "Taxe de stationnement à la gare routière de véhicules allant dans les départements de l\u0027Alibori, de l\u0027Atacora, du Borgou et de la Donga",
+                                                "documents":  "- Pièce d\u0027identité\n- Photo",
+                                                "price":  "1 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe de stationnement à la gare routière de véhicules allant Comè",
+                                                "description":  "Quittance de stationnement à la gare routière de véhicules allant Comè",
+                                                "documents":  "- Pièce d\u0027identité\n- plan",
+                                                "price":  "300 F CFA"
+                                            }
+                                        ]
+                       },
+                       {
+                           "slug":  "diverses-taxes",
+                           "label":  "Diverses taxes",
+                           "services":  [
+                                            {
+                                                "name":  "Eau minérale par litre",
+                                                "description":  "Eau minérale vendue par litre",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "4 FCFA"
+                                            },
+                                            {
+                                                "name":  "Jeunes plants vendus",
+                                                "description":  "Jeunes plants vendus",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "5 FCFA"
+                                            },
+                                            {
+                                                "name":  "Exploitations des parcs nationaux musées et autres sites touristiques",
+                                                "description":  "Exploitations des parcs nationaux musées et autres sites touristiques",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "10% des recettes"
+                                            },
+                                            {
+                                                "name":  "Produits miniers relevant de la catégorie A du code minier (sable, gravier, argile) par m3",
+                                                "description":  "Produits miniers relevant de la catégorie A du code minier (sable, gravier, argile)",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "500 FCFA"
+                                            },
+                                            {
+                                                "name":  "Produits forestiers non ligneux (noix de karité), charbon de bois par Kg",
+                                                "description":  "Produits forestiers non ligneux (noix de karité), charbon de bois",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "2 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe sur perche transportée",
+                                                "description":  "Taxe sur perche transportée",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "10 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe sur grume transportée par m3",
+                                                "description":  "Taxe sur grume transportée par Kg",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "700 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe sur bille transporté par Kg",
+                                                "description":  "taxe sur bille transporté par Kg",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "2 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe sur madrier",
+                                                "description":  "Taxe sur madrier par kg transporté",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "1 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe sur produits maraîchers et autres produits oléagineux par kg transporté",
+                                                "description":  "Taxe sur produits maraîchers et autres produits oléagineux par kg transporté",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "2 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe sur noix d’anacarde transportés",
+                                                "description":  "Taxe sur noix d’anacarde transportés",
+                                                "documents":  "-",
+                                                "price":  "2 FCFA/kg"
+                                            },
+                                            {
+                                                "name":  "Taxe sur régime de palme vendu",
+                                                "description":  "Taxe sur régime de palme vendu",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "1 FCFA/kg"
+                                            },
+                                            {
+                                                "name":  "Autres céréales, légumineuses, cossettes et autres farines, racines et tubercules, coton, produits halieutiques",
+                                                "description":  "Autres céréales, légumineuses, cossettes et autres farines, racines et tubercules, coton, produits halieutiques",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "5 FCFA/kg vendu"
+                                            },
+                                            {
+                                                "name":  "Taxe sur riz vendu",
+                                                "description":  "Taxe sur riz vendu",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "2 FCFA/kg"
+                                            },
+                                            {
+                                                "name":  "Prélèvement d’eau de surface",
+                                                "description":  "Prélèvement d’eau de surface",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "200 FCFA/m3"
+                                            },
+                                            {
+                                                "name":  "Taxe sur les boissons fermentées de préparation artisanale \t(Par établissement )",
+                                                "description":  "Taxe sur les boissons fermentées de préparation artisanale \t(Par établissement )",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "5 000 FCFA/an"
+                                            },
+                                            {
+                                                "name":  "Taxe sur les boissons fermentées de préparation artisanale \t(Vente par bouteille de 20 litres)",
+                                                "description":  "Taxe sur les boissons fermentées de préparation artisanale \t(Vente par bouteille de 20 litres)",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "1 000 FCFA/jour"
+                                            },
+                                            {
+                                                "name":  "Taxe sur les boissons fermentées de préparation artisanale \t(vente sur les marchés)",
+                                                "description":  "Taxe sur les boissons fermentées de préparation artisanale - Vente sur les marchés",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "100 FCFA/jour"
+                                            },
+                                            {
+                                                "name":  "Taxe sur les spectacles, jeux et divertissement (toutes manifestations bouillantes)",
+                                                "description":  "Taxe sur les spectacles, jeux et divertissement (toutes manifestations bouillantes)",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "5 % des recettes/jour"
+                                            },
+                                            {
+                                                "name":  "Taxe sur les taxi-moto trois roues",
+                                                "description":  "Taxe sur les taxi-moto deux roues",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "5 000 FCFA"
+                                            },
+                                            {
+                                                "name":  "Taxe sur les taxi-moto deux roues",
+                                                "description":  "Taxe sur les taxi-moto deux roues",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "3 000 FCFA/an"
+                                            },
+                                            {
+                                                "name":  "Taxe sur la divagation",
+                                                "description":  "Taxe sur la divagation",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "200 FCFA/tête"
+                                            },
+                                            {
+                                                "name":  "Taxe sur bétail en transhumance ou en transit",
+                                                "description":  "Taxe sur Bétail en transhumance ou en transit",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "200 FCFA par tête"
+                                            },
+                                            {
+                                                "name":  "Taxe de pacage",
+                                                "description":  "Taxe de pacage",
+                                                "documents":  "- Pièce d\u0027identité",
+                                                "price":  "300 FCFA/animal par an"
+                                            }
+                                        ]
+                       },
+                       {
+                           "slug":  "verbalisation-et-amende",
+                           "label":  "verbalisation et amende",
+                           "services":  [
+
+                                        ]
+                       }
+                   ],
+    "form":  {
+                 "title":  "Demande de service en ligne",
+                 "subtitle":  "Choisissez un service puis complétez votre demande",
+                 "submit_label":  "Envoyer la demande",
+                 "success":  "Votre demande a été envoyée avec succès."
+             }
+}
