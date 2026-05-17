@@ -274,7 +274,10 @@ if (!$page) {
 }
 
 $body = gp_render_page($key, $page);
-$title = !empty($page['seo_title']) ? $page['seo_title'] : ($page['title'] . ' - ' . gp_site_name());
-$desc = !empty($page['seo_description']) ? $page['seo_description'] : gp_excerpt((string) ($page['lead'] ?? ''), 160);
+$titleRaw = !empty($page['seo_title']) ? (string) $page['seo_title'] : ((string) ($page['title'] ?? 'Page') . ' - ' . gp_site_name());
+$descRaw = !empty($page['seo_description']) ? (string) $page['seo_description'] : gp_excerpt((string) ($page['lead'] ?? ''), 160);
+$title = gp_clean_menu_text($titleRaw);
+$desc = gp_clean_menu_text($descRaw);
 $ogImage = $page['image'] ?? '/logos/logo.png';
 gp_render_layout($title, $desc, $body, $key, gp_site_url() . gp_page_path($key), $ogImage);
+

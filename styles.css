@@ -3116,3 +3116,88 @@ body[data-route="mairie-technique"] .mairie-technique-section .info-card.has-ima
     max-width: none;
   }
 }
+/* Services catalog cards */
+.service-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.service-catalog-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: .75rem;
+  min-height: 100%;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--card);
+  box-shadow: var(--shadow-xs);
+}
+.service-catalog-card .service-card-head {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+}
+.service-catalog-card .service-card-head h4 {
+  margin: 0;
+  font-size: .98rem;
+  line-height: 1.35;
+  color: var(--brand);
+}
+.service-catalog-card .service-card-desc {
+  margin: 0;
+  font-size: .86rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.service-catalog-card .service-card-price {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .45rem .6rem;
+  border: 1px solid var(--line-soft);
+  border-radius: .6rem;
+  background: rgba(10, 37, 64, 0.03);
+}
+.service-catalog-card .service-card-price span {
+  font-size: .73rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.service-catalog-card .service-card-price strong {
+  color: var(--brand);
+  font-size: .86rem;
+}
+.service-catalog-card .card-button {
+  margin-top: .2rem;
+  width: 100%;
+}
+@media (max-width: 1080px) {
+  .service-catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 720px) {
+  .service-catalog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Demande page: full width form and locked service state */
+body[data-route="services-demande"] .form-grid {
+  grid-template-columns: 1fr;
+}
+body[data-route="services-demande"] .form-intro {
+  max-width: none;
+}
+body[data-route="services-demande"] .request-form-dynamic {
+  width: 100%;
+}
+body[data-route="services-demande"] .request-form-dynamic [data-service-select]:disabled {
+  background: #eef1f5;
+  color: #5f6b7a;
+  cursor: not-allowed;
+}
