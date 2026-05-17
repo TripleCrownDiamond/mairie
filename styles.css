@@ -2923,3 +2923,39 @@ body[data-route="commune-villages"] .village-card li::before {
 }
 
 .mairie-team-section .duo-grid.has-media { margin-top: .5rem; }
+
+body[data-route="mairie-conseil"] .mairie-council-section .duo-grid.has-media {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+body[data-route="mairie-conseil"] .mairie-council-section .info-card.has-image {
+  min-height: 100%;
+}
+
+body[data-route="mairie-conseil"] .mairie-council-section .info-card.has-image .info-card-media {
+  width: clamp(108px, 13vw, 132px);
+  height: clamp(108px, 13vw, 132px);
+}
+
+body[data-route="mairie-conseil"] .mairie-council-section .info-card.has-image .info-card-media img {
+  object-position: center 10%;
+}
+
+@media (max-width: 1280px) {
+  body[data-route="mairie-conseil"] .mairie-council-section .duo-grid.has-media {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  body[data-route="mairie-conseil"] .mairie-council-section .duo-grid.has-media {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  body[data-route="mairie-conseil"] .mairie-council-section .duo-grid.has-media {
+    grid-template-columns: 1fr;
+  }
+}

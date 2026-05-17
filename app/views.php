@@ -673,6 +673,12 @@ function gp_render_page(string $key, array $page): string
         $cards = [];
     }
 
+    $mairieCouncilProfiles = '';
+    if ($key === 'mairie-conseil' && $cards !== []) {
+        $mairieCouncilProfiles = '<section class="section-tight mairie-council-section"><div class="section-head"><div><p class="eyebrow">Conseil communal</p><h2>Les 15 conseillers de Grand-Popo</h2></div></div>' . implode('', $cards) . '</section>';
+        $cards = [];
+    }
+
     $two = $cards !== [] || $key === 'commune-presentation';
     $aside = '';
     $below = '';
@@ -699,6 +705,8 @@ function gp_render_page(string $key, array $page): string
         $below = gp_render_related_pages($key);
     } elseif ($key === 'mairie-maire') {
         $below = $maireProfiles . gp_render_related_pages($key);
+    } elseif ($key === 'mairie-conseil') {
+        $below = $mairieCouncilProfiles . gp_render_related_pages($key);
     } elseif ($two) {
         $aside = '<aside class="reveal">' . implode('', $cards) . '</aside>';
         $below = gp_render_related_pages($key);

@@ -700,13 +700,13 @@
         "mairie-conseil": {
             "section": "mairie",
             "kicker": "Conseil communal",
-            "image": "/assets/mairie/conseil/carlos-ayikpe.jpg",
+            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/Carlos-AYIKPE.jpg",
             "title": "Le Conseil Communal",
-            "lead": "Compose de 15 conseillers elus, le Conseil communal est le principal organe deliberant de la commune et definit les grandes orientations politiques.",
+            "lead": "Composé de 15 conseillers élus, le Conseil communal est le principal organe délibérant de la Commune.",
             "blocks": [
                 {
                     "type": "prose",
-                    "body": "<p><strong>Compose de 15 conseillers elus</strong>, le Conseil communal est le principal organe deliberant de la commune. Il definit les orientations politiques et delibere sur les documents de politique, de strategie et de planification (articles 60 a 87).</p><p>Le Conseil communal valide le budget de la commune apres son adoption par le Conseil de supervision. Il peut demander une nouvelle deliberation pour la prise en compte de depenses assorties de propositions de nouvelles recettes dument identifiees.</p><p>Le Conseil communal delibere egalement sur la creation et les taux des redevances locales, ainsi que sur les taux des impots et taxes dans les limites fixees par la loi de finances.</p><p>Le Conseil communal statue sur toute question d importance qui ne releve pas des attributions d autres organes de la commune.</p><h3>Les 15 conseillers de la commune de Grand-Popo</h3>"
+                    "body": "<p><strong>Composé de 15 conseillers élus</strong>, le Conseil communal est le principal organe délibérant de la Commune. <strong>Il définit les orientations politiques et délibère sur les documents de politique, de stratégie et de planification</strong>. Le conseil communal se réunit en session ordinaire quatre (04) fois l’an, à raison d’une session pour chaque trimestre. La référence dans le code est relative aux articles 60 à 87.</p><p>Le conseil communal valide le budget de la commune après son adoption par le conseil de supervision. Il peut, dons ce cadre, demander une nouvelle délibération du conseil de supervision pour la prise en compte de dépenses assorties de propositions de nouvelles recettes qu'il a dûment identifiées.</p><p>Le conseil communal délibère sur la création et les toux des redevances locales ainsi que sur les toux des impôts et taxes dons les limites fixées par la loi de finances.</p><p>Le conseil communal statue sur toute question d'importance qui ne relève pas des attributions d'autres organes de la commune.</p>"
                 },
                 {
                     "type": "cards3",
@@ -716,105 +716,105 @@
                             "ico": "C1",
                             "title": "AYIKPE YAO CARLOS",
                             "text": "Maire de la commune de Grand-Popo",
-                            "image": "/assets/mairie/conseil/carlos-ayikpe.jpg",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/Carlos-AYIKPE.jpg",
                             "alt": "AYIKPE YAO CARLOS"
                         },
                         {
                             "ico": "C2",
                             "title": "HOUNKPATIN K. RAYMOND",
                             "text": "1er adjoint au Maire",
-                            "image": "/assets/mairie/conseil/grand-popo-hounkpation-k-raymond.png",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/03/GRAND-POPO-HOUNKPATION-K-RAYMOND.png",
                             "alt": "HOUNKPATIN K. RAYMOND"
                         },
                         {
                             "ico": "C3",
                             "title": "DJOSSOU KOKOU ALEXANDRE",
-                            "text": "2eme adjoint au Maire",
-                            "image": "/assets/mairie/conseil/djossou-kokou-alexandre.jpg",
+                            "text": "2ème adjoint au Maire",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/DJOSSOU-KOKOU-ALEXANDRE.jpg",
                             "alt": "DJOSSOU KOKOU ALEXANDRE"
                         },
                         {
                             "ico": "C4",
                             "title": "AVOCE YAOVI BARNABE",
-                            "text": "CA Adjaha",
-                            "image": "/assets/mairie/conseil/avoce-yaovi-barnabe-1.jpg",
+                            "text": "CA ADJAHA",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/AVOCE-YAOVI-BARNABE-1.jpg",
                             "alt": "AVOCE YAOVI BARNABE"
                         },
                         {
                             "ico": "C5",
                             "title": "HOUENOU KOFFI ABEL",
-                            "text": "President de la Commission des Affaires economiques et financieres",
-                            "image": "/assets/mairie/conseil/houenou-koffi-abel.jpg",
+                            "text": "Président de la Commission des Affaires économiques et financières",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/HOUENOU-KOFFI-ABEL.jpg",
                             "alt": "HOUENOU KOFFI ABEL"
                         },
                         {
                             "ico": "C6",
                             "title": "AHYI AYICOUE M. JOCELYN",
-                            "text": "President de la commission de la cooperation et des relations avec les institutions",
-                            "image": "/assets/mairie/conseil/ahyi-jocelyn.jpg",
+                            "text": "Président de la commission de la coopération et relations avec les institutions",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/AHYI-JOCELYN.jpg",
                             "alt": "AHYI AYICOUE M. JOCELYN"
                         },
                         {
                             "ico": "C7",
                             "title": "AMEDOME ZEPHIRIN",
-                            "text": "CA Agoue",
-                            "image": "/assets/mairie/conseil/amedome-zephirin.jpg",
+                            "text": "CA Agoué",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/AMEDOME-ZEPHIRIN.jpg",
                             "alt": "AMEDOME ZEPHIRIN"
                         },
                         {
                             "ico": "C8",
                             "title": "CHATIGRE EDMOND MAHUGNON",
-                            "text": "Conseiller communal",
-                            "image": "/assets/mairie/conseil/chatigre-edmond.jpg",
+                            "text": "",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/CHATIGRE-EDMOND.jpg",
                             "alt": "CHATIGRE EDMOND MAHUGNON"
                         },
                         {
                             "ico": "C9",
                             "title": "SAGBO YAOVI THEOPHILE",
                             "text": "CA Avlo",
-                            "image": "/assets/mairie/conseil/sagbo-yaovi.jpg",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/SAGBO-YAOVI.jpg",
                             "alt": "SAGBO YAOVI THEOPHILE"
                         },
                         {
                             "ico": "C10",
                             "title": "GAFFAN THIERY KODJO",
-                            "text": "CA Djanglanmey",
-                            "image": "/assets/mairie/conseil/gaffan-thiery.jpg",
+                            "text": "CA DJANGLANMEY",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/GAFFAN-THIERY.jpg",
                             "alt": "GAFFAN THIERY KODJO"
                         },
                         {
                             "ico": "C11",
                             "title": "EBOUE KOFFI BRUNO",
-                            "text": "CA Gbehoue",
-                            "image": "/assets/mairie/conseil/eboue-koffi-bruno-2.jpg",
+                            "text": "CA Gbéhoué",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/EBOUE-KOFFI-BRUNO-2.jpg",
                             "alt": "EBOUE KOFFI BRUNO"
                         },
                         {
                             "ico": "C12",
                             "title": "TOKINLO SOSSA BRICE",
-                            "text": "President de la Commission des Affaires domaniales et environnementales",
-                            "image": "/assets/mairie/conseil/tokinlo-brice.jpg",
+                            "text": "Président de la Commission des Affaires domaniales et environnementales",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/TOKINLO-BRICE.jpg",
                             "alt": "TOKINLO SOSSA BRICE"
                         },
                         {
                             "ico": "C13",
                             "title": "MESSAN AMAH",
-                            "text": "President de la commission des Affaires sociales, sportives et culturelles",
-                            "image": "/assets/mairie/conseil/messan-amah.jpg",
+                            "text": "Président de la commission des Affaires Sociales, Sportives et culturelles",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/MESSAN-AMAH.jpg",
                             "alt": "MESSAN AMAH"
                         },
                         {
                             "ico": "C14",
                             "title": "KOULETIO BENJAMIN",
                             "text": "CA Grand-Popo",
-                            "image": "/assets/mairie/conseil/kouletio-benjamin.jpg",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/KOULETIO-BENJAMIN.jpg",
                             "alt": "KOULETIO BENJAMIN"
                         },
                         {
                             "ico": "C15",
                             "title": "SOKOU YAOVI",
-                            "text": "CA Sazue",
-                            "image": "/assets/mairie/conseil/sokou-yaovi.jpg",
+                            "text": "CA Sazué",
+                            "image": "https://mairiegrandpopo.bj/wp-content/uploads/2026/05/SOKOU-YAOVI.jpg",
                             "alt": "SOKOU YAOVI"
                         }
                     ]
