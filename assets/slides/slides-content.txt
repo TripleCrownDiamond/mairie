@@ -1,0 +1,15 @@
+title: Bienvenue a Grand-Popo, la cite balneaire du Benin
+subtitle: Un territoire entre ocean, lagune et traditions vivantes
+desc: Patrimoine, culture et vie locale avancent avec les habitants, les associations et les partenaires du territoire.
+
+---
+
+title: Une administration de proximite, simple et accessible
+subtitle: Etat civil, hebergement, taxes et signalements depuis l'e-guichet
+desc: Suivez vos demandes en ligne et echangez facilement avec les services communaux.
+
+---
+
+title: Grand-Popo, une commune d initiatives et d opportunites
+subtitle: Actions locales, environnement, tourisme et investissements
+desc: La mairie valorise les projets qui renforcent l'economie locale et le cadre de vie.

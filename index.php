@@ -11,7 +11,17 @@ $data = gp_data();
 
 $getPage = static function (string $pageKey) use ($data): ?array {
     $page = $data['PAGES'][$pageKey] ?? null;
-    if (!$page) {
+    $runtimePage = gp_runtime_page($pageKey);
+
+    if (is_array($runtimePage)) {
+        if (!is_array($page)) {
+            $page = $runtimePage;
+        } else {
+            $page = array_replace_recursive($page, $runtimePage);
+        }
+    }
+
+    if (!is_array($page) || $page === []) {
         return null;
     }
 

@@ -1,33 +1,35 @@
 /* =====================================================================
-   MAIRIE DE GRAND-POPO — Portail citoyen
-   Direction esthétique : sobre institutionnel, chaleur côtière.
+   MAIRIE DE GRAND-POPO ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â Portail citoyen
+   Direction esthÃƒÆ’Ã‚Â©tique : sobre institutionnel, chaleur cÃƒÆ’Ã‚Â´tiÃƒÆ’Ã‚Â¨re.
    Palette ivoire / marine profond / sarcelle Atlantique / ocre soleil.
    Typographie : Fraunces (display) + Manrope (texte).
    Compatible WordPress + Elementor (CSS variables, structures simples).
    ===================================================================== */
 
 :root {
-  /* Drapeau de la République du Bénin */
+  /* Drapeau de la RÃƒÆ’Ã‚Â©publique du BÃƒÆ’Ã‚Â©nin */
   --bn-green:        #008751;   /* Pantone 348 */
   --bn-green-deep:   #006d42;
+  --bn-blue:         #1e63d6;
+  --bn-blue-deep:    #174aa4;
   --bn-yellow:       #FCD116;   /* Pantone 116 */
-  --bn-yellow-warm:  #E8B41C;   /* version UI atténuée */
+  --bn-yellow-warm:  #E8B41C;   /* version UI attÃƒÆ’Ã‚Â©nuÃƒÆ’Ã‚Â©e */
   --bn-red:          #E8112D;   /* Pantone Red 032 */
   --bn-red-deep:     #c20d24;
 
-  /* Palette dérivée — institutionnelle béninoise */
-  --paper:        #fbf8f1;   /* fond crème */
+  /* Palette dÃƒÆ’Ã‚Â©rivÃƒÆ’Ã‚Â©e ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â institutionnelle bÃƒÆ’Ã‚Â©ninoise */
+  --paper:        #fbf8f1;   /* fond crÃƒÆ’Ã‚Â¨me */
   --paper-2:      #f3ecdb;   /* sable doux */
-  --paper-3:      #ece3cd;   /* sable plus marqué */
+  --paper-3:      #ece3cd;   /* sable plus marquÃƒÆ’Ã‚Â© */
   --card:         #ffffff;
-  --ink:          #0d1f33;   /* encre — marine profonde */
+  --ink:          #0d1f33;   /* encre ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â marine profonde */
   --ink-soft:     #3f5172;
   --muted:        #6c7891;
   --line:         #e7dfce;
   --line-soft:    #f0e9d8;
 
   --brand:        #0a2540;            /* marine institutionnelle */
-  --brand-2:      var(--bn-green);    /* vert Bénin (remplace sarcelle) */
+  --brand-2:      var(--bn-green);    /* vert BÃƒÆ’Ã‚Â©nin (remplace sarcelle) */
   --brand-3:      #00a866;
   --accent:       var(--bn-yellow-warm); /* ocre/jaune chaud */
   --accent-soft:  #fadf80;
@@ -93,7 +95,7 @@ img, svg { display: block; max-width: 100%; }
   border-radius: var(--r-sm);
 }
 
-/* ============================== BANDE TRICOLORE BÉNIN ============================== */
+/* ============================== BANDE TRICOLORE BÃƒÆ’Ã¢â‚¬Â°NIN ============================== */
 .flag-band {
   display: flex;
   height: 4px;
@@ -104,15 +106,15 @@ img, svg { display: block; max-width: 100%; }
 .flag-band > span { flex: 1; display: block; }
 .flag-band .green  { background: var(--bn-green); }
 .flag-band .yellow { background: var(--bn-yellow); }
-.flag-band .red    { background: var(--bn-red); }
+.flag-band .blue   { background: var(--bn-blue); }
 
 .flag-band.thick { height: 6px; }
 .flag-band.gradient {
   height: 4px;
   background: linear-gradient(to right,
-    var(--bn-green) 0% 33.33%,
-    var(--bn-yellow) 33.33% 66.66%,
-    var(--bn-red) 66.66% 100%);
+    var(--bn-blue) 0% 33.33%,
+    var(--bn-green) 33.33% 66.66%,
+    var(--bn-yellow) 66.66% 100%);
 }
 .flag-band.gradient > span { display: none; }
 
@@ -138,7 +140,7 @@ img, svg { display: block; max-width: 100%; }
   font-weight: 600;
 }
 .ticker-track span::before {
-  content: '◆';
+  content: 'ÃƒÂ¢Ã¢â‚¬â€Ã¢â‚¬Â ';
   margin-right: .9rem;
   color: var(--accent-soft);
   font-size: .65em;
@@ -299,7 +301,7 @@ img, svg { display: block; max-width: 100%; }
   font-weight: 700;
 }
 .text-link:hover { color: var(--brand); border-bottom-color: var(--brand); }
-.text-link::after { content: ' →'; }
+.text-link::after { content: ' ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢'; }
 
 .menu-toggle {
   display: none;
@@ -398,7 +400,7 @@ img, svg { display: block; max-width: 100%; }
   transition: color .2s, padding .2s;
 }
 .mega-link::after {
-  content: '→';
+  content: 'ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢';
   opacity: 0;
   transform: translateX(-6px);
   transition: opacity .2s, transform .2s;
@@ -1262,7 +1264,7 @@ p { margin: 0 0 1rem; }
   overflow: hidden;
 }
 .pull::before {
-  content: '“';
+  content: 'ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ';
   position: absolute;
   top: -1.5rem; right: 1rem;
   font-family: var(--font-display);
@@ -1451,9 +1453,9 @@ p { margin: 0 0 1rem; }
   top: 0; left: 0; right: 0;
   height: 4px;
   background: linear-gradient(to right,
-    var(--bn-green) 0% 33.33%,
-    var(--bn-yellow) 33.33% 66.66%,
-    var(--bn-red) 66.66% 100%);
+    var(--bn-blue) 0% 33.33%,
+    var(--bn-green) 33.33% 66.66%,
+    var(--bn-yellow) 66.66% 100%);
 }
 
 /* ============================== SCEAU INSTITUTIONNEL ============================== */
@@ -1495,9 +1497,9 @@ p { margin: 0 0 1rem; }
   height: 3px;
   margin-bottom: .9rem;
   background: linear-gradient(to right,
-    var(--bn-green) 0% 33.33%,
-    var(--bn-yellow) 33.33% 66.66%,
-    var(--bn-red) 66.66% 100%);
+    var(--bn-blue) 0% 33.33%,
+    var(--bn-green) 33.33% 66.66%,
+    var(--bn-yellow) 66.66% 100%);
   border-radius: 2px;
 }
 .footer-shell {
@@ -1642,3 +1644,153 @@ body.admin-bar .site-header { top: 32px; }
   body.admin-bar .site-header { top: 46px; }
 }
 .elementor-canvas body { margin: 0; }
+
+/* Services catalog cards */
+.service-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.service-catalog-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: .75rem;
+  min-height: 100%;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--card);
+  box-shadow: var(--shadow-xs);
+}
+.service-catalog-card .service-card-head {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+}
+.service-catalog-card .service-card-head h4 {
+  margin: 0;
+  font-size: .98rem;
+  line-height: 1.35;
+  color: var(--brand);
+}
+.service-catalog-card .service-card-desc {
+  margin: 0;
+  font-size: .86rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.service-catalog-card .service-card-price {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .45rem .6rem;
+  border: 1px solid var(--line-soft);
+  border-radius: .6rem;
+  background: rgba(10, 37, 64, 0.03);
+}
+.service-catalog-card .service-card-price span {
+  font-size: .73rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.service-catalog-card .service-card-price strong {
+  color: var(--brand);
+  font-size: .86rem;
+}
+.service-catalog-card .card-button {
+  margin-top: .2rem;
+  width: 100%;
+}
+@media (max-width: 1080px) {
+  .service-catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 720px) {
+  .service-catalog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Histoire de la commune: organiser les images en galerie lisible */
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-inner-section > .elementor-container {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .85rem;
+}
+
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-inner-section > .elementor-container > .elementor-column {
+  width: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-widget-image,
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-widget-image .elementor-widget-container,
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-widget-image a {
+  display: block;
+  height: 100%;
+}
+
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-widget-image a {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-xs);
+  background: var(--paper-2);
+}
+
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-widget-image img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 180px;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 980px) {
+  body[data-route="commune-histoire"] .page-content-grid .prose .elementor-inner-section > .elementor-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  body[data-route="commune-histoire"] .page-content-grid .prose .elementor-inner-section > .elementor-container {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-route="commune-histoire"] .page-content-grid .prose .elementor-widget-image img {
+    min-height: 210px;
+  }
+}
+
+/* Histoire de la commune: tailles et espacements strictement uniformes */
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-inner-section > .elementor-container {
+  column-gap: 1rem !important;
+  row-gap: 1.45rem !important;
+}
+
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-inner-section,
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-inner-section .elementor-container,
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-inner-section .elementor-column,
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-inner-section .elementor-widget-wrap,
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-widget-image,
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-widget-image .elementor-widget-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-widget-image a {
+  width: 100% !important;
+  aspect-ratio: 4 / 3;
+}
+
+body[data-route="commune-histoire"] .page-content-grid .prose .elementor-widget-image img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+}

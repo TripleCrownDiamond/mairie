@@ -27,6 +27,8 @@ const ICONS = {
   users: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2 21c0-3.5 3-6 7-6s7 2.5 7 6"/><circle cx="17" cy="7" r="3"/><path d="M22 19c0-2.5-2-4.5-5-5"/></svg>',
   doc:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 14h6M9 18h4"/></svg>',
   globe:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
+  terrain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19h18"/><path d="M4 18.5 9 12l4 4 3-3 4 5.5"/><path d="M8.5 10.5 11 7l2 3"/></svg>',
+  water: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s5 5.2 5 9a5 5 0 0 1-10 0c0-3.8 5-9 5-9Z"/><path d="M4 19c1.4-1 2.8-1 4.2 0s2.8 1 4.2 0 2.8-1 4.2 0 2.8 1 4.2 0"/><path d="M6 16h12"/></svg>',
   phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15.5v3a2 2 0 0 1-2.2 2 19.5 19.5 0 0 1-8.5-3 19 19 0 0 1-6-6A19.5 19.5 0 0 1 1.3 3 2 2 0 0 1 3.3 1h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .6 3a2 2 0 0 1-.5 2L7 9a16 16 0 0 0 6 6l1.2-1.4a2 2 0 0 1 2-.5c1 .3 2 .5 3 .6a2 2 0 0 1 1.8 2.2"/></svg>',
   mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
   bell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 16V11a6 6 0 0 0-12 0v5l-2 3h16z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>',
@@ -168,10 +170,10 @@ const MENU = {
 /* ============================== HOME DATA ============================== */
 
 const STATS = [
-  { value: '289', suffix: 'km²', label: 'Superficie', icon: ICONS.pin },
-  { value: '57', suffix: 'k+',   label: 'Habitants', icon: ICONS.users },
-  { value: '12', suffix: '',     label: 'E-services', icon: ICONS.globe },
-  { value: '08', suffix: '',     label: 'Arrondissements', icon: ICONS.doc }
+  { value: '289', suffix: 'km2', label: 'Superficie de la commune', icon: ICONS.pin },
+  { value: '45', suffix: 'km2', label: 'Superficie de terre ferme', icon: ICONS.terrain },
+  { value: '178', suffix: 'Km2', label: 'Superficie de zones inondables', icon: ICONS.water },
+  { value: '57636', suffix: '', label: 'Habitants dans la commune', icon: ICONS.users }
 ];
 
 const HERO_QUICK = [
