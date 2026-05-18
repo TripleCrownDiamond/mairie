@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="header-shell">
       <div class="header-top">
         <a class="brand brand-icon-only" href="/" data-route="home" aria-label="Accueil - Mairie de Grand-Popo">
-          <span class="brand-mark" aria-hidden="true"><img src="/logos/logo.png" alt="Logo de la Mairie de Grand-Popo" loading="eager" /></span>
+          <span class="brand-mark" aria-hidden="true"><img src="/assets/logo-gp.jpg" alt="Logo de la Mairie de Grand-Popo" loading="eager" /></span>
         </a>
         <div class="header-top-actions">
           <div class="header-actions"><a class="ghost-action sm" href="/contact">Contact</a><a class="primary-action sm" href="/demarches/etat-civil">E-guichet</a></div>

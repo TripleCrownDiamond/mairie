@@ -248,7 +248,7 @@ if ($key === 'home') {
     $body = gp_render_home($data, $slides, $key, $blogPosts);
     $title = gp_site_name() . ' - Portail citoyen';
     $desc = 'Portail officiel de la Mairie de Grand-Popo.';
-    gp_render_layout($title, $desc, $body, $key, gp_site_url() . '/', $slides[0]['image'] ?? '/logos/logo.png');
+    gp_render_layout($title, $desc, $body, $key, gp_site_url() . '/', $slides[0]['image'] ?? '/assets/logo-gp.jpg');
     return;
 }
 
@@ -279,7 +279,7 @@ if ($key === 'services-demande') {
 if (!$page) {
     http_response_code(404);
     $body = '<section class="section"><div class="container"><div class="prose"><p class="eyebrow">404</p><h1>Page introuvable</h1><p>La page demandee n\'existe pas ou a ete deplacee.</p><p><a class="primary-action" href="/">Retour a l\'accueil</a></p></div></div></section>';
-    gp_render_layout('404 - ' . gp_site_name(), 'Page introuvable.', $body, 'home', gp_site_url() . '/', '/logos/logo.png');
+    gp_render_layout('404 - ' . gp_site_name(), 'Page introuvable.', $body, 'home', gp_site_url() . '/', '/assets/logo-gp.jpg');
     return;
 }
 
@@ -288,6 +288,6 @@ $titleRaw = !empty($page['seo_title']) ? (string) $page['seo_title'] : ((string)
 $descRaw = !empty($page['seo_description']) ? (string) $page['seo_description'] : gp_excerpt((string) ($page['lead'] ?? ''), 160);
 $title = gp_clean_menu_text($titleRaw);
 $desc = gp_clean_menu_text($descRaw);
-$ogImage = $page['image'] ?? '/logos/logo.png';
+$ogImage = $page['image'] ?? '/assets/logo-gp.jpg';
 gp_render_layout($title, $desc, $body, $key, gp_site_url() . gp_page_path($key), $ogImage);
 

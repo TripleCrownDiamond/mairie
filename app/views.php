@@ -45,7 +45,14 @@ function gp_media_url(?string $path, string $fallback = '/assets/facade.jpg'): s
     if (preg_match('#^https?://#i', $value) === 1) {
         return $value;
     }
-    return '/' . ltrim($value, '/');
+
+    $localUrl = '/' . ltrim($value, '/');
+    $localPath = GP_ROOT . str_replace('/', DIRECTORY_SEPARATOR, parse_url($localUrl, PHP_URL_PATH) ?: $localUrl);
+    if (is_file($localPath)) {
+        return $localUrl;
+    }
+
+    return $fallback;
 }
 
 function gp_render_ticker(array $ticker): string
@@ -361,7 +368,7 @@ function gp_render_footer(string $routeKey = ''): string
     $phoneRaw = (string) gp_config('contact.phone', '+229 0197386269');
     $phone = gp_h($phoneRaw);
     $addr = gp_h((string) gp_config('contact.address', 'Centre ville Grand-Popo'));
-    $logo = gp_h(gp_media_url('/logos/Logo-Mairie-Grand-Popo-nouveau.jpg', '/logos/logo.png'));
+    $logo = gp_h(gp_media_url('/assets/logo-gp.jpg', '/assets/logo-gp.jpg'));
 
     $servicesActive = (str_starts_with($routeKey, 'services-') || $routeKey === 'services-demande') ? ' is-active' : '';
     $mentionsActive = $routeKey === 'mentions' ? ' is-active' : '';
@@ -402,7 +409,7 @@ function gp_render_layout(string $title, string $description, string $body, stri
     $ttl = gp_h(gp_clean_menu_text($title));
     $desc = gp_h(gp_clean_menu_text($description));
     $img = gp_h(gp_media_url($ogImage));
-    $logo = gp_h(gp_media_url('/logos/Logo-Mairie-Grand-Popo-nouveau.jpg', '/logos/logo.png'));
+    $logo = gp_h(gp_media_url('/assets/logo-gp.jpg', '/assets/logo-gp.jpg'));
 
     echo '<!doctype html><html lang="fr-FR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">';
     echo '<title>' . $ttl . '</title><meta name="description" content="' . $desc . '"><link rel="canonical" href="' . gp_h($canonical) . '">';
