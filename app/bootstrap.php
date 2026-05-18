@@ -1017,7 +1017,7 @@ function gp_mojibake_marker_score(string $text): int
 
 function gp_repair_mojibake_text(string $text): string
 {
-    $text = str_replace(["\xEF\xBB\xBF", "\u{FEFF}", "\xC2\xA0"], ['', '', ' '], $text);
+    $text = str_replace(["\xEF\xBB\xBF", "\u{FEFF}"], ['', ''], $text);
     if ($text === '') {
         return '';
     }
@@ -1026,6 +1026,30 @@ function gp_repair_mojibake_text(string $text): string
     if ($best === '') {
         return '';
     }
+
+    $prefixMap = [
+        "\u{00C3}\u{0192}\u{00C2}" => "\u{00C3}",
+        "\u{00C3}\u{0192}" => "\u{00C3}",
+    ];
+
+    $legacyPunctuationMap = [
+        "\u{00E2}\u{00E2}\u{201A}\u{00AC}\u{00E2}\u{201E}\u{00A2}" => "'",
+        "\u{00E2}\u{201A}\u{00AC}\u{00E2}\u{201E}\u{00A2}" => "'",
+        "\u{00E2}\u{20AC}\u{00B0}" => "\u{2030}",
+        "\u{00E2}\u{20AC}\u{2030}" => "\u{2030}",
+        "\u{00E2}\u{20AC}\u{2122}" => "'",
+        "\u{00E2}\u{20AC}\u{02DC}" => "'",
+        "\u{00E2}\u{20AC}\u{0153}" => '"',
+        "\u{00E2}\u{20AC}\u{009D}" => '"',
+        "\u{00E2}\u{20AC}\u{201C}" => '-',
+        "\u{00E2}\u{20AC}\u{201D}" => '-',
+        "\u{00E2}\u{20AC}\u{00A6}" => '...',
+        "\u{00E2}\u{20AC}\u{00A2}" => '- ',
+    ];
+
+    $best = strtr($best, $prefixMap);
+    $best = strtr($best, $legacyPunctuationMap);
+    $best = strtr($best, $prefixMap);
 
     $map = [
         "\u{00C3} " => "\u{00E0} ",
@@ -1058,6 +1082,7 @@ function gp_repair_mojibake_text(string $text): string
         "\u{00C5}\u{0093}" => "\u{0153}",
         "\u{00C5}\u{0092}" => "\u{0152}",
         "\u{00C2}\u{00B0}" => "\u{00B0}",
+        "\u{00C2}" => '',
         "\u{00E2}\u{20AC}\u{2122}" => "'",
         "\u{00E2}\u{20AC}\u{02DC}" => "'",
         "\u{00E2}\u{20AC}\u{0153}" => '"',
@@ -1069,8 +1094,6 @@ function gp_repair_mojibake_text(string $text): string
     ];
 
     $best = strtr($best, $map);
-
-
     $best = strtr($best, $map);
     $best = preg_replace('/\b([cdjlmnst])[?\x{FFFD}]/iu', "$1'", $best) ?? $best;
     $best = preg_replace('/\s[?\x{FFFD}]\s+l\'/u', " \u{00E0} l'", $best) ?? $best;

@@ -520,7 +520,20 @@ function gp_render_home(array $data, array $slides, string $key, array $blogPost
     $quick = [];
     foreach ((array) ($data['HERO_QUICK'] ?? []) as $item) {
         $href = gp_route_url((string) ($item['route'] ?? 'services-demarches'));
-        $quick[] = '<a class="hero-quick-item" href="' . gp_h($href) . '"><span class="ico">' . gp_h((string) ($item['mark'] ?? 'SV')) . '</span>' . gp_h(gp_clean_menu_text((string) ($item['label'] ?? 'Service'))) . '</a>';
+        $route = (string) ($item['route'] ?? 'services-demarches');
+        $label = gp_clean_menu_text((string) ($item['label'] ?? 'Service'));
+
+        if ($label === '' || gp_has_encoding_artifacts($label)) {
+            $label = match ($route) {
+                'services-etat-civil' => 'Etat civil',
+                'services-hebergement' => 'Hebergement',
+                'services-taxes' => 'Taxes locales',
+                'citoyen-signaler' => 'Signaler',
+                default => 'Service',
+            };
+        }
+
+        $quick[] = '<a class="hero-quick-item" href="' . gp_h($href) . '"><span class="ico">' . gp_h((string) ($item['mark'] ?? 'SV')) . '</span>' . gp_h($label) . '</a>';
     }
 
     $stats = [];
@@ -529,7 +542,10 @@ function gp_render_home(array $data, array $slides, string $key, array $blogPost
     }
 
     $mot = gp_data()['PAGES']['mairie-mot-maire']['blocks'][0]['body'] ?? '';
-    $motPreview = gp_extract_paragraph((string) $mot);
+    $motPreview = gp_clean_menu_text(gp_extract_paragraph((string) $mot));
+    if ($motPreview === '' || gp_has_encoding_artifacts($motPreview)) {
+        $motPreview = 'Bienvenue sur le portail officiel de la mairie de Grand-Popo. Cette plateforme facilite vos demarches et renforce le dialogue avec les citoyens.';
+    }
 
     $newsCards = [];
     $posts = $blogPosts;
