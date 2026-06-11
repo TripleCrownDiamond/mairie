@@ -368,7 +368,7 @@ function gp_render_footer(string $routeKey = ''): string
     $phoneRaw = (string) gp_config('contact.phone', '+229 0197386269');
     $phone = gp_h($phoneRaw);
     $addr = gp_h((string) gp_config('contact.address', 'Centre ville Grand-Popo'));
-    $logo = gp_h(gp_media_url('/assets/logo-gp.jpg', '/assets/logo-gp.jpg'));
+    $logo = gp_h(gp_media_url('/assets/logo-footer-grand-popo.png', '/assets/logo-footer-grand-popo.png'));
 
     $servicesActive = (str_starts_with($routeKey, 'services-') || $routeKey === 'services-demande') ? ' is-active' : '';
     $mentionsActive = $routeKey === 'mentions' ? ' is-active' : '';
@@ -385,7 +385,7 @@ function gp_render_footer(string $routeKey = ''): string
     return '<footer class="site-footer">'
         . '<div class="footer-shell">'
         . '<div class="footer-col footer-brand-col">'
-        . '<a class="footer-brand" href="/"><img class="footer-logo" src="' . $logo . '" alt="Logo Mairie Grand-Popo"><span class="footer-brand-copy"><strong>Mairie Grand-Popo</strong><small>Commune balneaire</small></span></a>'
+        . '<a class="footer-brand" href="/"><img class="footer-logo" src="' . $logo . '" alt="Logo Mairie Grand-Popo"></a>'
         . '<p class="footer-tagline">Grand-Popo, la ville aux opportunites uniques.</p>'
         . '</div>'
         . '<div class="footer-col"><p class="footer-eyebrow">Liens utiles</p>'
@@ -511,7 +511,7 @@ function gp_render_home(array $data, array $slides, string $key, array $blogPost
         $active = $i === 0 ? ' is-active' : '';
         $slideHtml[] = '<article class="hero-slide' . $active . '" data-hero-slide aria-hidden="' . ($i === 0 ? 'false' : 'true') . '">'
             . '<div class="hero-slide-copy"><span class="hero-slide-kicker">Portail citoyen</span>'
-            . '<h1>' . gp_h(gp_clean_menu_text((string) ($slide['title'] ?? 'Bienvenue a Grand-Popo'))) . '</h1>'
+            . '<h1>Bienvenue dans la cit&eacute; baln&eacute;aire de Grand-Popo</h1>'
             . '<p class="hero-slide-subtitle">' . gp_h(gp_clean_menu_text((string) ($slide['subtitle'] ?? ''))) . '</p>'
             . '<p class="hero-lead">' . gp_h(gp_clean_menu_text((string) ($slide['desc'] ?? ''))) . '</p>'
             . '<div class="hero-actions"><a class="primary-action" href="/mes-demarches-en-ligne">Mes demarches en ligne</a><a class="ghost-action" href="/contact">Contact</a></div></div></article>';
@@ -570,8 +570,9 @@ function gp_render_home(array $data, array $slides, string $key, array $blogPost
         $flip[] = '<article class="flip-card reveal" tabindex="0"><div class="flip-inner"><div class="flip-face flip-front"><span class="num">' . gp_h((string) ($card['num'] ?? '00')) . '</span><div><h3>' . gp_h($frontTitle) . '</h3><p class="sub">' . gp_h($frontSub) . '</p></div></div><div class="flip-face flip-back"><span class="tag">' . gp_h($backTag) . '</span><div><h4>' . gp_h($backTitle) . '</h4><p>' . gp_h($backText) . '</p></div><a class="card-button" href="' . gp_h(gp_route_url((string) ($back['route'] ?? 'commune-presentation'))) . '">' . gp_h($backCta) . '</a></div></div></article>';
     }
 
-    return '<section class="hero hero-home" data-hero data-hero-images="' . gp_h(json_encode($images, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) . '"><div class="hero-bg" data-hero-bg style="background-image:url(' . gp_h($images[0]) . ')"></div><div class="hero-shell"><div class="hero-head"><span class="hero-pill"><span class="dot"></span>Bienvenue</span></div><div class="hero-stage">' . implode('', $slideHtml) . '</div><div class="hero-controls"><button class="hero-control" data-hero-prev>&larr;</button><span class="hero-counter"><span data-hero-current>01</span><span class="sep">/</span><span data-hero-total>' . str_pad((string) count($slides), 2, '0', STR_PAD_LEFT) . '</span></span><button class="hero-control" data-hero-next>&rarr;</button></div><div class="hero-quick">' . implode('', $quick) . '</div></div></section>'
+    return '<section class="hero hero-home" data-hero data-hero-images="' . gp_h(json_encode($images, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)) . '"><div class="hero-bg" data-hero-bg style="background-image:url(' . gp_h($images[0]) . ')"></div><div class="hero-shell"><div class="hero-head"><span class="hero-pill" aria-label="W&Eacute;ZON &bull; MIA W&Eacute;ZON, WEZON &bull; MIA WUEZON, MIKAABO &bull; DOONUMI, &Eacute;KOUAB&Ocirc;"><span class="dot"></span><span class="hero-pill-marquee"><span class="hero-pill-track"><span>W&Eacute;ZON &bull; MIA W&Eacute;ZON</span><span>WEZON &bull; MIA WUEZON</span><span>MIKAABO &bull; DOONUMI</span><span>&Eacute;KOUAB&Ocirc;</span><span>W&Eacute;ZON &bull; MIA W&Eacute;ZON</span><span>WEZON &bull; MIA WUEZON</span><span>MIKAABO &bull; DOONUMI</span><span>&Eacute;KOUAB&Ocirc;</span></span></span></span></div><div class="hero-stage">' . implode('', $slideHtml) . '</div><div class="hero-controls"><button class="hero-control" data-hero-prev>&larr;</button><span class="hero-counter"><span data-hero-current>01</span><span class="sep">/</span><span data-hero-total>' . str_pad((string) count($slides), 2, '0', STR_PAD_LEFT) . '</span></span><button class="hero-control" data-hero-next>&rarr;</button></div><div class="hero-quick">' . implode('', $quick) . '</div></div></section>'
         . '<section class="stats-band"><div class="stats-card">' . implode('', $stats) . '</div></section>'
+        . '<section class="section section-tight commune-symbol-section"><div class="container"><div class="commune-symbol reveal"><div class="commune-symbol-mark"><span class="commune-symbol-label commune-symbol-label-icon" aria-label="Cocotier"></span><strong>Grand-Popo, la Belle</strong></div><div class="commune-symbol-copy"><p class="eyebrow">Identit&eacute; communale</p><h2>Grand-Popo, La r&eacute;f&eacute;rence baln&eacute;aire</h2><div class="commune-symbol-motto"><span>Une commune de r&ecirc;ve</span><span>Une &acirc;me</span><span>Une passion</span></div></div></div></div></section>'
         . '<section class="section"><div class="container"><div class="mayor"><figure class="mayor-image reveal"><img src="' . gp_h(gp_media_url('/assets/mairie/maire-ayikpe.jpg')) . '" alt="Maire"><figcaption class="mayor-badge"><div class="role">Maire</div><div class="name">AYIKPE YAO CARLOS</div></figcaption></figure><div class="mayor-content reveal"><p class="eyebrow">Mot du maire</p><h2>Une commune en mouvement</h2><div class="mayor-quote"><p>' . gp_h($motPreview) . '</p></div><a class="primary-action" href="' . gp_h(gp_route_url('mairie-mot-maire')) . '">Lire le mot du maire</a></div></div></div></section>'
         . '<section class="section section-tight"><div class="container"><div class="section-head"><div><p class="eyebrow">Actualites</p><h2>Apercu des articles</h2></div><a class="text-link" href="/blog">Voir tout</a></div><div class="news-list">' . implode('', $newsCards) . '</div></div></section>'
         . '<section class="section"><div class="container"><div class="section-head"><div><p class="eyebrow">Ma commune</p><h2>Pages connexes</h2></div></div><div class="flip-grid">' . implode('', $flip) . '</div></div></section>';

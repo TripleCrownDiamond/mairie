@@ -141,6 +141,45 @@ function gp_strip_utf8_bom(string $text): string
     return str_replace("\u{FEFF}", '', $text);
 }
 
+function gp_read_text_file(string $path): string
+{
+    $raw = @file_get_contents($path);
+    if (!is_string($raw) || $raw === '') {
+        return '';
+    }
+
+    return gp_strip_utf8_bom($raw);
+}
+
+function gp_try_utf8_redecode(string $text, string $encoding): ?string
+{
+    if (!function_exists('iconv')) {
+        return null;
+    }
+
+    $converted = @iconv('UTF-8', $encoding . '//IGNORE', $text);
+    if (!is_string($converted) || $converted === '') {
+        return null;
+    }
+
+    return $converted;
+}
+function gp_sanitize_text_tree(mixed $value): mixed
+{
+    if (is_array($value)) {
+        foreach ($value as $key => $item) {
+            $value[$key] = gp_sanitize_text_tree($item);
+        }
+
+        return $value;
+    }
+
+    if (is_string($value)) {
+        return gp_repair_mojibake_text($value);
+    }
+
+    return $value;
+}
 function gp_json_decode_assoc(string $raw): array
 {
     $raw = gp_strip_utf8_bom($raw);
@@ -184,9 +223,9 @@ function gp_data(): array
         throw new RuntimeException('Le fichier data/site-data.json est introuvable.');
     }
 
-    $json = (string) file_get_contents(GP_DATA);
-    $data = gp_json_decode_assoc($json);
-    return $data;
+    $json = gp_read_text_file(GP_DATA);
+    $data = gp_sanitize_text_tree(gp_json_decode_assoc($json));
+    return is_array($data) ? $data : [];
 }
 
 function gp_site_name(): string
@@ -218,84 +257,14 @@ function gp_normalize_path(?string $path): string
 function gp_route_map(): array
 {
     return [
-        '/' => 'home',
-        '/contact' => 'contact',
-        '/mentions-legales' => 'mentions',
-        '/documentation' => 'mentions',
-        '/politique-de-confidentialite-2' => 'mentions',
-        '/galerie' => 'citoyen-realisations',
-        '/inscription-aux-newsletters' => 'contact',
-        '/commune/presentation' => 'commune-presentation',
-        '/commune/arrondissements' => 'commune-arrondissements',
-        '/commune/villages' => 'commune-villages',
-        '/commune/villages-et-villes' => 'commune-villages',
-        '/commune/villages-et-quartiers' => 'commune-villages',
-        '/les-villages-et-villes' => 'commune-villages',
-        '/commune/histoire-culture' => 'commune-histoire',
-        '/histoire-de-la-commune' => 'decouvertes-histoire',
-        '/commune/patrimoine-naturel' => 'commune-patrimoine',
-        '/commune/patrimoine-culturel' => 'commune-patrimoine-culturel',
-        '/commune/patrimoine-historique' => 'commune-patrimoine-historique',
-        '/commune/patrimoine-sportif' => 'commune-patrimoine-sportif',
-        '/commune/vie-balneaire' => 'commune-balneaire',
-        '/patrimoine-culturel' => 'decouvertes-patrimoine-culturel',
-        '/patrimoine-historique' => 'decouvertes-patrimoine-historique',
-        '/patrimoine-naturel' => 'decouvertes-patrimoine-naturel',
-        '/patrimoine-sportif' => 'decouvertes-patrimoine-sportif',
-        '/mairie/mot-du-maire' => 'mairie-mot-maire',
-        '/mairie/le-maire' => 'mairie-maire',
-        '/mairie/conseil-communal' => 'mairie-conseil',
-        '/mairie/conseil-supervision' => 'mairie-supervision',
-        '/mairie/le-conseil-darrondissement' => 'mairie-conseil-arrondissement',
-        '/mairie/le-conseil-de-village-ou-de-quartier-de-ville' => 'mairie-conseil-village-quartier',
-        '/mairie/commissions-permanentes' => 'mairie-commissions',
-        '/mairie/services-techniques' => 'mairie-technique',
-        '/mairie/les-organes-technique-et-administratif' => 'mairie-technique',
-        '/les-organes-technique-et-administratif' => 'mairie-technique',
-        '/mairie/organes-infra-communaux' => 'mairie-infra',
-        '/demarches/etat-civil' => 'services-etat-civil',
-        '/demarches/certificat-hebergement' => 'services-hebergement',
-        '/demarches/affaires-domaniales' => 'services-domanial',
-        '/demarches/occupation-domaine-public' => 'services-odp',
-        '/demarches/taxes-locales' => 'services-taxes',
-        '/demarches/equipements-marchands' => 'services-marches',
-        '/demarches/espace-publicitaire' => 'services-publicite',
-        '/demarches/stationnement' => 'services-stationnement',
-        '/demarches' => 'services-demarches',
-        '/demarches/suivi-demandes' => 'services-suivi-demandes',
-        '/mes-demarches-en-ligne' => 'services-demarches',
-        '/suivi-des-demandes' => 'services-suivi-demandes',
-        '/services' => 'services-demarches',
-        '/demande' => 'services-demande',
-        '/decouvertes/plages-littoral' => 'decouvertes-plages',
-        '/decouvertes/fleuve-mono' => 'decouvertes-mono',
-        '/decouvertes/mangroves' => 'decouvertes-mangroves',
-        '/decouvertes/nonvitcha' => 'decouvertes-nonvitcha',
-        '/actualites' => 'citoyen-actualites',
-        '/ecrire-au-maire' => 'citoyen-ecrire-maire',
-        '/ecrire-a-la-secretaire-executive' => 'citoyen-ecrire-se',
-        '/les-arretes' => 'citoyen-arretes',
-        '/les-comptes-rendus' => 'citoyen-comptes-rendus',
-        '/les-notes-de-services' => 'citoyen-notes-services',
-        '/les-appels-doffres' => 'citoyen-appels-offres',
-        '/denoncer-ou-alerter' => 'citoyen-signaler',
-        '/recrutement' => 'citoyen-recrutement',
-        '/les-projets-phares-de-la-commune' => 'decouvertes-projets-phares',
-        '/les-realisations-de-la-mairie' => 'decouvertes-realisations-mairie',
-        '/forums-de-discussion' => 'citoyen-forums',
-        '/connexion-aux-forums' => 'citoyen-forums-connexion',
-        '/inscription-aux-forums' => 'citoyen-forums-inscription',
-        '/citoyen/actualites' => 'citoyen-actualites',
-        '/citoyen/recrutement' => 'citoyen-recrutement',
-        '/citoyen/projets-phare' => 'citoyen-projets',
-        '/citoyen/signaler' => 'citoyen-signaler',
-        '/citoyen/realisations-mairie' => 'citoyen-realisations',
-        '/citoyen/forums' => 'citoyen-forums',
-        '/citoyen/forums/connexion' => 'citoyen-forums-connexion',
-        '/citoyen/forums/inscription' => 'citoyen-forums-inscription',
+        '/' => 'home', '/contact' => 'contact', '/mentions-legales' => 'mentions', '/documentation' => 'mentions', '/politique-de-confidentialite-2' => 'mentions', '/galerie' => 'citoyen-realisations', '/inscription-aux-newsletters' => 'contact',
+        '/commune/presentation' => 'commune-presentation', '/commune/la-commune-en-chiffres' => 'commune-chiffres', '/commune/arrondissements' => 'commune-arrondissements', '/commune/villages' => 'commune-villages', '/commune/villages-et-villes' => 'commune-villages', '/commune/villages-et-quartiers' => 'commune-villages', '/les-villages-et-villes' => 'commune-villages', '/commune/participation-citoyenne' => 'commune-participation-citoyenne', '/commune/intercommunalite' => 'commune-intercommunalite', '/commune/cooperation-decentralisee' => 'commune-cooperation-decentralisee', '/commune/poste-de-controle-juxtapose-dhilla-condji' => 'commune-hilla-condji', '/commune/histoire-culture' => 'commune-histoire', '/histoire-de-la-commune' => 'decouvertes-histoire', '/historique-des-dirigeants-de-grand-popo' => 'decouvertes-historique-dirigeants', '/commune/patrimoine-naturel' => 'commune-patrimoine', '/commune/patrimoine-culturel' => 'commune-patrimoine-culturel', '/commune/patrimoine-historique' => 'commune-patrimoine-historique', '/commune/patrimoine-sportif' => 'commune-patrimoine-sportif', '/commune/vie-balneaire' => 'commune-balneaire', '/patrimoine-culturel' => 'decouvertes-patrimoine-culturel', '/patrimoine-historique' => 'decouvertes-patrimoine-historique', '/patrimoine-naturel' => 'decouvertes-patrimoine-naturel', '/patrimoine-sportif' => 'decouvertes-patrimoine-sportif',
+        '/mairie/mot-du-maire' => 'mairie-mot-maire', '/mairie/le-maire' => 'mairie-maire', '/mairie/conseil-communal' => 'mairie-conseil', '/mairie/conseil-supervision' => 'mairie-supervision', '/mairie/commissions-permanentes' => 'mairie-commissions', '/mairie/le-conseil-darrondissement' => 'mairie-conseil-arrondissement', '/mairie/le-conseil-de-village-ou-de-quartier-de-ville' => 'mairie-conseil-village-quartier', '/mairie/compte-rendus-deliberations-decisions-arretes' => 'mairie-documents-officiels', '/mairie/historique-des-dirigeants-de-grand-popo' => 'mairie-historique-dirigeants', '/mairie/services-techniques' => 'mairie-technique', '/mairie/les-organes-technique-et-administratif' => 'mairie-technique', '/les-organes-technique-et-administratif' => 'mairie-technique', '/mairie/la-se' => 'mairie-se', '/mairie/directeurs-techniques-et-services-administratifs' => 'mairie-directeurs-techniques', '/mairie/structures-et-personnes-rattachees-a-la-se' => 'mairie-structures-rattachees-se', '/mairie/services-deconcentres-de-letat' => 'mairie-services-deconcentres', '/mairie/organigramme' => 'mairie-organigramme', '/mairie/organes-infra-communaux' => 'mairie-infra',
+        '/demarches/etat-civil' => 'services-etat-civil', '/demarches/certificat-hebergement' => 'services-hebergement', '/demarches/affaires-domaniales' => 'services-domanial', '/demarches/occupation-domaine-public' => 'services-odp', '/demarches/taxes-locales' => 'services-taxes', '/demarches/equipements-marchands' => 'services-marches', '/demarches/espace-publicitaire' => 'services-publicite', '/demarches/stationnement' => 'services-stationnement', '/demarches' => 'services-demarches', '/demarches/suivi-demandes' => 'services-suivi-demandes', '/mes-demarches-en-ligne' => 'services-demarches', '/suivi-des-demandes' => 'services-suivi-demandes', '/services' => 'services-demarches', '/demande' => 'services-demande',
+        '/decouvertes/plages-littoral' => 'decouvertes-plages', '/decouvertes/fleuve-mono' => 'decouvertes-mono', '/decouvertes/mangroves' => 'decouvertes-mangroves', '/decouvertes/nonvitcha' => 'decouvertes-nonvitcha',
+        '/actualites' => 'citoyen-actualites', '/ecrire-au-maire' => 'citoyen-ecrire-maire', '/ecrire-a-la-secretaire-executive' => 'citoyen-ecrire-se', '/les-arretes' => 'citoyen-arretes', '/les-comptes-rendus' => 'citoyen-comptes-rendus', '/les-notes-de-services' => 'citoyen-notes-services', '/affichage-municipal' => 'citoyen-affichage-municipal', '/les-appels-doffres' => 'citoyen-appels-offres', '/marches-publics' => 'citoyen-marches-publics', '/denoncer-ou-alerter' => 'citoyen-signaler', '/recrutement' => 'citoyen-recrutement', '/les-projets-phares-de-la-commune' => 'decouvertes-projets-phares', '/les-realisations-de-la-mairie' => 'decouvertes-realisations-mairie', '/forums-de-discussion' => 'citoyen-forums', '/connexion-aux-forums' => 'citoyen-forums-connexion', '/inscription-aux-forums' => 'citoyen-forums-inscription', '/citoyen/actualites' => 'citoyen-actualites', '/citoyen/recrutement' => 'citoyen-recrutement', '/citoyen/projets-phare' => 'citoyen-projets', '/citoyen/signaler' => 'citoyen-signaler', '/citoyen/realisations-mairie' => 'citoyen-realisations', '/citoyen/forums' => 'citoyen-forums', '/citoyen/forums/connexion' => 'citoyen-forums-connexion', '/citoyen/forums/inscription' => 'citoyen-forums-inscription',
     ];
 }
-
 function gp_page_path(string $key): string
 {
     if ($key !== '' && ($key[0] === '/' || $key[0] === '#')) {
@@ -378,7 +347,7 @@ function gp_services_catalog(): array
     }
 
     try {
-        $json = (string) file_get_contents(GP_SERVICES_CATALOG);
+        $json = gp_read_text_file(GP_SERVICES_CATALOG);
         $decoded = gp_json_decode_assoc($json);
     } catch (Throwable $e) {
         $catalog = ['categories' => [], 'form' => []];
@@ -735,10 +704,10 @@ function gp_save_home_hero_slides_text(string $text): void
 function gp_home_hero_slides_text(): string
 {
     $path = gp_home_hero_slides_path();
-    if (!is_file($path) || trim((string) @file_get_contents($path)) === '') {
+    if (!is_file($path) || trim(gp_read_text_file($path)) === '') {
         gp_save_home_hero_slides_text(gp_default_home_hero_slides_text());
     }
-    return (string) @file_get_contents($path);
+    return gp_read_text_file($path);
 }
 
 function gp_parse_home_hero_slides_text(string $text): array
@@ -1003,6 +972,7 @@ function gp_mojibake_marker_score(string $text): int
     $markers = [
         "\u{00C3}",
         "\u{00C2}",
+        "\u{0192}",
         "\u{00E2}\u{20AC}",
         "\u{FFFD}",
     ];
@@ -1014,25 +984,38 @@ function gp_mojibake_marker_score(string $text): int
 
     return $score;
 }
-
-function gp_repair_mojibake_text(string $text): string
+function gp_text_repair_score(string $text): int
 {
-    $text = str_replace(["\xEF\xBB\xBF", "\u{FEFF}"], ['', ''], $text);
-    if ($text === '') {
-        return '';
+    $score = gp_mojibake_marker_score($text) * 10;
+
+    if (preg_match_all("/\b(?![cdjlmnstqu]'[[:alpha:]])[[:alpha:]]+'[[:alpha:]]+\b/u", $text, $m) === 1) {
+        $score += count($m[0]) * 3;
     }
 
-    $best = trim(html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8'));
-    if ($best === '') {
-        return '';
-    }
+    $score += substr_count($text, 'Aujourdhui') * 5;
 
-    $prefixMap = [
+    return $score;
+}
+
+function gp_normalize_residual_mojibake(string $text): string
+{
+    $text = gp_strip_utf8_bom(trim(html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8')));
+
+    $text = str_replace(
+        [
+            "\x83\xC2\x80\x9A\xC2\x80\x9E\xC2",
+            "\x83\xC6\x27\x82\xC2",
+        ],
+        [
+            "'",
+            "\u{00E9}",
+        ],
+        $text
+    );
+
+    $text = strtr($text, [
         "\u{00C3}\u{0192}\u{00C2}" => "\u{00C3}",
         "\u{00C3}\u{0192}" => "\u{00C3}",
-    ];
-
-    $legacyPunctuationMap = [
         "\u{00E2}\u{00E2}\u{201A}\u{00AC}\u{00E2}\u{201E}\u{00A2}" => "'",
         "\u{00E2}\u{201A}\u{00AC}\u{00E2}\u{201E}\u{00A2}" => "'",
         "\u{00E2}\u{20AC}\u{00B0}" => "\u{2030}",
@@ -1045,13 +1028,6 @@ function gp_repair_mojibake_text(string $text): string
         "\u{00E2}\u{20AC}\u{201D}" => '-',
         "\u{00E2}\u{20AC}\u{00A6}" => '...',
         "\u{00E2}\u{20AC}\u{00A2}" => '- ',
-    ];
-
-    $best = strtr($best, $prefixMap);
-    $best = strtr($best, $legacyPunctuationMap);
-    $best = strtr($best, $prefixMap);
-
-    $map = [
         "\u{00C3} " => "\u{00E0} ",
         "\u{00C3}\u{00A0}" => "\u{00E0}",
         "\u{00C3}\u{00A2}" => "\u{00E2}",
@@ -1083,25 +1059,71 @@ function gp_repair_mojibake_text(string $text): string
         "\u{00C5}\u{0092}" => "\u{0152}",
         "\u{00C2}\u{00B0}" => "\u{00B0}",
         "\u{00C2}" => '',
-        "\u{00E2}\u{20AC}\u{2122}" => "'",
-        "\u{00E2}\u{20AC}\u{02DC}" => "'",
-        "\u{00E2}\u{20AC}\u{0153}" => '"',
-        "\u{00E2}\u{20AC}\u{009D}" => '"',
-        "\u{00E2}\u{20AC}\u{201C}" => '-',
-        "\u{00E2}\u{20AC}\u{201D}" => '-',
-        "\u{00E2}\u{20AC}\u{00A6}" => '...',
-        "\u{00E2}\u{20AC}\u{00A2}" => '- ',
-    ];
+    ]);
 
-    $best = strtr($best, $map);
-    $best = strtr($best, $map);
-    $best = preg_replace('/\b([cdjlmnst])[?\x{FFFD}]/iu', "$1'", $best) ?? $best;
-    $best = preg_replace('/\s[?\x{FFFD}]\s+l\'/u', " \u{00E0} l'", $best) ?? $best;
-    $best = str_replace(['C?est', "C\u{FFFD}est", 'c?ur', "c\u{FFFD}ur", 'C?ur', "C\u{FFFD}ur"], ["C'est", "C'est", 'coeur', 'coeur', 'Coeur', 'Coeur'], $best);
+    $text = preg_replace('/\b([cdjlmnst])[?\x{FFFD}]/iu', "$1'", $text) ?? $text;
+    $text = preg_replace('/\s[?\x{FFFD}]\s+l\'/u', " \u{00E0} l'", $text) ?? $text;
+    $text = str_replace(['C?est', "C\u{FFFD}est", 'c?ur', "c\u{FFFD}ur", 'C?ur', "C\u{FFFD}ur", 'Aujourdhui'], ["C'est", "C'est", 'coeur', 'coeur', 'Coeur', 'Coeur', "Aujourd'hui"], $text);
 
-    return trim($best);
+    return trim($text);
 }
+function gp_repair_mojibake_text(string $text): string
+{
+    $text = gp_strip_utf8_bom($text);
+    if ($text === '') {
+        return '';
+    }
 
+    $best = '';
+    $bestScore = PHP_INT_MAX;
+
+    $consider = static function (string $candidate, string &$best, int &$bestScore): void {
+        if ($candidate === '') {
+            return;
+        }
+
+        $normalized = gp_normalize_residual_mojibake($candidate);
+        if ($normalized === '' || !mb_check_encoding($normalized, 'UTF-8')) {
+            return;
+        }
+
+        $score = gp_text_repair_score($normalized);
+        if ($score < $bestScore) {
+            $best = $normalized;
+            $bestScore = $score;
+        }
+    };
+
+    if (mb_check_encoding($text, 'UTF-8')) {
+        $consider($text, $best, $bestScore);
+    } elseif (function_exists('iconv')) {
+        foreach (['Windows-1252', 'ISO-8859-1'] as $encoding) {
+            $converted = @iconv($encoding, 'UTF-8//IGNORE', $text);
+            if (is_string($converted) && $converted !== '') {
+                $consider($converted, $best, $bestScore);
+            }
+        }
+    }
+
+    foreach (['Windows-1252', 'ISO-8859-1'] as $encoding) {
+        $candidate = $text;
+        for ($pass = 0; $pass < 5; $pass++) {
+            $candidate = gp_try_utf8_redecode($candidate, $encoding);
+            if (!is_string($candidate) || $candidate === '') {
+                break;
+            }
+
+            $consider($candidate, $best, $bestScore);
+            $candidate = gp_normalize_residual_mojibake($candidate);
+        }
+    }
+
+    if ($best !== '') {
+        return gp_normalize_residual_mojibake($best);
+    }
+
+    return gp_normalize_residual_mojibake($text);
+}
 function gp_html_to_excerpt(string $html, int $length = 220): string
 {
     $text = html_entity_decode(strip_tags($html), ENT_QUOTES | ENT_HTML5, 'UTF-8');
@@ -1644,9 +1666,6 @@ function gp_forum_sanitize_redirect(?string $target, ?string $fallback = null): 
 
     return $target;
 }
-
-
-
 
 
 
