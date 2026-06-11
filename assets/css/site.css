@@ -193,6 +193,25 @@ body { background-attachment: fixed; }
 .mega-link.is-active {
   color: var(--brand);
   padding-left: .35rem;
+  font-weight: 700;
+}
+
+.mega-link.is-active::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.drawer-link.is-active {
+  color: var(--brand);
+  font-weight: 700;
+  border-color: rgba(10, 37, 64, .18);
+  background: linear-gradient(135deg, rgba(10, 37, 64, .08), rgba(0, 135, 81, .10));
+}
+
+.drawer-group.is-active summary {
+  color: var(--brand);
+  border-color: rgba(10, 37, 64, .18);
+  background: linear-gradient(135deg, rgba(10, 37, 64, .08), rgba(0, 135, 81, .08));
 }
 
 .brand {

@@ -45,6 +45,10 @@ $redirect = static function (string $to): never {
     exit;
 };
 
+if ($path === '/mairie/mot-du-maire') {
+    $redirect('/#mot-du-maire');
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = trim((string) ($_POST['action'] ?? ''));
 
@@ -290,4 +294,3 @@ $title = gp_clean_menu_text($titleRaw);
 $desc = gp_clean_menu_text($descRaw);
 $ogImage = $page['image'] ?? '/assets/logo-gp.jpg';
 gp_render_layout($title, $desc, $body, $key, gp_site_url() . gp_page_path($key), $ogImage);
-
